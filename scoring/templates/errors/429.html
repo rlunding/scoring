@@ -1,0 +1,13 @@
+{% extends "layouts/_container.html" %}
+
+{% block page_title %}{{ _('Error 429 | Too many requests') }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="text-center">
+        <h1>Error 429</h1>
+        <p>{{ _("You have been temporarily rate limited") }}</p>
+        <p>{{ _("Easy there killer. You're trying to access this resource too quickly. Try again shortly.") }}</p>
+  </div>
+</div>
+{% endblock %}

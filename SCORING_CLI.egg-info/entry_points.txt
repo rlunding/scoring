@@ -1,0 +1,3 @@
+[console_scripts]
+scoring=cli.cli:cli
+    

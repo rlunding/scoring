@@ -1,0 +1,12 @@
+{% extends "layouts/_container.html" %}
+
+{% block page_title %}{{ _('Error 500 | Server Error') }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="text-center">
+    <h1>Error 500</h1>
+    <p>{{ _('Sorry. Something went terribly wrong.') }} Go <a href="{{ url_for('main.home')}}">home</a>.</p>
+  </div>
+</div>
+{% endblock %}

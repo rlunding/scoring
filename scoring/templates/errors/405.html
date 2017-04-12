@@ -1,0 +1,12 @@
+{% extends "layouts/_container.html" %}
+
+{% block page_title %}{{ _('Error 405 | Method Not Allowed') }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="text-center">
+    <h1>Error 405</h1>
+    <p>{{ _("Sorry. The method is not allowed for the requested URL.") }} Go <a href="{{ url_for('page.home')}}">home</a>.</p>
+  </div>
+</div>
+{% endblock %}

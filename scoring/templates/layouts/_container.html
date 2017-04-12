@@ -1,0 +1,21 @@
+{% extends "layouts/_base.html" %}
+
+{% block body %}
+<div class="container">
+
+    <br>
+
+    <!-- messages -->
+    {% include "macros/_messages.html" %}
+
+
+    <!-- child template -->
+    {% block content %}{% endblock %}
+
+    <br>
+
+    <!-- errors -->
+    {% include "macros/_errors.html" %}
+
+</div>
+{% endblock %}

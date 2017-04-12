@@ -1,0 +1,12 @@
+{% extends "layouts/_container.html" %}
+
+{% block page_title %}{{ _('Error 404 | Page Not Found') }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="text-center">
+    <h1>Error 404</h1>
+    <p>{{ _("Sorry. The requested page doesn't exist.") }} Go <a href="{{ url_for('page.home')}}">home</a>.</p>
+  </div>
+</div>
+{% endblock %}

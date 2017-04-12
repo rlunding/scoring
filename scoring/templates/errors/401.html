@@ -1,0 +1,12 @@
+{% extends "layouts/_container.html" %}
+
+{% block page_title %}401 {{ _('Error 401 | Unauthorized') }}{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <div class="text-center">
+    <h1>Error 401</h1>
+    <p>{{ _('You are not authorized to view this page.') }} Please <a href="{{ url_for('user.login')}}">log in</a>.</p>
+  </div>
+</div>
+{% endblock %}
