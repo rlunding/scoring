@@ -29,7 +29,16 @@ def table(table_id):
     # Last 5 scores
     # Next 5 matches
     # Teams
-    pass
+    current_time = tzware_datetime()
+    current_time_offset = timedelta(minutes=-10)
+    schedules = Schedule.find_by_table_id(table_id)
+    scores = Score.find_by_table_id(table_id)
+    return render_template('spectator/table.html',
+                           table_id=table_id,
+                           current_time=current_time,
+                           current_time_offset=current_time_offset,
+                           schedules=schedules,
+                           scores=scores)
 
 
 @spectator.route('/table/<int:table_id>/schedule', methods=['GET'])
@@ -37,7 +46,10 @@ def schedule(table_id):
     # Show full schedule for table
     current_time = tzware_datetime()
     schedules = Schedule.find_by_table_id(table_id)
-    return render_template('spectator/schedule.html', schedules=schedules, current_time=current_time)
+    return render_template('spectator/schedule.html',
+                           table_id=table_id,
+                           schedules=schedules,
+                           current_time=current_time)
 
 
 @spectator.route('/table/<int:table_id>/score', methods=['GET'])
@@ -45,11 +57,14 @@ def score(table_id):
     # Show full scoring for table
     current_time_offset = timedelta(minutes=-10)
     scores = Score.find_by_table_id(table_id)
-    return render_template('spectator/scoring.html', scores=scores, current_time_offset=current_time_offset)
+    return render_template('spectator/scoring.html',
+                           table_id=table_id,
+                           scores=scores,
+                           current_time_offset=current_time_offset)
 
 
 # Teams ---------------------------------------------------------------------------
-@spectator.route('/team/<int:team_id>')
+@spectator.route('/team/<int:team_id>', methods=['GET'])
 def team(team_id):
     # Show team information
     team = Team.find_by_id(team_id)
