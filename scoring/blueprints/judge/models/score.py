@@ -1,4 +1,4 @@
-from sqlalchemy import desc
+from sqlalchemy import desc, func
 from lib.util_sqlalchemy import ResourceMixin, AwareDateTime
 
 from scoring.extensions import db
@@ -42,4 +42,4 @@ class Score(ResourceMixin, db.Model):
         :return: schedules
         """
 
-        return Score.query.filter(Score.table == table_id).order_by(desc(Score.start_date)).all()
+        return Score.query.filter(Score.table == table_id).order_by(desc(func.greatest(Score.score_1, Score.score_2))).all()

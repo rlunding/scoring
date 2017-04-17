@@ -17,6 +17,10 @@ db.app = app
 
 fake = Faker()
 
+RANDOM_TEAMS = 30
+RANDOM_SCHEDULES_PR_TEAM = 10
+TABLES = 10
+
 
 def _log_status(count, model_label):
     """
@@ -73,7 +77,7 @@ def teams():
     click.echo('Working...')
     data = []
 
-    for i in range(0, 25):
+    for i in range(0, RANDOM_TEAMS):
         params = {
             'name': fake.first_name()
         }
@@ -81,6 +85,7 @@ def teams():
         data.append(params)
 
     return _bulk_insert(Team, data, 'teams')
+
 
 @click.command()
 def schedules():
@@ -93,16 +98,33 @@ def schedules():
     teams = db.session.query(Team).all()
 
     for team in teams:
-        for i in range(0, random.randint(0, 10)):
-
+        for i in range(0, random.randint(0, RANDOM_SCHEDULES_PR_TEAM)):
             start_date = fake.date_time_between(
-                    start_date='-5h', end_date='+5h').strftime('%s')
+                    start_date='-3h', end_date='+5h').strftime('%s')
             start_date = datetime.utcfromtimestamp(
                 float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
 
             params = {
                 'team_1_id': team.id,
-                'table': random.randint(0, 10),
+                'team_2_id': None,
+                'table': random.randint(0, TABLES),
+                'start_date': start_date,
+                'completed': random.choice([True, False])
+            }
+
+            data.append(params)
+
+    if RANDOM_TEAMS > 10:
+        for (t1, t2) in zip(teams[::2], teams[1::2]):
+            start_date = fake.date_time_between(
+                start_date='-3h', end_date='+5h').strftime('%s')
+            start_date = datetime.utcfromtimestamp(
+                float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
+
+            params = {
+                'team_1_id': t1.id,
+                'team_2_id': t2.id,
+                'table': TABLES+1,
                 'start_date': start_date,
                 'completed': random.choice([True, False])
             }
@@ -125,15 +147,35 @@ def scores():
     for team in teams:
         for i in range(0, random.randint(0, 3)):
             start_date = fake.date_time_between(
-                start_date='-5h', end_date='+5h').strftime('%s')
+                start_date='-1h', end_date='now').strftime('%s')
             start_date = datetime.utcfromtimestamp(
                 float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
 
             params = {
                 'team_1_id': team.id,
-                'table': random.randint(0, 10),
+                'team_2_id': None,
+                'table': random.randint(0, TABLES),
                 'start_date': start_date,
-                'score_1': random.randint(0, 200)
+                'score_1': random.randint(0, 200),
+                'score_2': None
+            }
+
+            data.append(params)
+
+    if RANDOM_TEAMS > 10:
+        for (t1, t2) in zip(teams[::2], teams[1::2]):
+            start_date = fake.date_time_between(
+                start_date='-1h', end_date='now').strftime('%s')
+            start_date = datetime.utcfromtimestamp(
+                float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
+
+            params = {
+                'team_1_id': t1.id,
+                'team_2_id': t2.id,
+                'table': TABLES+1,
+                'start_date': start_date,
+                'score_1': random.randint(0, 200),
+                'score_2': random.randint(0, 200)
             }
 
             data.append(params)

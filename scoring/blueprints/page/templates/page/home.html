@@ -4,19 +4,9 @@
 
 {% block css %}
     {{ super() }}
-
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <br>
-        <!-- messages -->
-        {% include "macros/_messages.html" %}
-        <br>
-        <!-- errors -->
-        {% include "macros/_errors.html" %}
-    </div>
-
     <section>
         <div class="container">
             <div class="row">

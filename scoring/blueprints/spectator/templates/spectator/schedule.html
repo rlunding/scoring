@@ -1,0 +1,54 @@
+{% extends "layouts/_base.html" %}
+
+{% block page_title %}Table X | Schedule {% endblock %}
+
+{% block css %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container header-section">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>{{ _('Schedule') }}</h1>
+                    <p>Schedule for table TODO</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                {% if schedules | length == 0 %}
+                    <p>No scheduled matches at this table</p>
+                {% else %}
+                    <table class="table">
+                        <thead><tr>
+                            <th class="col-header">{{ _('Start') }}</th>
+                            <th class="col-header">{{ _('Team 1') }}</th>
+                            {% if schedules[0].team_2 %}
+                                <th class="col-header">{{ _('Team 2') }}</th>
+                                {% set two_teams = True %}
+                            {% else %}
+                                {% set two_teams = False %}
+                            {% endif %}
+                        </tr></thead>
+                        <tbody>
+                            {% for schedule in schedules %}
+                                <tr {% if schedule.start_date < current_time %} class="bg-danger"{% else %} class="bg-info"{% endif %}>
+                                    <td><time class="from-now" data-datetime="{{ schedule.start_date }}">{{ schedule.start_date }}</time></td>
+                                    <td><a href="{{ url_for('spectator.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a></td>
+                                    {% if two_teams %}
+                                        <td><a href="{{ url_for('spectator.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a></td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+    {{ super() }}
+{% endblock %}
