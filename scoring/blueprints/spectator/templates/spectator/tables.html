@@ -1,0 +1,44 @@
+{% extends "layouts/_base.html" %}
+
+{% block page_title %}Tables {% endblock %}
+
+{% block css %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container header-section">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>{{ _('Tables') }}</h1>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">
+                    {% if tables | length == 0 %}
+                        <p>No tables are available</p>
+                    {% else %}
+                        <table class="table">
+                            <thead><tr>
+                                <th class="col-header">{{ _('Table') }}</th>
+                            </tr></thead>
+                            <tbody>
+                                {% for table in tables %}
+                                    <tr>
+                                        <td><a href="{{ url_for('spectator.table', table_id=table[0]) }}">{{ table[0] }}</a></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+    {{ super() }}
+{% endblock %}

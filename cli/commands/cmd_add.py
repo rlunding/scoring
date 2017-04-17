@@ -107,7 +107,7 @@ def schedules():
             params = {
                 'team_1_id': team.id,
                 'team_2_id': None,
-                'table': random.randint(0, TABLES),
+                'table': random.randint(1, TABLES),
                 'start_date': start_date,
                 'completed': random.choice([True, False])
             }
@@ -154,7 +154,7 @@ def scores():
             params = {
                 'team_1_id': team.id,
                 'team_2_id': None,
-                'table': random.randint(0, TABLES),
+                'table': random.randint(1, TABLES),
                 'start_date': start_date,
                 'score_1': random.randint(0, 200),
                 'score_2': None
