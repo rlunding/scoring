@@ -2,17 +2,15 @@ import logging
 from logging.handlers import SMTPHandler
 
 from flask import Flask, render_template, request
-from flask_login import current_user
 from werkzeug.contrib.fixers import ProxyFix
 from celery import Celery
 from itsdangerous import URLSafeTimedSerializer
 
 from scoring.blueprints.page import page
-from scoring.blueprints.user import user
-from scoring.blueprints.admin import admin
-from scoring.blueprints.reservation import reservation
+from scoring.blueprints.judge import judge
+from scoring.blueprints.spectator import spectator
+from scoring.blueprints.updates import updates
 
-from scoring.blueprints.user.models import User
 from lib.template_processors import (
     current_year
 )
@@ -21,14 +19,13 @@ from scoring.extensions import (
     mail,
     csrf,
     db,
-    login_manager,
     limiter,
     babel
 )
 
 CELERY_TASK_LIST = [
-    'scoring.blueprints.user.tasks',
-    'scoring.blueprints.reservation.tasks',
+    #'scoring.blueprints.user.tasks',
+    #'scoring.blueprints.reservation.tasks',
 ]
 
 
@@ -77,12 +74,11 @@ def create_app(settings_override=None):
     error_templates(app)
     exception_handler(app)
     app.register_blueprint(page)
-    app.register_blueprint(user)
-    app.register_blueprint(admin)
-    app.register_blueprint(reservation)
+    app.register_blueprint(judge)
+    app.register_blueprint(spectator)
+    app.register_blueprint(updates)
     template_processors(app)
     extensions(app)
-    authentication(app, User)
     locale(app)
 
     return app
@@ -99,7 +95,6 @@ def extensions(app):
     mail.init_app(app)
     csrf.init_app(app)
     db.init_app(app)
-    login_manager.init_app(app)
     limiter.init_app(app)
     babel.init_app(app)
 
@@ -118,34 +113,6 @@ def template_processors(app):
     return app.jinja_env
 
 
-def authentication(app, user_model):
-    """
-    Initialize the Flask-Login extension (mutates the app passed in).
-
-    :param app: Flask application instance
-    :param user_model: Model that contains the authentication information
-    :type user_model: SQLAlchemy model
-    :return: None
-    """
-    login_manager.login_view = 'user.login'
-
-    @login_manager.user_loader
-    def load_user(uid):
-        return user_model.query.get(uid)
-
-#    https://github.com/mattupstate/flask-security/issues/557
-#    Måske ikke nødvendigt: https://www.udemy.com/the-build-a-saas-app-with-flask-course/learn/v4/t/lecture/5178134
-#    @login_manager.token_loader
-#    def load_token(token):
-#        duration = app.config['REMEMBER_COOKIE_DURATION'].total_seconds()
-#        serializer = URLSafeTimedSerializer(app.secret_key)
-#
-#        data = serializer.loads(token, max_age=duration)
-#        user_uid = data[0]
-#
-#        return user_model.query.get(user_uid)
-
-
 def locale(app):
     """
     Initialize a locale for the current request.
@@ -159,9 +126,6 @@ def locale(app):
 
     @babel.localeselector
     def get_locale():
-        if current_user.is_authenticated:
-            return current_user.locale
-
         accept_languages = app.config.get('LANGUAGES').keys()
         return request.accept_languages.best_match(accept_languages)
 

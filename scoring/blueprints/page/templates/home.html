@@ -1,0 +1,59 @@
+{% extends "layouts/_base.html" %}
+
+{% block page_title %}{{ _('Scoring system')}} | Home{% endblock %}
+
+{% block css %}
+    {{ super() }}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <!-- messages -->
+        {% include "macros/_messages.html" %}
+        <br>
+        <!-- errors -->
+        {% include "macros/_errors.html" %}
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>{{ _('Scoring system') }} - Home</h1>
+                    <p>Welcome to this new smart P2P scoring system!</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row" style="text-align: center">
+                <div class="col-sm-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x" style="color: #D65B12"></i>
+                        <i class="fa fa-wifi fa-stack-1x" style="color: #ffffff"></i>
+                    </span>
+                    <p>Automatic wifi hotpot</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x" style="color: #D65B12"></i>
+                        <i class="fa fa-star fa-stack-1x" style="color: #ffffff"></i>
+                    </span>
+                    <p>Each judge can give scores in real time</p>
+                </div>
+                <div class="col-sm-4">
+                    <span class="fa-stack fa-4x">
+                        <i class="fa fa-circle fa-stack-2x" style="color: #D65B12"></i>
+                        <i class="fa fa-share-alt fa-stack-1x" style="color: #ffffff"></i>
+                    </span>
+                    <p>Everything is shared between devices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block js %}
+    {{ super() }}
+{% endblock %}

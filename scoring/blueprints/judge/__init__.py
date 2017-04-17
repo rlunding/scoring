@@ -1,0 +1,1 @@
+from scoring.blueprints.judge.views import judge

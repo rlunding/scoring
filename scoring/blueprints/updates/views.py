@@ -1,4 +1,6 @@
+import json
 from flask import (
+    jsonify,
     Blueprint,
     redirect,
     request,
@@ -10,6 +12,6 @@ from flask import (
 updates = Blueprint('update', __name__, template_folder='templates')
 
 
-@updates.route('scores', methods=['GET'])
+@updates.route('/scores', methods=['GET'])
 def scores():
-    pass
+    return jsonify({'msg': "Hellos"})

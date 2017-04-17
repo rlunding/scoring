@@ -21,92 +21,135 @@
 }
 
 html {
-    position: relative;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 body {
-    padding-bottom: 20px;
-    margin-bottom: 60px;
-    padding-top: 70px; /* used to be 70*/
+    width: 100%;
+    height: 100%;
 
+    background: #fff;
     font-family: AU_Passata, 'opensans-regular', sans-serif;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding-top: 10px;
-  border-top: 1px solid black;
+@media (min-width: 1200px) {
+    .container {
+        width: 970px;
+    }
+}
 
-  height: 60px;
+h1, h2, h3, h4, h5, h6 {
+    font-family: AU_Passata_bold, 'opensans-bold', sans-serif;
+    font-weight: normal;
+}
+
+p {
+    font: 19px/28px AU_Passata, 'opensans-light', sans-serif; /* 19px/36px*/
+    margin-bottom: 18px;
 }
 
 h1 {
-    margin: 50px 0;
+    font-size: 4.5em;
     text-transform: uppercase;
 }
 
-.navbar {
-    margin-bottom: 0 !important;
+h2 {
+    font-size: 3.5em;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 3em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+section h4 {
+    font-size: 1.5em;
+}
+
+img {
+    width: 100%;
+}
+
+.navbar-fixed-top {
+    min-height: 60px;
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: auto;
+}
+
+.navbar-nav > li > a {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 80px;
+    font-size: 30px;
 }
 
 .navbar-brand {
     font-family: AU_Peto;
 }
 
-/* Bootstrap overrides
--------------------------------------------------- */
+@media (max-width: 767px) {
+    .navbar-fixed-top {
+        min-height: 0;
+    }
 
-label {
-  font-weight: 400;
+    .navbar-nav > li > a {
+        line-height: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 14px;
+    }
 }
 
-.col-header {
-  height: 26px;
+footer:before {
+    top: -4em;
+    height: 4em;
+    background-image: url("../img/figures/gray_bottom_right_triangle.svg");
 }
 
-/* Admin dashboard
--------------------------------------------------- */
-#bulk_actions {
-  display: none;
-  padding-bottom: 8px;
+footer {
+    background-color: #364759;
+    color: #ffffff;
+    text-align: center;
 }
 
-#scope {
-  margin-bottom: 0;
-  width: 160px;
-  height: 29px;
-  font-weight: 400;
-  font-size: 12px;
+footer h3 {
+    padding-bottom: 25px;
 }
 
-.sort:after {
-  content: '\f0dc';
-  font-family: FontAwesome;
-  margin-left: 6px;
-  color: #BBB;
+footer a {
+    color: #ffffff;
 }
 
-.asc:after {
-  content: '\f0dd';
-  font-family: FontAwesome;
-  margin-left: 6px;
-  color: #444;
+footer .fa:hover {
+    color: #D65B12;
 }
 
-.desc:after {
-  content: '\f0de';
-  font-family: FontAwesome;
-  margin-left: 6px;
-  color: #444;
+footer hr {
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
-#duration-in-months {
-  display: none;
+footer .info-row {
+    margin-bottom: 50px;
 }
 
-.rd-date table td {
-  padding: 5px;
+footer .info-row a {
+    color: #fff;
+}
+
+
+.triangle:before, .triangle:after {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: block;
+    position: relative;
+    width: 100%;
+    content: '';
+    left: 0;
 }
