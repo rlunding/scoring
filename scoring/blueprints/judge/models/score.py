@@ -1,4 +1,4 @@
-from sqlalchemy import desc, func
+from sqlalchemy import desc, func, or_
 from lib.util_sqlalchemy import ResourceMixin, AwareDateTime
 
 from scoring.extensions import db
@@ -43,3 +43,15 @@ class Score(ResourceMixin, db.Model):
         """
 
         return Score.query.filter(Score.table == table_id).order_by(desc(func.greatest(Score.score_1, Score.score_2))).all()
+
+    @classmethod
+    def find_by_team_id(cls, team_id):
+        """
+        Return all scores by team_id
+
+        :param team_id: team id
+        :return: scores
+        """
+
+        return Score.query.filter(or_(Score.team_1_id == team_id, Score.team_2_id == team_id))\
+            .order_by(desc(Score.start_date)).all()

@@ -24,3 +24,14 @@ class Team(ResourceMixin, db.Model):
     def __init__(self, **kwargs):
         # Call Flask-SQLAlchemy's constructor.
         super(Team, self).__init__(**kwargs)
+
+    @classmethod
+    def find_by_id(cls, team_id):
+        """
+        Return the team by id
+
+        :param team_id: team id
+        :return: team
+        """
+
+        return Team.query.filter(Team.id == team_id).first()
