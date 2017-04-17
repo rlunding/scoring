@@ -1,3 +1,4 @@
+from sqlalchemy import desc
 from lib.util_sqlalchemy import ResourceMixin, AwareDateTime
 
 from scoring.extensions import db
@@ -13,12 +14,13 @@ class Score(ResourceMixin, db.Model):
                                                   onupdate='CASCADE',
                                                   ondelete='CASCADE'),
                         index=True, nullable=False)
-    #team_1 = db.relationship('Team', backref='parents', lazy='joined')
+    team_1 = db.relationship('Team', primaryjoin='Team.id==Score.team_1_id', lazy='joined')
+
     team_2_id = db.Column(db.Integer, db.ForeignKey('teams.id',
                                                   onupdate='CASCADE',
                                                   ondelete='CASCADE'),
                         index=True, nullable=True)
-    #team_2 = db.relationship('Team', backref='parents', lazy='joined')
+    team_2 = db.relationship('Team', primaryjoin='Team.id==Score.team_2_id', lazy='joined')
 
     # Schedule details
     table = db.Column(db.Integer, nullable=False, index=True)
@@ -30,3 +32,14 @@ class Score(ResourceMixin, db.Model):
     def __init__(self, **kwargs):
         # Call Flask-SQLAlchemy's constructor.
         super(Score, self).__init__(**kwargs)
+
+    @classmethod
+    def find_by_table_id(cls, table_id):
+        """
+        Return all schedules by table_id
+
+        :param table_id: table id
+        :return: schedules
+        """
+
+        return Score.query.filter(Score.table == table_id).order_by(desc(Score.start_date)).all()

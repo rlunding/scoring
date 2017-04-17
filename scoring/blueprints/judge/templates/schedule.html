@@ -4,7 +4,6 @@
 
 {% block css %}
     {{ super() }}
-
 {% endblock %}
 
 {% block body %}
@@ -27,8 +26,8 @@
             </div>
             <hr>
             <div class="row">
-                {% if schedules.total == 0 %}
-                    <p>No matches at this table</p>
+                {% if schedules | length == 0 %}
+                    <p>No scheduled matches at this table</p>
                 {% else %}
                     <table class="table">
                         <thead><tr>
@@ -52,8 +51,8 @@
                                     <td><time class="from-now" data-datetime="{{ schedule.start_date }}">
                                         {{ schedule.start_date }}
                                     </time></td>
-                                    <td>{{ schedule.team_1_id }}</td>
-                                    <td>{{ schedule.team_2_id }}</td>
+                                    <td>{{ schedule.team_1.name }}</td>
+                                    <td>{{ schedule.team_2.name }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>

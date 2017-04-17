@@ -14,12 +14,13 @@ class Schedule(ResourceMixin, db.Model):
                                                   onupdate='CASCADE',
                                                   ondelete='CASCADE'),
                         index=True, nullable=False)
-    #team_1 = db.relationship('Team', backref='parents', lazy='joined')
+    team_1 = db.relationship('Team', primaryjoin='Team.id==Schedule.team_1_id', lazy='joined')
+
     team_2_id = db.Column(db.Integer, db.ForeignKey('teams.id',
                                                   onupdate='CASCADE',
                                                   ondelete='CASCADE'),
                         index=True, nullable=True)
-    #team_2 = db.relationship('Team', backref='parents', lazy='joined')
+    team_2 = db.relationship('Team', primaryjoin='Team.id==Schedule.team_2_id', lazy='joined')
 
     # Schedule details
     table = db.Column(db.Integer, nullable=False)
