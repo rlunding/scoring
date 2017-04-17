@@ -1,4 +1,4 @@
-FROM armhf/python:3.6-slim
+FROM python:3.6-slim
 MAINTAINER Rasmus Lunding Henriksen <lunding@me.com>
 
 RUN apt-get update && apt-get install -qq -y \
