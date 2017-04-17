@@ -113,6 +113,7 @@ footer:before {
 }
 
 footer {
+    margin-top: 150px;
     background-color: #333333;
     color: #ffffff;
     text-align: center;

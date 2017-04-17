@@ -11,6 +11,8 @@ from scoring.blueprints.judge import judge
 from scoring.blueprints.spectator import spectator
 from scoring.blueprints.updates import updates
 
+from scoring.blueprints.judge.models.team import Team
+
 from lib.template_processors import (
     current_year
 )

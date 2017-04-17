@@ -7,7 +7,9 @@ from faker import Faker
 
 from scoring.app import create_app
 from scoring.extensions import db
-from scoring.blueprints.user.models import User
+from scoring.blueprints.judge.models.team import Team
+from scoring.blueprints.judge.models.schedule import Schedule
+from scoring.blueprints.judge.models.score import Score
 
 # Create an app context for the database connection.
 app = create_app()
@@ -64,195 +66,81 @@ def cli():
 
 
 @click.command()
-def users():
+def teams():
     """
-    Generate fake users.
+    Generate fake teams.
     """
-    random_emails = []
-    data = []
-
     click.echo('Working...')
+    data = []
 
-    # Ensure we get about 100 unique random emails.
-    for i in range(0, 99):
-        random_emails.append(fake.email())
-
-    random_emails.append(app.config['SEED_ADMIN_EMAIL'])
-    random_emails = list(set(random_emails))
-
-    while True:
-        if len(random_emails) == 0:
-            break
-
-        fake_datetime = fake.date_time_between(
-            start_date='-1y', end_date='now').strftime('%s')
-
-        created_on = datetime.utcfromtimestamp(
-            float(fake_datetime)).strftime('%Y-%m-%dT%H:%M:%S Z')
-
-        random_percent = random.random()
-
-        if random_percent >= 0.03:
-            role = 'member'
-        else:
-            role = 'admin'
-
-        email = random_emails.pop()
-
-        random_percent = random.random()
-
-        if random_percent >= 0.05:
-            fullname = fake.first_name() + " " + fake.last_name()
-            room = int(random_percent * 100)
-        else:
-            fullname = None
-            room = None
-
-        fake_datetime = fake.date_time_between(
-            start_date='-1y', end_date='now').strftime('%s')
-
-        current_sign_in_on = datetime.utcfromtimestamp(
-            float(fake_datetime)).strftime('%Y-%m-%dT%H:%M:%S Z')
-
+    for i in range(0, 25):
         params = {
-            'created_on': created_on,
-            'updated_on': created_on,
-            'role': role,
-            'email': email,
-            'fullname': fullname,
-            'room': room,
-            'password': User.encrypt_password('password'),
-            'sign_in_count': random.random() * 100,
-            'current_sign_in_on': current_sign_in_on,
-            'current_sign_in_ip': fake.ipv4(),
-            'last_sign_in_on': current_sign_in_on,
-            'last_sign_in_ip': fake.ipv4()
+            'name': fake.first_name()
         }
-
-        # Ensure the seeded admin is always an admin with the seeded password.
-        if email == app.config['SEED_ADMIN_EMAIL']:
-            password = User.encrypt_password(app.config['SEED_ADMIN_PASSWORD'])
-
-            params['role'] = 'admin'
-            params['password'] = password
 
         data.append(params)
 
-    return _bulk_insert(User, data, 'users')
-
-
-@click.command()
-def item_groups():
-    """
-    Generate item_groups
-    """
-    data = []
-
-    # Create a fake unix timestamp in the future.
-    created_on = fake.date_time_between(
-        start_date='-30d', end_date='now').strftime('%s')
-    created_on = datetime.utcfromtimestamp(
-        float(created_on)).strftime('%Y-%m-%dT%H:%M:%S Z')
-
-    titles = ['Rum', 'Vask']
-
-    for i in range(0, len(titles)):
-
-        params = {
-            'created_on': created_on,
-            'updated_on': created_on,
-            'title': titles[i],
-        }
-        data.append(params)
-
-    return _bulk_insert(ItemGroup, data, 'item_groups')
-
+    return _bulk_insert(Team, data, 'teams')
 
 @click.command()
-def items():
+def schedules():
     """
-    Generate items
+    Generate fake schedules.
     """
+    click.echo('Working...')
     data = []
 
-    # Create a fake unix timestamp in the future.
-    created_on = fake.date_time_between(
-        start_date='-30d', end_date='now').strftime('%s')
-    created_on = datetime.utcfromtimestamp(
-        float(created_on)).strftime('%Y-%m-%dT%H:%M:%S Z')
+    teams = db.session.query(Team).all()
 
-    titles = ['Baren', 'Pejsestuen', 'Venstre vaskemaskine', 'Højre vaskemaskine']
-    groups = [1, 1, 2, 2]
+    for team in teams:
+        for i in range(0, random.randint(0, 10)):
 
-    for i in range(0, len(titles)):
-
-        params = {
-            'created_on': created_on,
-            'updated_on': created_on,
-            'title': titles[i],
-            'rules': fake.text(max_nb_chars=500),
-            'delete_day_offset': random.randint(7, 14),
-            'group_id': groups[i],
-        }
-        data.append(params)
-
-    return _bulk_insert(Item, data, 'items')
-
-
-@click.command()
-def reservations():
-    """
-    Generate random reservations
-    """
-    data = []
-
-    users = db.session.query(User).all()
-
-    for user in users:
-        for i in range(0, random.randint(0, 1)):
-            random_percent = random.random()
-            if random_percent >= 0.75:
-                start = '-30d'
-                end = 'now'
-            else:
-                start = 'now'
-                end = '+30d'
-            # Create a fake unix timestamp in the future.
-            created_on = fake.date_time_between(
-                start_date='-30d', end_date='now').strftime('%s')
             start_date = fake.date_time_between(
-                start_date=start, end_date=end).strftime('%s')
-            # TODO: Bug, this doesn't give a date after start_date
-            end_date = fake.date_time_between(
-                start_date=start_date, end_date='+5h').strftime('%s')
-
-            created_on = datetime.utcfromtimestamp(
-                float(created_on)).strftime('%Y-%m-%dT%H:%M:%S Z')
+                    start_date='-5h', end_date='+5h').strftime('%s')
             start_date = datetime.utcfromtimestamp(
                 float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
-            end_date = datetime.utcfromtimestamp(
-                float(end_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
-
-
-
-            title = fake.sentence(nb_words=5, variable_nb_words=True)
-            description = fake.text(max_nb_chars=500)
-            expiring = False
 
             params = {
-                'created_on': created_on,
-                'updated_on': created_on,
-                'user_id': user.id,
-                'title': title,
-                'description': description,
-                'item_id': random.randint(1, 4),
+                'team_1_id': team.id,
+                'table': random.randint(0, 10),
                 'start_date': start_date,
-                'end_date': end_date,
-                'is_expiring': expiring
+                'completed': random.choice([True, False])
             }
+
             data.append(params)
 
-    return _bulk_insert(Reservation, data, 'reservations')
+    return _bulk_insert(Schedule, data, 'schedules')
+
+
+@click.command()
+def scores():
+    """
+    Generate fake scores.
+    """
+    click.echo('Working...')
+    data = []
+
+    teams = db.session.query(Team).all()
+
+    for team in teams:
+        for i in range(0, random.randint(0, 3)):
+            start_date = fake.date_time_between(
+                start_date='-5h', end_date='+5h').strftime('%s')
+            start_date = datetime.utcfromtimestamp(
+                float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
+
+            params = {
+                'team_1_id': team.id,
+                'table': random.randint(0, 10),
+                'start_date': start_date,
+                'score_1': random.randint(0, 200)
+            }
+
+            data.append(params)
+
+    return _bulk_insert(Score, data, 'scores')
+
+
 
 
 @click.command()
@@ -264,16 +152,14 @@ def all(ctx):
     :param ctx:
     :return: None
     """
-    ctx.invoke(users)
-    ctx.invoke(item_groups)
-    ctx.invoke(items)
-    ctx.invoke(reservations)
+    ctx.invoke(teams)
+    ctx.invoke(schedules)
+    ctx.invoke(scores)
 
     return None
 
 
-cli.add_command(users)
-cli.add_command(item_groups)
-cli.add_command(items)
-cli.add_command(reservations)
+cli.add_command(teams)
+cli.add_command(schedules)
+cli.add_command(scores)
 cli.add_command(all)

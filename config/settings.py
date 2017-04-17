@@ -42,7 +42,7 @@ CELERYBEAT_SCHEDULE = {
 }
 
 # SQLAlchemy.
-db_uri = 'postgresql://oma:devpassword@postgres:5432/scoring'
+db_uri = 'postgresql://scoring:devpassword@postgres:5432/scoring'
 SQLALCHEMY_DATABASE_URI = db_uri
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 

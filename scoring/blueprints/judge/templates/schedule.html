@@ -1,0 +1,70 @@
+{% extends "layouts/_base.html" %}
+
+{% block page_title %}{{ _('Scoring system') }} | Judge{% endblock %}
+
+{% block css %}
+    {{ super() }}
+
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <br>
+        <!-- messages -->
+        {% include "macros/_messages.html" %}
+        <br>
+        <!-- errors -->
+        {% include "macros/_errors.html" %}
+    </div>
+
+    <section>
+        <div class="container header-section">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>{{ _('Schedule') }}</h1>
+                    <p>Schedule for table TODO</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                {% if schedules.total == 0 %}
+                    <p>No matches at this table</p>
+                {% else %}
+                    <table class="table">
+                        <thead><tr>
+                            <th class="col-header">
+                                {{ _('Start') }}
+                            </th>
+                            <th class="col-header">
+                                {{ _('Team 1') }}
+                            </th>
+                            <th class="col-header">
+                                {{ _('Team 2') }}
+                            </th>
+                        </tr></thead>
+                        <tbody>
+                            {% for schedule in schedules %}
+                                <tr {% if schedule.start_date < current_time %}
+                                    class="bg-danger"
+                                    {% else %}
+                                    class="bg-info"
+                                    {% endif %}>
+                                    <td><time class="from-now" data-datetime="{{ schedule.start_date }}">
+                                        {{ schedule.start_date }}
+                                    </time></td>
+                                    <td>{{ schedule.team_1_id }}</td>
+                                    <td>{{ schedule.team_2_id }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block js %}
+    {{ super() }}
+{% endblock %}

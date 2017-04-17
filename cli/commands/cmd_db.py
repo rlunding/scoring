@@ -4,7 +4,6 @@ from sqlalchemy_utils import database_exists, create_database
 
 from scoring.app import create_app
 from scoring.extensions import db
-from scoring.blueprints.user.models import User
 
 # Create an app context for the database connection.
 app = create_app()
@@ -41,25 +40,6 @@ def init(with_testdb):
 
 
 @click.command()
-def seed():
-    """
-    Seed the database with an initial user.
-
-    :return: User instance
-    """
-    if User.find_by_identity(app.config['SEED_ADMIN_EMAIL']) is not None:
-        return None
-
-    params = {
-        'role': 'admin',
-        'email': app.config['SEED_ADMIN_EMAIL'],
-        'password': app.config['SEED_ADMIN_PASSWORD']
-    }
-
-    return User(**params).save()
-
-
-@click.command()
 @click.option('--with-testdb/--no-with-testdb', default=False,
               help='Create a test db too?')
 @click.pass_context
@@ -71,11 +51,9 @@ def reset(ctx, with_testdb):
     :return: None
     """
     ctx.invoke(init, with_testdb=with_testdb)
-    ctx.invoke(seed)
 
     return None
 
 
 cli.add_command(init)
-cli.add_command(seed)
 cli.add_command(reset)
