@@ -20,7 +20,7 @@ redis==2.10.5
 celery==4.0.0rc6
 
 # Forms.
-Flask-WTF==0.13.1
+Flask-WTF==0.9.5
 WTForms-Components==0.9.7
 
 # Utils.

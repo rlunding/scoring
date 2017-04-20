@@ -1,5 +1,5 @@
 import pytz
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, current_app
 
 from lib.util_datetime import tzware_datetime, timedelta
 from scoring.blueprints.judge.models.team import Team, db
@@ -21,9 +21,10 @@ judge = Blueprint('judge', __name__, template_folder='templates', url_prefix='/j
 
 @judge.before_request
 def before_request():
-    if request.remote_addr != '172.26.0.1':
-        flash('You are not allowed here!' + request.remote_addr, 'danger')
-        return render_template('errors/403.html'), 403
+    #if request.remote_addr != current_app.config['SERVER_NAME']: #'172.26.0.1':
+    #    flash('You are not allowed here!' + request.remote_addr, 'danger')
+    #    return render_template('errors/403.html'), 403
+    pass
 
 
 @judge.route('')
