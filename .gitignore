@@ -1,12 +1,7 @@
 .cache
 .coverage
 .idea/
-config/__pycache__/
-lib/__pycache__/
-oma/__pycache__/
-oma/blueprints/__pycache__/
-oma/blueprints/page/__pycache__/
-
+*/__pycache__/
 celerybeat*
 
 # Dont add real settings-file
