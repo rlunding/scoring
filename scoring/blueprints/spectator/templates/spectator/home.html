@@ -1,0 +1,30 @@
+{% extends "layouts/_base.html" %}
+
+{% block page_title %}Spectator | Home {% endblock %}
+
+{% block css %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container header-section">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>{{ _('Home') }}</h1>
+                    <p>Welcome! Here should be a nice overview of everything.</p>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>Something</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block js %}
+    {{ super() }}
+{% endblock %}

@@ -33,6 +33,17 @@ class Schedule(ResourceMixin, db.Model):
         super(Schedule, self).__init__(**kwargs)
 
     @classmethod
+    def find_by_id(cls, schedule_id):
+        """
+        Return schedule by schedule id
+
+        :param schedule_id: schedule id
+        :return: schedule
+        """
+
+        return Schedule.query.filter(Schedule.id == schedule_id).first()
+
+    @classmethod
     def find_by_table_id(cls, table_id):
         """
         Return all schedules by table_id

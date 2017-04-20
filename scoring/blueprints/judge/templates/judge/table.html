@@ -1,6 +1,6 @@
 {% extends "layouts/_base.html" %}
 
-{% block page_title %}Table {{ table_id }} {% endblock %}
+{% block page_title %}Judge | Table {{ table_id }} {% endblock %}
 
 {% block css %}
     {{ super() }}
@@ -12,14 +12,13 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h1>{{ _('Table') }} {{ table_id }}</h1>
-                    <p>Back to <a href="{{ url_for('spectator.tables') }}">tables</a></p>
+                    <p>Back to <a href="{{ url_for('judge.tables') }}">tables</a></p>
                 </div>
             </div>
             <hr>
             <div class="row">
                 <div class="col-sm-6">
                     <h3>Schedule</h3>
-                    <p>See whole schedule, <a href="{{ url_for('spectator.schedule', table_id=table_id) }}">link</a></p>
                     {% if schedules | length == 0 %}
                     <p>This table have no scheduled matches</p>
                     {% else %}
@@ -33,6 +32,7 @@
                                 {% else %}
                                     {% set two_teams = False %}
                                 {% endif %}
+                                <th class="col-header">{{ _('Completed') }}</th>
                             </tr></thead>
                             <tbody>
                                 {% for schedule in schedules %}
@@ -42,6 +42,11 @@
                                     {% if two_teams %}
                                         <td><a href="{{ url_for('spectator.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a></td>
                                     {% endif %}
+                                    {% if schedule.completed %}
+                                        <td><i class="fa fa-check"></i></td>
+                                    {% else %}
+                                        <td><a href="{{ url_for('judge.match', schedule_id=schedule.id) }}">Start match</a></td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                             </tbody>
@@ -50,9 +55,8 @@
                 </div>
                 <div class="col-sm-6">
                     <h3>Scores</h3>
-                    <p>See all scores, <a href="{{ url_for('spectator.score', table_id=table_id) }}">link</a></p>
                     {% if scores | length == 0 %}
-                    <p>This team have no recorded scores</p>
+                    <p>This table have no recorded scores</p>
                     {% else %}
                         <table class="table">
                             <thead><tr>
@@ -66,6 +70,7 @@
                                 {% else %}
                                     {% set two_teams = False %}
                                 {% endif %}
+                                <th class="col-header">{{ _('Edit') }}</th>
                             </tr></thead>
                             <tbody>
                                 {% for score in scores %}
@@ -77,6 +82,7 @@
                                         <td><a href="{{ url_for('spectator.team', team_id=score.team_2_id) }}">{{ score.team_2.name }}</a></td>
                                         <td>{{ score.score_2 }}</td>
                                     {% endif %}
+                                    <td><i class="fa fa-pencil"></i></td>
                                 </tr>
                             {% endfor %}
                             </tbody>

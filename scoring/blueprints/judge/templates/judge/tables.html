@@ -1,6 +1,6 @@
 {% extends "layouts/_base.html" %}
 
-{% block page_title %}Tables {% endblock %}
+{% block page_title %}Judge | Tables {% endblock %}
 
 {% block css %}
     {{ super() }}
@@ -11,7 +11,7 @@
         <div class="container header-section">
             <div class="row">
                 <div class="col-sm-12">
-                    <h1>{{ _('Tables') }}</h1>
+                    <h1>{{ _('Judge | Tables') }}</h1>
                 </div>
             </div>
             <hr>
@@ -24,7 +24,7 @@
                             {% for table in tables %}
                                 <div class="panel panel-default col-xs-3">
                                     <div class="panel-body">
-                                        <h4><a href="{{ url_for('spectator.table', table_id=table[0]) }}">Table {{ table[0] }}</a></h4>
+                                        <h4><a href="{{ url_for('judge.table', table_id=table[0]) }}">Table {{ table[0] }}</a></h4>
                                     </div>
                                 </div>
                             {% endfor %}
