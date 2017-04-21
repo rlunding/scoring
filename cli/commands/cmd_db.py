@@ -5,6 +5,13 @@ from sqlalchemy_utils import database_exists, create_database
 from scoring.app import create_app
 from scoring.extensions import db
 
+# import models
+from scoring.blueprints.judge.models.schedule import Schedule
+from scoring.blueprints.judge.models.score import Score
+from scoring.blueprints.judge.models.team import Team
+from scoring.blueprints.updates.models.peer import  Peer
+
+
 # Create an app context for the database connection.
 app = create_app()
 db.app = app

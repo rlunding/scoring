@@ -188,9 +188,9 @@ def peers():
     """
     Generate peers.
     """
-    click.echo('Adding peers...')
-
+    click.echo('Working...')
     data = []
+
     params = {
         'ip': '192.168.4.2',
         'mac': 'b8:27:eb:7f:8c:f3',
