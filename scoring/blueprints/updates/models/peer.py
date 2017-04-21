@@ -8,12 +8,10 @@ class Peer(ResourceMixin, db.Model):
     __tablename__ = 'peers'
     id = db.Column(db.Integer, primary_key=True)
 
-
     # Peer details
     ip = db.Column(db.String(128), index=True)
     mac = db.Column(db.String(128), index=True)
     alive = db.Column(db.Boolean(), nullable=False, server_default='0')
-
 
     def __init__(self, **kwargs):
         # Call Flask-SQLAlchemy's constructor.

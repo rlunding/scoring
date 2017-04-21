@@ -10,6 +10,7 @@ from scoring.extensions import db
 from scoring.blueprints.judge.models.team import Team
 from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
+from scoring.blueprints.updates.models.peer import Peer
 
 # Create an app context for the database connection.
 app = create_app()
@@ -182,8 +183,22 @@ def scores():
 
     return _bulk_insert(Score, data, 'scores')
 
+@click.command()
+def peers():
+    """
+    Generate peers.
+    """
+    click.echo('Adding peers...')
 
+    data = []
+    params = {
+        'ip': '192.168.4.2',
+        'mac': 'b8:27:eb:7f:8c:f3',
+        'alive': False
+    }
+    data.append(params)
 
+    return _bulk_insert(Peer, data, 'peers')
 
 @click.command()
 @click.pass_context
@@ -197,6 +212,7 @@ def all(ctx):
     ctx.invoke(teams)
     ctx.invoke(schedules)
     ctx.invoke(scores)
+    ctx.invoke(peers)
 
     return None
 
@@ -204,4 +220,5 @@ def all(ctx):
 cli.add_command(teams)
 cli.add_command(schedules)
 cli.add_command(scores)
+cli.add_command(peers)
 cli.add_command(all)
