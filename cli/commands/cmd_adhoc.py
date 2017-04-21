@@ -5,7 +5,8 @@ import click
 
 
 @click.command()
-def cli():
+@click.argument('ip')
+def ping(ip):
     """
     Show hostname
 
@@ -13,4 +14,9 @@ def cli():
     """
 
     #return click.echo(call(["ping", "-c", "5", "192.168.0.101"]))
-    return click.echo(requests.get('http://192.168.4.2:8000/scores').content)
+
+    click.echo('Ping: %s' % ip)
+    pong = requests.get('http://%s:5000/scores' % ip).content
+    click.echo(pong)
+
+    return None
