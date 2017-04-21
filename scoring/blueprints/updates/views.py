@@ -12,6 +12,6 @@ from flask import (
 updates = Blueprint('update', __name__, template_folder='templates')
 
 
-@updates.route('/scores', methods=['GET'])
-def scores():
-    return jsonify({'msg': "Hellos"})
+@updates.route('/ping', methods=['GET'])
+def ping():
+    return jsonify({'msg': "Hello World"})
