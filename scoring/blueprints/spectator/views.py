@@ -14,7 +14,7 @@ def home():
     # Last scores
     # Search team
     # Search table
-    return render_template('home.html')
+    return render_template('spectator/home.html')
 
 
 # Tables --------------------------------------------------------------------------

@@ -29,6 +29,17 @@ services:
     ports:
       - '8000:8000'
 
+  updates:
+    build: .
+    command: >
+      gunicorn -c "python:config.gunicorn" --reload "scoring.app:create_background_app()"
+    env_file:
+      - '.env'
+    volumes:
+      - '.:/scoring'
+    ports:
+      - '5000:8000'
+
   celery:
     build: .
     command: celery worker -B -l info #-A scoring.blueprints.user.tasks
