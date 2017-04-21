@@ -14,4 +14,6 @@ updates = Blueprint('update', __name__, template_folder='templates')
 
 @updates.route('/ping', methods=['GET'])
 def ping():
-    return jsonify({'msg': "Hello World"})
+    return jsonify({
+        'success': True,
+        'peers': []})

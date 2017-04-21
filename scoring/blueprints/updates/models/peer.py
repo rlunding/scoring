@@ -20,10 +20,21 @@ class Peer(ResourceMixin, db.Model):
     @classmethod
     def find_by_id(cls, id):
         """
-        Return the team by id
+        Return the peer by id
 
-        :param team_id: team id
-        :return: team
+        :param id: team id
+        :return: peer
         """
 
         return Peer.query.filter(Peer.id == id).first()
+
+    @classmethod
+    def find_by_ip(cls, ip):
+        """
+        Return the peer by ip
+
+        :param ip:
+        :return:
+        """
+
+        return Peer.query.filter(Peer.ip == ip).first()
