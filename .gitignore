@@ -1,7 +1,7 @@
 .cache
 .coverage
 .idea/
-*/__pycache__/
+**/__pycache__/
 celerybeat*
 
 # Dont add real settings-file
