@@ -33,7 +33,7 @@ def update_peer_status(ip):
     try:
         data = json.loads(requests.get(url, timeout=1).text)
     except:
-        return "No response from %s" % peer.ip
+        return "Error response from %s" % peer.ip
     if data is not None:
         if data['success'] is True:
             # Set the pinged peer alive in our db
