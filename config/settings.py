@@ -35,10 +35,14 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_REDIS_MAX_CONNECTIONS = 5
 # http://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html
 CELERYBEAT_SCHEDULE = {
-#    'mark-expired-reservations': {
-#        'task': 'scoring.blueprints.reservation.tasks.mark_expired_reservations',
-#        'schedule': crontab(hour=2, minute=0, day_of_week='sunday')
+#    'update_peer_status': {
+#        'task': 'scoring.blueprints.updates.tasks.update_peer_status',
+#        'schedule': crontab(minute=0)
 #    },
+    'pull_new_scores': {
+        'task': 'scoring.blueprints.updates.tasks.pull_new_scores',
+        'schedule': 30.0
+    },
 }
 
 # SQLAlchemy.

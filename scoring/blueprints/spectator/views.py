@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for
 
 from lib.util_datetime import tzware_datetime, timedelta
 from scoring.blueprints.judge.models.team import Team, db
@@ -14,7 +14,8 @@ def home():
     # Last scores
     # Search team
     # Search table
-    return render_template('spectator/home.html')
+    #return render_template('spectator/home.html')
+    return redirect(url_for('spectator.tables'))
 
 
 # Tables --------------------------------------------------------------------------

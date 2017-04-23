@@ -73,6 +73,7 @@ img {
     width: 100%;
 }
 
+/*
 .navbar-fixed-top {
     min-height: 60px;
 }
@@ -86,6 +87,10 @@ img {
     padding-top: 0;
     padding-bottom: 0;
     line-height: 80px;
+    font-size: 30px;
+}
+*/
+.navbar-nav > li > a {
     font-size: 30px;
 }
 

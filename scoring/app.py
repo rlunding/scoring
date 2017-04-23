@@ -26,8 +26,7 @@ from scoring.extensions import (
 )
 
 CELERY_TASK_LIST = [
-    #'scoring.blueprints.user.tasks',
-    #'scoring.blueprints.reservation.tasks',
+    'scoring.blueprints.updates.tasks',
 ]
 
 

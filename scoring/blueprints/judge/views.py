@@ -89,6 +89,9 @@ def match(schedule_id):
         schedule.completed = True
         schedule.save()
 
+        from scoring.blueprints.updates.tasks import push_new_scores
+        push_new_scores.delay(score.id)
+
         flash('Scoring has been saved successfully.', 'success')
         return redirect(url_for('judge.table', table_id=schedule.table))
 

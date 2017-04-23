@@ -2,19 +2,33 @@ from scoring.app import create_celery_app
 import requests
 import json
 
+from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.updates.models.peer import Peer
 
 celery = create_celery_app()
 
 
 @celery.task()
-def retrieve_new_scores():
+def pull_new_scores():
     """
-    Retrieve scores from peers
+    Pull scores from peers
 
     :return: None
     """
-    pass
+    print("Scores pulled from peers")
+    #pass
+
+
+@celery.task()
+def push_new_scores(score_id):
+    """
+    Push scores to peers
+
+    :return: None
+    """
+    print("Pushing scores to peers")
+    print(score_id)
+    # pass
 
 
 @celery.task()
