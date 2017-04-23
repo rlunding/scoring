@@ -17,9 +17,11 @@ def retrieve_new_scores():
     pass
 
 
+@celery.task()
 def update_peer_status(ip):
     """
-    Update the status of a peer
+    Update the status of a peer in our database. If th
+    peer responds we set alive=true
 
     :return:
     """
@@ -29,14 +31,14 @@ def update_peer_status(ip):
     url = 'http://%s:%s/ping' % (peer.ip, port)
 
     try:
-        data = json.loads(requests.get(url).text)
+        data = json.loads(requests.get(url, timeout=1).text)
     except:
-        return None
+        return "No response from %s" % peer.ip
     if data is not None:
         if data['success'] is True:
-
+            # Set the pinged peer alive in our db
             peer.alive = True
             peer.save()
-
             return data['peers']
-    return None
+        return "Success not true in data"
+    return "Data returned from %s was None" % peer.ip

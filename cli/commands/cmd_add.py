@@ -197,6 +197,12 @@ def peers():
         'alive': False
     }
     data.append(params)
+    params = {
+        'ip': '192.168.4.4',
+        'mac': 'b8:27:eb:3c:dc:97',
+        'alive': False
+    }
+    data.append(params)
 
     return _bulk_insert(Peer, data, 'peers')
 
