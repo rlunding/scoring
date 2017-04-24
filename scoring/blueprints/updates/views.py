@@ -51,22 +51,19 @@ def ping():
     Respond to a ping with a list of known peers
 
     """
-    db_peers = Peer.query.all()
+    db_peers = Peer.get_all_peers()
 
     peer_array = []
     for peer in db_peers:
-        json_peer = {'id': peer.id, 'ip': peer.ip, 'alive': peer.alive}
-        peer_array.append(json_peer)
+        peer_array.append(peer.to_json())
 
-    return jsonify({
+    return render_json(200, {
         'success': True,
         'peers': peer_array})
 
 
 @updates.route('/pull_data/<string:timestamp>', methods=['GET'])
 def pull(timestamp):
-    # if not request.json:
-    #    return render_json(406, {'error': 'Mime-type is not application/json'})
     if timestamp is None:  # Check timestamp
         return render_json(412, {'error': 'Timestamp not provided'})
 

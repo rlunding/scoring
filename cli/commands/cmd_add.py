@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 
 from faker import Faker
 
+from lib.uuid import generate_uuid
 from scoring.app import create_app
 from scoring.extensions import db
 from scoring.blueprints.judge.models.team import Team
@@ -80,6 +81,7 @@ def teams():
 
     for i in range(0, RANDOM_TEAMS):
         params = {
+            'id': generate_uuid(),
             'name': fake.first_name()
         }
 
@@ -106,6 +108,7 @@ def schedules():
                 float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
 
             params = {
+                'id': generate_uuid(),
                 'team_1_id': team.id,
                 'team_2_id': None,
                 'table': random.randint(1, TABLES),
@@ -123,6 +126,7 @@ def schedules():
                 float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
 
             params = {
+                'id': generate_uuid(),
                 'team_1_id': t1.id,
                 'team_2_id': t2.id,
                 'table': TABLES+1,
@@ -153,6 +157,7 @@ def scores():
                 float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
 
             params = {
+                'id': generate_uuid(),
                 'team_1_id': team.id,
                 'team_2_id': None,
                 'table': random.randint(1, TABLES),
@@ -171,6 +176,7 @@ def scores():
                 float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
 
             params = {
+                'id': generate_uuid(),
                 'team_1_id': t1.id,
                 'team_2_id': t2.id,
                 'table': TABLES+1,

@@ -1,3 +1,6 @@
+import datetime
+import pytz
+
 from sqlalchemy import desc, func, or_
 from lib.util_sqlalchemy import ResourceMixin, AwareDateTime
 
@@ -28,6 +31,7 @@ class Score(ResourceMixin, db.Model):
     score_2 = db.Column(db.Integer, nullable=True)
     start_date = db.Column(AwareDateTime(), nullable=False, index=True)
     end_date = db.Column(AwareDateTime(), nullable=True)
+    # TODO: add schedule_id such that duplicate scores can be removed
 
     def __init__(self, **kwargs):
         # Call Flask-SQLAlchemy's constructor.
@@ -84,6 +88,7 @@ class Score(ResourceMixin, db.Model):
         :return: dict
         """
         params = {
+            'id': self.id,
             'team_1_id': self.team_1_id,
             'team_2_id': self.team_2_id,
             'table': self.table,
@@ -94,3 +99,24 @@ class Score(ResourceMixin, db.Model):
         }
 
         return params
+
+    @classmethod
+    def insert_from_json(cls, json):
+        """
+        Insert a score from a json object
+
+        :param json:
+        :return:
+        """
+        score = Score()
+        score.id = json['id']
+        score.table = json['table']
+        score.team_1_id = json['team_1_id']
+        score.team_2_id = json.get('team_2_id', None)
+        score.score_1 = json['score_1']
+        score.score_2 = json.get('score_2', None)
+        score.start_date = json.get('start_date', datetime.datetime.now(pytz.utc))
+        score.end_date = json.get('end_date', datetime.datetime.now(pytz.utc))
+
+        db.session.merge(score)
+        db.session.commit()

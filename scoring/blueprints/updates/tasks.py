@@ -1,6 +1,7 @@
-from scoring.app import create_celery_app
 import requests
 import json
+
+from scoring.app import create_celery_app
 
 from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.updates.models.peer import Peer
@@ -15,6 +16,36 @@ def pull_new_scores():
 
     :return: None
     """
+    # Get alive peer(s)
+    # send pull-request (with latest timestamp)
+    # loop through response
+
+    print("Pulling updates from peers....")
+    for peer in Peer.get_alive_peers():
+        url = 'http://%s:%s/pull_data/%s' % (peer.ip, 5000, peer.last_request)
+
+        try:
+            request = requests.get(url, timeout=1)
+        except:
+            peer.alive = False
+            peer.save()
+            continue
+
+        if request.status_code != 200:
+            print("Error response from %s. Status code: %s" % (peer.ip, request.status_code))
+            continue
+        try:
+            data = json.loads(request.text)
+
+            peer.last_request = data['time']
+            peer.save()
+
+            for json_data in data['scores']:
+                score = Score()
+                score.insert_from_json(json_data)
+        except:
+            print("Ill-formatted JSON response")
+
     print("Scores pulled from peers")
 
 
@@ -32,25 +63,38 @@ def push_new_scores(score_id):
 @celery.task()
 def update_peer_status(ip):
     """
-    Update the status of a peer in our database. If th
+    Update the status of a peer in our database. If the
     peer responds we set alive=true
 
     :return:
     """
 
-    peer = Peer.find_by_ip(ip)  # TODO: pick a random peer or last updated
+    if ip is None:
+        peer = Peer.get_most_dead_peer()
+    else:
+        peer = Peer.find_by_ip(ip)
+
+    if peer is None:
+        return "Peer not found"
     port = 5000
     url = 'http://%s:%s/ping' % (peer.ip, port)
 
     try:
-        data = json.loads(requests.get(url, timeout=1).text)
+        request = requests.get(url, timeout=1)
     except:
-        return "Error response from %s" % peer.ip
-    if data is not None:
-        if data['success'] is True:
-            # Set the pinged peer alive in our db
-            peer.alive = True
-            peer.save()
+        peer.alive = False
+        peer.save()
+        return "Error response from %s. Likely timeout." % peer.ip
+
+    if request.status_code != 200:
+        return "Error response from %s. Status code: %s" % (peer.ip, request.status_code)
+    try:
+        data = json.loads(request.text)
+        # Set the pinged peer alive in our db
+        peer.alive = True
+        peer.save()
+        if data:
             return data['peers']
-        return "Success not true in data"
-    return "Data returned from %s was None" % peer.ip
+        return "Data returned from %s was None" % peer.ip
+    except:
+        return "Ill-formatted JSON response"

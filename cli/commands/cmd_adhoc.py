@@ -2,6 +2,7 @@ from scoring.blueprints.updates.tasks import update_peer_status
 
 import click
 
+
 @click.group()
 def cli():
     """ Run adhoc related tasks. """
