@@ -55,3 +55,42 @@ class Score(ResourceMixin, db.Model):
 
         return Score.query.filter(or_(Score.team_1_id == team_id, Score.team_2_id == team_id))\
             .order_by(desc(Score.start_date)).all()
+
+    @classmethod
+    def last_update(cls):
+        """
+        Return timestamp for the newest score
+
+        :return: timestamp
+        """
+
+        return Score.query.with_entities(Score.updated_on).order_by(desc(Score.updated_on)).first()[0]
+
+    @classmethod
+    def updates_after_timestamp(cls, timestamp):
+        """
+        Return all scores that have been updated after the timestamp
+
+        :param timestamp: timestamp
+        :return: scores
+        """
+
+        return Score.query.filter(Score.updated_on >= timestamp).order_by(desc(Score.updated_on)).all()
+
+    def to_json(self):
+        """
+        Return JSON fields to represent a score
+
+        :return: dict
+        """
+        params = {
+            'team_1_id': self.team_1_id,
+            'team_2_id': self.team_2_id,
+            'table': self.table,
+            'score_1': self.score_1,
+            'score_2': self.score_2,
+            'start_date': self.start_date,
+            'end_date': self.end_date
+        }
+
+        return params

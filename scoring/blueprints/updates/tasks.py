@@ -16,7 +16,6 @@ def pull_new_scores():
     :return: None
     """
     print("Scores pulled from peers")
-    #pass
 
 
 @celery.task()
@@ -28,7 +27,6 @@ def push_new_scores(score_id):
     """
     print("Pushing scores to peers")
     print(score_id)
-    # pass
 
 
 @celery.task()
