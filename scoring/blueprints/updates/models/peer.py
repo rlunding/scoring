@@ -13,7 +13,11 @@ class Peer(ResourceMixin, db.Model):
     # Peer details
     ip = db.Column(db.String(128), index=True)
     mac = db.Column(db.String(128), index=True)
-    alive = db.Column(db.Boolean(), nullable=False, server_default='0')
+
+    # All new peers should initially be alive.
+    # They only become dead after failed request
+    alive = db.Column(db.Boolean(), nullable=False, server_default='1')
+
     last_request = db.Column(AwareDateTime(), nullable=True)
 
     def __init__(self, **kwargs):
@@ -101,5 +105,4 @@ class Peer(ResourceMixin, db.Model):
             peer = Peer()
         peer.ip = json['ip']
         peer.mac = json['mac']
-        peer.alive = True  # All new peers should initially be alive. The only become dead after failed request
         peer.save()

@@ -1,7 +1,7 @@
 from scoring.blueprints.updates.tasks import update_peer_status
 from scoring.blueprints.updates.tasks import read_peers_from_file
 from scoring.blueprints.updates.tasks import write_peers_to_file
-from scoring.blueprints.updates.views import ping
+from scoring.blueprints.updates.tasks import update_peers_file
 
 import click
 
@@ -25,6 +25,7 @@ def ping(ip):
     click.echo(pong)
     return None
 
+
 @click.command()
 def readfile():
     """
@@ -35,6 +36,7 @@ def readfile():
     """
 
     return click.echo(read_peers_from_file())
+
 
 @click.command()
 def writefile():
@@ -47,6 +49,16 @@ def writefile():
 
     return click.echo(write_peers_to_file())
 
+@click.command()
+def updatefile():
+    """
+    Update adhoc.txt file by inserting entries to db
+    and also writing db to the file afterwards.
+    :return:
+    """
+
+    update_peers_file()
+    return click.echo('Peer database and file updated')
 
 
 cli.add_command(ping)

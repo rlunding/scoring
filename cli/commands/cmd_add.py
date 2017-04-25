@@ -199,14 +199,12 @@ def peers():
 
     params = {
         'ip': '192.168.4.2',
-        'mac': 'b8:27:eb:7f:8c:f3',
-        'alive': False
+        'mac': 'b8:27:eb:7f:8c:f3'
     }
     data.append(params)
     params = {
         'ip': '192.168.4.4',
-        'mac': 'b8:27:eb:3c:dc:97',
-        'alive': False
+        'mac': 'b8:27:eb:3c:dc:97'
     }
     data.append(params)
 
