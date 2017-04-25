@@ -25,7 +25,7 @@ class Peer(ResourceMixin, db.Model):
         """
         Return the peer by id
 
-        :param id: team id
+        :param id: peer id
         :return: peer
         """
 
@@ -85,3 +85,22 @@ class Peer(ResourceMixin, db.Model):
         }
 
         return params
+
+    @classmethod
+    def insert_from_json(cls, json):
+        """
+        Insert a peer from a json object.
+        Note: if a peer with same IP already exists, it will
+        update that peer.
+
+        :param json:
+        :return:
+        """
+        peer = cls.find_by_ip(json['ip'])
+        if peer is None:
+            peer = Peer()
+        peer.ip = json['ip']
+        peer.mac = json['mac']
+        peer.alive = json['alive']
+        #peer.last_request = json['last_request']
+        peer.save()
