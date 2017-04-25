@@ -94,6 +94,9 @@ def update_peer_status(ip):
         peer.alive = True
         peer.save()
         if data:
+            # Insert new peers in db
+            for json_peer in data['peers']:
+                Peer.insert_from_json(json_peer)
             return data['peers']
         return "Data returned from %s was None" % peer.ip
     except:
@@ -116,8 +119,7 @@ def read_peers_from_file():
 
             json_peer = {
                 'ip': ip,
-                'mac': mac,
-                'alive': False,
+                'mac': mac
             }
             Peer.insert_from_json(json_peer)
 

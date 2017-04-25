@@ -101,6 +101,5 @@ class Peer(ResourceMixin, db.Model):
             peer = Peer()
         peer.ip = json['ip']
         peer.mac = json['mac']
-        peer.alive = json['alive']
-        #peer.last_request = json['last_request']
+        peer.alive = True  # All new peers should initially be alive. The only become dead after failed request
         peer.save()
