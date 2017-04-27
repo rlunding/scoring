@@ -3,6 +3,8 @@ import json
 import datetime
 import pytz
 
+from flask import current_app
+
 from lib.util_datetime import timedelta
 from scoring.app import create_celery_app
 
@@ -27,6 +29,9 @@ def pull_new_updates():
 
     print("Pulling updates from peers....")
     for peer in Peer.get_alive_peers():
+        if peer.ip+":"+peer.port == current_app.config['SERVER_NAME']:
+            continue
+
         last_request = peer.last_request
         if last_request is None:
             last_request = timedelta(weeks=-10)
