@@ -75,11 +75,11 @@ def match(schedule_id):
         score = Score()
         form.populate_obj(score)
         score.table = safe_cast(score.table, int, None)
-        score.team_1_uuid = safe_cast(score.team_1_uuid, int, None)
-        score.team_2_uuid = safe_cast(score.team_2_uuid, int, None)
+        score.team_1_id = safe_cast(score.team_1_id, int, None)
+        score.team_2_id = safe_cast(score.team_2_id, int, None)
 
-        if schedule.completed or schedule.table != score.table or schedule.team_1_id != score.team_1_uuid or schedule.team_2_id != score.team_2_uuid:
-            print(schedule.completed, schedule.table != score.table, schedule.team_1_id != score.team_1_uuid, schedule.team_2_id != score.team_2_uuid)
+        if schedule.completed or schedule.table != score.table or schedule.team_1_id != score.team_1_id or schedule.team_2_id != score.team_2_id:
+            print(schedule.completed, schedule.table != score.table, schedule.team_1_id != score.team_1_id, schedule.team_2_id != score.team_2_id)
             return render_template('errors/500.html'), 500
 
         score.start_date = score.start_date.replace(tzinfo=pytz.UTC)

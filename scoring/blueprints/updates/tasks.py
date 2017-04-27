@@ -43,7 +43,6 @@ def pull_new_updates():
 
         if request.status_code != 200:
             print("Error response from %s. Status code: %s" % (peer.ip, request.status_code))
-            print("Response: ", request.text)
             continue
         try:
             data = json.loads(request.text)
