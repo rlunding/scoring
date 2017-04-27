@@ -14,7 +14,11 @@ class Peer(ResourceMixin, db.Model):
     ip = db.Column(db.String(128), index=True)
     port = db.Column(db.Integer, nullable=False)
     mac = db.Column(db.String(128), index=True)
-    alive = db.Column(db.Boolean(), nullable=False, server_default='0')
+
+    # All new peers should initially be alive.
+    # They only become dead after failed request
+    alive = db.Column(db.Boolean(), nullable=False, server_default='1')
+
     last_request = db.Column(AwareDateTime(), nullable=True)
 
     def __init__(self, **kwargs):
@@ -26,7 +30,7 @@ class Peer(ResourceMixin, db.Model):
         """
         Return the peer by id
 
-        :param id: team id
+        :param id: peer id
         :return: peer
         """
 
@@ -86,3 +90,20 @@ class Peer(ResourceMixin, db.Model):
         }
 
         return params
+
+    @classmethod
+    def insert_from_json(cls, json):
+        """
+        Insert a peer from a json object.
+        Note: if a peer with same IP already exists, it will
+        update that peer.
+
+        :param json:
+        :return:
+        """
+        peer = cls.find_by_ip(json['ip'])
+        if peer is None:
+            peer = Peer()
+        peer.ip = json['ip']
+        peer.mac = json['mac']
+        peer.save()
