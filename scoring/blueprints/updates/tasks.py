@@ -29,7 +29,7 @@ def pull_new_updates():
 
     print("Pulling updates from peers....")
     for peer in Peer.get_alive_peers():
-        if peer.ip+":"+peer.port == current_app.config['SERVER_NAME']:
+        if peer.ip+":"+str(peer.port) == current_app.config['SERVER_NAME']:
             continue
 
         last_request = peer.last_request
