@@ -21,6 +21,7 @@ class Team(ResourceMixin, db.Model):
 
     # Team details
     name = db.Column(db.String(128), index=True)
+    version = db.Column(db.Integer, nullable=False, default=0)
 
     def __init__(self, **kwargs):
         # Call Flask-SQLAlchemy's constructor.
@@ -67,7 +68,8 @@ class Team(ResourceMixin, db.Model):
 
         params = {
             'id': self.id,
-            'name': self.name
+            'name': self.name,
+            'version': self.version
         }
 
         return params
@@ -80,10 +82,15 @@ class Team(ResourceMixin, db.Model):
         :param json:
         :return:
         """
-
-        team = Team()
-        team.id = json['id']
+        team = cls.find_by_id(json['id'])
+        if team is not None:
+            if team.version >= json['version']:
+                return
+        else:
+            team = Team()
+            team.id = json['id']
         team.name = json['name']
+        team.version = json['version']
 
         db.session.merge(team)
         db.session.commit()

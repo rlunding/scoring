@@ -88,6 +88,7 @@ def match(schedule_id):
         score.save()
 
         schedule.completed = True
+        schedule.version += 1
         schedule.save()
 
         from scoring.blueprints.updates.tasks import push_new_scores

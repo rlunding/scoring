@@ -30,6 +30,7 @@ class Schedule(ResourceMixin, db.Model):
     start_date = db.Column(AwareDateTime(), nullable=False, index=True)
     end_date = db.Column(AwareDateTime(), nullable=True)
     completed = db.Column(db.Boolean(), nullable=False, server_default='0')
+    version = db.Column(db.Integer, nullable=False, default=0)
 
     def __init__(self, **kwargs):
         # Call Flask-SQLAlchemy's constructor.
@@ -103,7 +104,8 @@ class Schedule(ResourceMixin, db.Model):
             'table': self.table,
             'start_date': self.start_date,
             'end_date': self.end_date,
-            'completed': self.completed
+            'completed': self.completed,
+            'version': self.version
         }
 
         return params
@@ -116,14 +118,20 @@ class Schedule(ResourceMixin, db.Model):
         :param json:
         :return:
         """
-        schedule = Schedule()
-        schedule.id = json['id']
+        schedule = cls.find_by_id(json['id'])
+        if schedule is not None:
+            if schedule.version >= json['version']:
+                return
+        else:
+            schedule = Schedule()
+            schedule.id = json['id']
         schedule.table = json['table']
         schedule.team_1_id = json['team_1_id']
         schedule.team_2_id = json.get('team_2_id', None)
         schedule.start_date = json.get('start_date', datetime.datetime.now(pytz.utc))
         schedule.end_date = json.get('end_date', datetime.datetime.now(pytz.utc))
         schedule.completed = json['completed']
+        schedule.version = json['version']
 
         db.session.merge(schedule)
         db.session.commit()

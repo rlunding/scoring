@@ -32,10 +32,22 @@ class Score(ResourceMixin, db.Model):
     start_date = db.Column(AwareDateTime(), nullable=False, index=True)
     end_date = db.Column(AwareDateTime(), nullable=True)
     # TODO: add schedule_id such that duplicate scores can be removed
+    version = db.Column(db.Integer, nullable=False, default=0)
 
     def __init__(self, **kwargs):
         # Call Flask-SQLAlchemy's constructor.
         super(Score, self).__init__(**kwargs)
+
+    @classmethod
+    def find_by_id(cls, score_id):
+        """
+        Return score by score id
+
+        :param score_id: score id
+        :return: score
+        """
+
+        return Score.query.filter(Score.id == score_id).first()
 
     @classmethod
     def find_by_table_id(cls, table_id):
@@ -95,7 +107,8 @@ class Score(ResourceMixin, db.Model):
             'score_1': self.score_1,
             'score_2': self.score_2,
             'start_date': self.start_date,
-            'end_date': self.end_date
+            'end_date': self.end_date,
+            'version': self.version
         }
 
         return params
@@ -108,8 +121,13 @@ class Score(ResourceMixin, db.Model):
         :param json:
         :return:
         """
-        score = Score()
-        score.id = json['id']
+        score = cls.find_by_id(json['id'])
+        if score is not None:
+            if score.version >= json['version']:
+                return
+        else:
+            score = Score()
+            score.id = json['id']
         score.table = json['table']
         score.team_1_id = json['team_1_id']
         score.team_2_id = json.get('team_2_id', None)
@@ -117,6 +135,7 @@ class Score(ResourceMixin, db.Model):
         score.score_2 = json.get('score_2', None)
         score.start_date = json.get('start_date', datetime.datetime.now(pytz.utc))
         score.end_date = json.get('end_date', datetime.datetime.now(pytz.utc))
+        score.version = json['version']
 
         db.session.merge(score)
         db.session.commit()
