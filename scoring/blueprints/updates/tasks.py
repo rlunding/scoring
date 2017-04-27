@@ -144,10 +144,12 @@ def read_peers_from_file():
         for line in f:
             peer = line.split()
             ip = peer[0]
-            mac = peer[1]
+            port = peer[1]
+            mac = peer[2]
 
             json_peer = {
                 'ip': ip,
+                'port': port,
                 'mac': mac
             }
             Peer.insert_from_json(json_peer)
@@ -162,7 +164,7 @@ def write_peers_to_file():
     """
     string = ''
     for peer in Peer.get_all_peers():
-        string += peer.ip + ' ' + peer.mac + '\n'
+        string += peer.ip + ' ' + peer.port + ' ' + peer.mac + '\n'
 
     filename = 'adhoc.txt'
     with open(filename, 'w') as f:

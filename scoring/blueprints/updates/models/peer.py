@@ -85,6 +85,7 @@ class Peer(ResourceMixin, db.Model):
 
         params = {
             'ip': self.ip,
+            'port': self.port,
             'mac': self.mac,
             'alive': self.alive
         }
@@ -105,5 +106,6 @@ class Peer(ResourceMixin, db.Model):
         if peer is None:
             peer = Peer()
         peer.ip = json['ip']
+        peer.port = json['port']
         peer.mac = json['mac']
         peer.save()

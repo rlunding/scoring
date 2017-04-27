@@ -49,6 +49,7 @@ def writefile():
 
     return click.echo(write_peers_to_file())
 
+
 @click.command()
 def updatefile():
     """
@@ -64,4 +65,5 @@ def updatefile():
 cli.add_command(ping)
 cli.add_command(readfile)
 cli.add_command(writefile)
+cli.add_command(updatefile)
 
