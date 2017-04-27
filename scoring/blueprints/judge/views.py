@@ -74,6 +74,7 @@ def match(schedule_id):
     if form.validate_on_submit():
         score = Score()
         form.populate_obj(score)
+        score.id = schedule_id
         score.table = safe_cast(score.table, int, None)
         score.team_1_id = safe_cast(score.team_1_id, int, None)
         score.team_2_id = safe_cast(score.team_2_id, int, None)
