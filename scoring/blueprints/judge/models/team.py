@@ -1,5 +1,6 @@
 from lib.util_sqlalchemy import ResourceMixin
 
+from sqlalchemy import desc
 from scoring.extensions import db
 
 # Do not delete this imports
@@ -35,3 +36,54 @@ class Team(ResourceMixin, db.Model):
         """
 
         return Team.query.filter(Team.id == team_id).first()
+
+    @classmethod
+    def last_update(cls):
+        """
+        Return timestamp for when the newest team was updated
+
+        :return: timestamp
+        """
+
+        return Team.query.with_entities(Team.updated_on).order_by(desc(Team.updated_on)).first()[0]
+
+    @classmethod
+    def updates_after_timestamp(cls, timestamp):
+        """
+        Return all teams that have been updated after the timestamp
+
+        :param timestamp: timestamp
+        :return: scores
+        """
+
+        return Team.query.filter(Team.updated_on >= timestamp).order_by(desc(Team.updated_on)).all()
+
+    def to_json(self):
+        """
+        Return JSON fields to represent a team
+
+        :return: dict
+        """
+
+        params = {
+            'id': self.id,
+            'name': self.name
+        }
+
+        return params
+
+    @classmethod
+    def insert_from_json(cls, json):
+        """
+        Insert a team from a json object
+
+        :param json:
+        :return:
+        """
+
+        team = Team()
+        team.id = json['id']
+        team.name = json['name']
+
+        db.session.merge(team)
+        db.session.commit()

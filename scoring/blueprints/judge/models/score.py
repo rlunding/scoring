@@ -63,7 +63,7 @@ class Score(ResourceMixin, db.Model):
     @classmethod
     def last_update(cls):
         """
-        Return timestamp for the newest score
+        Return timestamp for when the newest score was updated
 
         :return: timestamp
         """

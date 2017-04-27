@@ -11,10 +11,12 @@ def tzware_datetime():
     return datetime.datetime.now(pytz.utc)
 
 
-def timedelta(days=0, hours=0, minutes=0, compare_date=None):
+def timedelta(weeks=0, days=0, hours=0, minutes=0, compare_date=None):
     """
     Return a new datetime with a offset applied.
 
+    :param weeks: Amount of weeks to offset
+    :type weeks: int
     :param days: Amount of days to offset
     :type days: int
     :param hours: Amount of hours to offset
@@ -28,7 +30,7 @@ def timedelta(days=0, hours=0, minutes=0, compare_date=None):
     if compare_date is None:
         compare_date = tzware_datetime()
 
-    compare_date_with_delta = compare_date + datetime.timedelta(days=days, hours=hours, minutes=minutes)
+    compare_date_with_delta = compare_date + datetime.timedelta(weeks=weeks, days=days, hours=hours, minutes=minutes)
 
     return compare_date_with_delta
 

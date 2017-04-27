@@ -189,6 +189,7 @@ def scores():
 
     return _bulk_insert(Score, data, 'scores')
 
+
 @click.command()
 def peers():
     """
@@ -199,18 +200,28 @@ def peers():
 
     params = {
         'ip': '192.168.4.2',
+        'port': 5000,
         'mac': 'b8:27:eb:7f:8c:f3',
         'alive': False
     }
     data.append(params)
     params = {
         'ip': '192.168.4.4',
+        'port': 5000,
         'mac': 'b8:27:eb:3c:dc:97',
         'alive': False
     }
     data.append(params)
+    params = {
+        'ip': '192.168.42.1',
+        'port': 8000,
+        'mac': 'b8:27:eb:3c:dc:97',
+        'alive': True
+    }
+    data.append(params)
 
     return _bulk_insert(Peer, data, 'peers')
+
 
 @click.command()
 @click.pass_context

@@ -35,13 +35,14 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_REDIS_MAX_CONNECTIONS = 5
 # http://docs.celeryproject.org/en/latest/userguide/periodic-tasks.html
 CELERYBEAT_SCHEDULE = {
-#    'update_peer_status': {
-#        'task': 'scoring.blueprints.updates.tasks.update_peer_status',
-#        'schedule': crontab(minute=0)
-#    },
-    'pull_new_scores': {
-        'task': 'scoring.blueprints.updates.tasks.pull_new_scores',
-        'schedule': 30.0
+    'update_peer_status': {
+        'task': 'scoring.blueprints.updates.tasks.update_peer_status',
+        'schedule': 15,
+        'kwargs': {'ip': None}
+    },
+    'pull_new_updates': {
+        'task': 'scoring.blueprints.updates.tasks.pull_new_updates',
+        'schedule': 10.0,
     },
 }
 

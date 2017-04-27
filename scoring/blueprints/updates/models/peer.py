@@ -12,6 +12,7 @@ class Peer(ResourceMixin, db.Model):
 
     # Peer details
     ip = db.Column(db.String(128), index=True)
+    port = db.Column(db.Integer, nullable=False)
     mac = db.Column(db.String(128), index=True)
     alive = db.Column(db.Boolean(), nullable=False, server_default='0')
     last_request = db.Column(AwareDateTime(), nullable=True)

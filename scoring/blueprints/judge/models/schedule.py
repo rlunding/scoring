@@ -1,3 +1,6 @@
+import datetime
+import pytz
+
 from sqlalchemy import desc, or_
 from lib.util_sqlalchemy import ResourceMixin, AwareDateTime
 
@@ -65,3 +68,62 @@ class Schedule(ResourceMixin, db.Model):
 
         return Schedule.query.filter(or_(Schedule.team_1_id == team_id, Schedule.team_2_id == team_id))\
             .order_by(desc(Schedule.start_date)).all()
+
+    @classmethod
+    def last_update(cls):
+        """
+        Return timestamp for when the newest schedule was updated
+
+        :return: timestamp
+        """
+
+        return Schedule.query.with_entities(Schedule.updated_on).order_by(desc(Schedule.updated_on)).first()[0]
+
+    @classmethod
+    def updates_after_timestamp(cls, timestamp):
+        """
+        Return all schedules that have been updated after the timestamp
+
+        :param timestamp: timestamp
+        :return: schedules
+        """
+
+        return Schedule.query.filter(Schedule.updated_on >= timestamp).order_by(desc(Schedule.updated_on)).all()
+
+    def to_json(self):
+        """
+        Return JSON fields to represent a score
+
+        :return: dict
+        """
+        params = {
+            'id': self.id,
+            'team_1_id': self.team_1_id,
+            'team_2_id': self.team_2_id,
+            'table': self.table,
+            'start_date': self.start_date,
+            'end_date': self.end_date,
+            'completed': self.completed
+        }
+
+        return params
+
+    @classmethod
+    def insert_from_json(cls, json):
+        """
+        Insert a schedule from a json object
+
+        :param json:
+        :return:
+        """
+        schedule = Schedule()
+        schedule.id = json['id']
+        schedule.table = json['table']
+        schedule.team_1_id = json['team_1_id']
+        schedule.team_2_id = json.get('team_2_id', None)
+        schedule.start_date = json.get('start_date', datetime.datetime.now(pytz.utc))
+        schedule.end_date = json.get('end_date', datetime.datetime.now(pytz.utc))
+        schedule.completed = json['completed']
+
+        db.session.merge(schedule)
+        db.session.commit()
