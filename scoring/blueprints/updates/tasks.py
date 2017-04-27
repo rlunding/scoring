@@ -21,16 +21,21 @@ def pull_new_updates():
     """
     Pull updates from peers
 
+    Get alive peer(s)
+    Send pull-request (with latest timestamp from that peer)
+    Loop through response (potentially adding: teams, schedules, and scores)
+
     :return: None
     """
-    # Get alive peer(s)
-    # send pull-request (with latest timestamp)
-    # loop through response
+    printed_header = False
 
-    print("Pulling updates from peers....")
     for peer in Peer.get_alive_peers():
-        if peer.ip+":"+str(peer.port) == current_app.config['SERVER_NAME']:
+        if peer.ip+":"+str(peer.port) == current_app.config['SERVER_NAME']:  # Check if peer is itself
             continue
+
+        if not printed_header: # Print header to console
+            print("Pulling updates from peers....")
+            printed_header = True
 
         last_request = peer.last_request
         if last_request is None:
@@ -66,7 +71,10 @@ def pull_new_updates():
         except:
             print("Ill-formatted JSON response")
 
-    print("Updates pulled from peers")
+    if printed_header:
+        print("Updates pulled from peers")
+    else:
+        print("No updates pulled from peers...")
 
 
 @celery.task()
@@ -77,6 +85,7 @@ def push_new_scores(score_id):
     :return: None
     """
     print("Pushing scores to peers")
+
     print(score_id)
 
 
@@ -148,7 +157,7 @@ def read_peers_from_file():
         for line in f:
             peer = line.split()
             ip = peer[0]
-            port = peer[1]
+            port = int(peer[1])
             mac = peer[2]
 
             json_peer = {
@@ -168,7 +177,7 @@ def write_peers_to_file():
     """
     string = ''
     for peer in Peer.get_all_peers():
-        string += peer.ip + ' ' + peer.port + ' ' + peer.mac + '\n'
+        string += peer.ip + ' ' + str(peer.port) + ' ' + peer.mac + '\n'
 
     filename = 'adhoc.txt'
     with open(filename, 'w') as f:
