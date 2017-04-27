@@ -65,13 +65,13 @@ def pull_new_updates():
 
 
 @celery.task()
-def push_new_updates(score_id):
+def push_new_scores(score_id):
     """
-    Push updates to peers
+    Push scores to peers
 
     :return: None
     """
-    print("Pushing updates to peers")
+    print("Pushing scores to peers")
     print(score_id)
 
 
