@@ -173,5 +173,3 @@ def write_peers_to_file():
     filename = 'adhoc.txt'
     with open(filename, 'w') as f:
         f.write(string)
-
-

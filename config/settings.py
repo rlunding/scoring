@@ -40,6 +40,10 @@ CELERYBEAT_SCHEDULE = {
         'schedule': 15,
         'kwargs': {'ip': None}
     },
+    'update_peers_file': {
+        'task': 'scoring.blueprints.updates.tasks.update_peers_file',
+        'schedule': 15
+    },
     'pull_new_updates': {
         'task': 'scoring.blueprints.updates.tasks.pull_new_updates',
         'schedule': 10.0,
