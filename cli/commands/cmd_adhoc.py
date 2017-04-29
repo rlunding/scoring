@@ -3,6 +3,9 @@ from scoring.blueprints.updates.tasks import read_peers_from_file
 from scoring.blueprints.updates.tasks import write_peers_to_file
 from scoring.blueprints.updates.tasks import update_peers_file
 
+import ntplib
+from time import ctime
+
 import click
 
 
@@ -61,9 +64,21 @@ def updatefile():
     update_peers_file()
     return click.echo('Peer database and file updated')
 
+@click.command()
+def time():
+    """
+
+    :return:
+    """
+
+    c = ntplib.NTPClient()
+    response = c.request('pool.ntp.org')
+    click.echo('Offset: %s' % response.offset)
+    click.echo(ctime(response.tx_time))
+    return None
 
 cli.add_command(ping)
 cli.add_command(readfile)
 cli.add_command(writefile)
 cli.add_command(updatefile)
-
+cli.add_command(time)
