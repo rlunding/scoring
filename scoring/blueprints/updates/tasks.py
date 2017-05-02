@@ -86,7 +86,25 @@ def push_new_scores(score_id):
     """
     print("Pushing scores to peers")
 
-    print(score_id)
+    score = Score.find_by_id(score_id)
+    output_json = score.to_json()
+    for peer in Peer.get_alive_peers():
+        if peer.ip+":"+str(peer.port) == current_app.config['SERVER_NAME']:  # Check if peer is itself
+            continue
+
+        url = 'http://%s:%s/push_data' % (peer.ip, peer.port)
+        try:
+            request = requests.post(url, timeout=1, json=output_json)
+        except:
+            print("Error response from %s:%s. Likely timeout." % (peer.ip, peer.port))
+            peer.alive = False
+            peer.save()
+            continue
+
+        if request.status_code != 200:
+            print("Error response from %s. Status code: %s. Message: %s" % (peer.ip, request.status_code, request.text))
+
+    print("Success")
 
 
 @celery.task()

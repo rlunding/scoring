@@ -70,3 +70,24 @@ def pull(timestamp):
         })
     except Exception as e:
         return render_json(500, {'error': str(e)})
+
+
+@updates.route('/push_data', methods=['POST'])
+def push():
+    if not request.json:
+        return render_json(406, {'error': 'Mime-type is not application/json'})
+
+    if request.json.get('id') is None:
+        return render_json(406, {'error': 'Id not set'})
+    schedule = Schedule.find_by_id(request.json.get('id'))
+    if schedule is None:
+        return render_json(406, {'error': 'Unknown schedule'})
+    try:
+        Score.insert_from_json(request.json)
+        schedule.completed = True
+        schedule.version += 1
+        schedule.save()
+    except Exception as e:
+        return render_json(500, {'error': str(e)})
+
+    return render_json(200, {'success': True})
