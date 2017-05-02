@@ -12,6 +12,7 @@ from scoring.blueprints.judge.models.team import Team
 from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.updates.models.peer import Peer
+from scoring.blueprints.updates.models.log import Log
 
 celery = create_celery_app()
 
@@ -68,6 +69,8 @@ def pull_new_updates():
 
             for json_data in data['scores']:
                 Score.insert_from_json(json_data)
+                # Log
+                Log.log_score(json_data, peer.ip)
         except:
             print("Ill-formatted JSON response")
 

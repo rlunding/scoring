@@ -108,7 +108,8 @@ class Score(ResourceMixin, db.Model):
             'score_2': self.score_2,
             'start_date': self.start_date,
             'end_date': self.end_date,
-            'version': self.version
+            'version': self.version,
+            'created_on': self.created_on
         }
 
         return params

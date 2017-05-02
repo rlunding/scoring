@@ -17,10 +17,24 @@ from scoring.blueprints.judge.models.team import Team
 from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.updates.models.peer import Peer
+from scoring.blueprints.updates.models.log import Log
 import requests
 
 
 updates = Blueprint('update', __name__, template_folder='templates')
+
+
+@updates.route('/log', methods=['GET'])
+def all_log_entries():
+
+    db_log = Log.get_all_logs()
+    log_array = []
+    for log in db_log:
+        log_array.append(log.to_json())
+
+    return render_json(200, {
+        'success': True,
+        'logs': log_array})
 
 
 @updates.route('/ping', methods=['GET'])
