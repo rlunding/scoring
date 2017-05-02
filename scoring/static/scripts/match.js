@@ -48,7 +48,39 @@ var match = function () {
     }
 };
 
+
+var add_buttons_to_score_fields = function () {
+    var score_field_1 = $('#score_1');
+    var score_field_2 = $('#score_2');
+    if (score_field_1.length) {
+        add_buttons(score_field_1);
+    }
+    if (score_field_2.length) {
+        add_buttons(score_field_2);
+    }
+};
+
+var add_buttons = function (score_field) {
+    var values = [1, 10, 100, -1, -10, -100];
+
+    for (var i = 0; i < values.length; i++) {
+        (function () {
+            var value = values[i];
+            var sign = value > 0 ? '+' : '';
+            var id = score_field.attr('id') + '_button_' + values[i];
+            var button = $('<input type="button" id="'+id+'" value="'+sign + value+'"/>');
+            var div = score_field.parent();
+            div.append(button);
+
+            $("#"+id).click(function () {
+                score_field.val(parseInt(score_field.val(), 10) + value);
+            });
+        })();
+    }
+};
+
 // Initialize everything when the browser is ready.
 $(document).ready(function() {
     match();
+    add_buttons_to_score_fields();
 });
