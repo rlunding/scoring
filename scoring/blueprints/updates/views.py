@@ -87,6 +87,8 @@ def push():
         schedule.completed = True
         schedule.version += 1
         schedule.save()
+
+        print("Score pushed from peer", request.json)
     except Exception as e:
         return render_json(500, {'error': str(e)})
 

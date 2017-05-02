@@ -103,7 +103,8 @@ def push_new_scores(score_id):
 
         if request.status_code != 200:
             print("Error response from %s. Status code: %s. Message: %s" % (peer.ip, request.status_code, request.text))
-
+        else:
+            print("Successfully pushed to: %s" % peer.ip)
     print("Success")
 
 

@@ -38,7 +38,7 @@ def create_celery_app(app=None):
     :param app: Flask app
     :return: Celery app
     """
-    app = app or create_app()
+    app = app or create_background_app()
 
     celery = Celery(app.import_name, broker=app.config['CELERY_BROKER_URL'],
                     include=CELERY_TASK_LIST)
