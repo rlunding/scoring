@@ -87,7 +87,7 @@ class Log(ResourceMixin, db.Model):
         Log a received score entry.
          
         """
-
+        print('Logging Score: %s' % json)
         log = Log()
         log.ip_sender = ip_sender
         log.ip_receiver = current_app.config['SERVER_NAME']
@@ -96,3 +96,4 @@ class Log(ResourceMixin, db.Model):
         log.type = 'score_received'
         log.description = json['id']
         log.save()
+        print('Score logged')
