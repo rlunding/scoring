@@ -145,14 +145,15 @@ def update_peer_status(ip):
     try:
         data = json.loads(request.text)
 
-        # Check signature
-        if not (verify_json(data['peers'], data['signature'])):
-            return "Wrong signature on peers"
-
-        # Set the pinged peer alive in our db
-        peer.alive = True
-        peer.save()
         if data:
+            # Check signature
+            if not (verify_json(data['peers'], data['signature'])):
+                return "Wrong signature on peers"
+
+            # Set the pinged peer alive in our db
+            peer.alive = True
+            peer.save()
+
             # Insert new peers in db
             for json_peer in data['peers']:
                 Peer.insert_from_json(json_peer)

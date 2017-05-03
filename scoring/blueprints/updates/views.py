@@ -49,11 +49,12 @@ def ping():
     for peer in db_peers:
         peer_array.append(peer.to_json())
 
-    signature = sign_json(json.dumps(peer_array))
+    peers_json = json.dumps(peer_array)
+    signature = sign_json(peers_json)
 
     return render_json(200, {
         'success': True,
-        'peers': peer_array,
+        'peers': peers_json,
         'signature': signature})
 
 
