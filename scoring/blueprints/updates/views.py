@@ -18,7 +18,7 @@ from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.updates.models.peer import Peer
 from scoring.blueprints.updates.models.log import Log
-import requests
+from scoring.blueprints.updates.communication import sign_json
 
 
 updates = Blueprint('update', __name__, template_folder='templates')
@@ -49,9 +49,12 @@ def ping():
     for peer in db_peers:
         peer_array.append(peer.to_json())
 
+    signature = sign_json(json.dumps(peer_array))
+
     return render_json(200, {
         'success': True,
-        'peers': peer_array})
+        'peers': peer_array,
+        'hmac': signature})
 
 
 @updates.route('/pull_data/<string:timestamp>', methods=['GET'])

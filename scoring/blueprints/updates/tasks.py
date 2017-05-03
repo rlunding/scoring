@@ -13,6 +13,7 @@ from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.updates.models.peer import Peer
 from scoring.blueprints.updates.models.log import Log
+from scoring.blueprints.updates.communication import verify_json
 
 celery = create_celery_app()
 
@@ -143,6 +144,11 @@ def update_peer_status(ip):
         return "Error response from %s:%s. Status code: %s" % (peer.ip, peer.port, request.status_code)
     try:
         data = json.loads(request.text)
+
+        # Check signature
+        if not (verify_json(data['peers'], data['signature'])):
+            return "Wrong signature on peers"
+
         # Set the pinged peer alive in our db
         peer.alive = True
         peer.save()
