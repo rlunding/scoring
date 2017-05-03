@@ -155,7 +155,7 @@ def update_peer_status(ip):
             peer.save()
 
             # Insert new peers in db
-            for json_peer in data['peers']:
+            for json_peer in json.loads(data['peers']):
                 Peer.insert_from_json(json_peer)
             return data['peers']
         return "Data returned from %s was None" % peer.ip

@@ -1,8 +1,5 @@
 import hmac
 import hashlib
-import json
-import base64
-from itsdangerous import URLSafeSerializer, BadSignature, BadData
 
 SHARED_SECRET = b'sup3rs3cr3t!!'
 

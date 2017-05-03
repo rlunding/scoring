@@ -106,6 +106,10 @@ def test_signature():
             click.echo(new_sig)
             click.echo(verify_json(data['peers'], data['signature']))
 
+            # Insert new peers in db
+            for json_peer in json.loads(data['peers']):
+                click.echo(json_peer)
+
             return data['peers']
         return click.echo("Data returned from %s was None")
     except:
