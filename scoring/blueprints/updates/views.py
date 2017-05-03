@@ -54,7 +54,7 @@ def ping():
     return render_json(200, {
         'success': True,
         'peers': peer_array,
-        'hmac': signature})
+        'signature': signature})
 
 
 @updates.route('/pull_data/<string:timestamp>', methods=['GET'])
