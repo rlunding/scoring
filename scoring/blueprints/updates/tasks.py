@@ -95,11 +95,15 @@ def push_new_scores(score_id, peer_list):
     score = Score.find_by_id(score_id).to_json()  # Retrieve the score and convert it to json
     alive_peers = Peer.get_alive_peers(peer_list)  # Get alive peers that haven't received the message
     peers = [peer.mac for peer in alive_peers]  # Get mac addresses
-    output_json = {
+    data = {
         'score': score,
         'peers': peers + (peer_list if peer_list is not None else []),  # Combine lists of peers
     }
-    output_json['signature'] = sign_json(output_json)
+    data = json.dumps(data)
+    output_json = {
+        'data': data,
+        'signature': sign_json(data)
+    }
 
     for peer in alive_peers:
         if peer.ip+":"+str(peer.port) == current_app.config['SERVER_NAME']:  # Check if peer is itself

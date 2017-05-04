@@ -32,6 +32,7 @@ def timestamp():
         'timestamp': datetime.datetime.now(pytz.utc).isoformat()
     })
 
+
 @updates.route('/log', methods=['GET'])
 def all_log_entries():
 
@@ -102,16 +103,16 @@ def pull(timestamp):
 def push():
     if not request.json:
         return render_json(406, {'error': 'Mime-type is not application/json'})
-    if request.json.get('score') is None:
-        return render_json(406, {'error': 'Score are not set'})
-    if request.json.get('peers') is None:
-        return render_json(406, {'error': 'Peers are not set'})
+    if request.json.get('data') is None:
+        return render_json(406, {'error': 'Data are not set'})
     if request.json.get('signature') is None:
         return render_json(406, {'error': 'Signature are not set'})
-    score_json = request.json.get('score')
-    peer_list = request.json.get('peers')
-    if not (verify_json({'score': score_json, 'peers': peer_list}, request.json.get('signature'))):
+    if not (verify_json(request.json.get('data'), request.json.get('signature'))):
         return render_json(406, {'error': 'Signature not correct'})
+
+    data = json.loads(request.json.get('data'))
+    score_json = data['score']
+    peer_list = data['peers']
 
     schedule = Schedule.find_by_id(score_json['id'])
     if schedule is None:
