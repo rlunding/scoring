@@ -13,7 +13,7 @@ from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.updates.models.peer import Peer
 from scoring.blueprints.updates.models.log import Log
-from scoring.blueprints.updates.communication import sign_json, verify_json
+from scoring.blueprints.updates.communication import sign_json, verify_json, datetime_handler
 
 celery = create_celery_app()
 
@@ -99,7 +99,7 @@ def push_new_scores(score_id, peer_list):
         'score': score,
         'peers': peers + (peer_list if peer_list is not None else []),  # Combine lists of peers
     }
-    data = json.dumps(data)
+    data = json.dumps(data, default=datetime_handler)
     output_json = {
         'data': data,
         'signature': sign_json(data)

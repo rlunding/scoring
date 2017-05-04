@@ -19,7 +19,7 @@ from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.updates.models.peer import Peer
 from scoring.blueprints.updates.models.log import Log
-from scoring.blueprints.updates.communication import sign_json, verify_json
+from scoring.blueprints.updates.communication import sign_json, verify_json, datetime_handler
 
 
 updates = Blueprint('update', __name__, template_folder='templates')
