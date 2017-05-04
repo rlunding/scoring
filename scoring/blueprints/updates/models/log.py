@@ -108,6 +108,7 @@ class Log(ResourceMixin, db.Model):
         """
 
         print('Logging timestamp from: %s' % json['ip'])
+        print('Timestamp: %s' % json['timestamp'])
         log = Log()
         log.ip_sender = json['ip']
         log.ip_receiver = current_app.config['SERVER_NAME']
