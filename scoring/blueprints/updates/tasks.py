@@ -13,7 +13,7 @@ from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.updates.models.peer import Peer
 from scoring.blueprints.updates.models.log import Log
-from scoring.blueprints.updates.communication import verify_json
+from scoring.blueprints.updates.communication import sign_json, verify_json
 
 celery = create_celery_app()
 
@@ -82,17 +82,26 @@ def pull_new_updates():
 
 
 @celery.task()
-def push_new_scores(score_id):
+def push_new_scores(score_id, peer_list):
     """
     Push scores to peers
+
+    All peers are optimistic informed about which peers we have pushed the information too.
 
     :return: None
     """
     print("Pushing scores to peers")
 
-    score = Score.find_by_id(score_id)
-    output_json = score.to_json()
-    for peer in Peer.get_alive_peers():
+    score = Score.find_by_id(score_id).to_json()  # Retrieve the score and convert it to json
+    alive_peers = Peer.get_alive_peers(peer_list)  # Get alive peers that haven't received the message
+    peers = [peer.mac for peer in alive_peers]  # Get mac addresses
+    output_json = {
+        'score': score,
+        'peers': peers + peer_list,  # Combine lists of peers
+    }
+    output_json['signature'] = sign_json(output_json)
+
+    for peer in alive_peers:
         if peer.ip+":"+str(peer.port) == current_app.config['SERVER_NAME']:  # Check if peer is itself
             continue
 

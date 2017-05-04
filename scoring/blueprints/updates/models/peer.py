@@ -1,6 +1,6 @@
 from lib.util_sqlalchemy import ResourceMixin
 
-
+from sqlalchemy import and_, not_
 from lib.util_sqlalchemy import AwareDateTime
 from scoring.extensions import db
 
@@ -58,14 +58,16 @@ class Peer(ResourceMixin, db.Model):
         return Peer.query.all()
 
     @classmethod
-    def get_alive_peers(cls):
+    def get_alive_peers(cls, exclude_mac_list=None):
         """
         Return a list of all alive peers
 
         :return: list of peers
         """
+        if exclude_mac_list is None:
+            exclude_mac_list = []
 
-        return Peer.query.filter(Peer.alive.is_(True)).all()
+        return Peer.query.filter(and_(Peer.alive.is_(True), not_(Peer.mac.in_(exclude_mac_list)))).all()
 
     @classmethod
     def get_most_dead_peer(cls):
