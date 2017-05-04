@@ -1,7 +1,9 @@
 import hmac
 import hashlib
+import datetime
 
 SHARED_SECRET = b'sup3rs3cr3t!!'
+
 
 def sign_json(json_to_sign):
     """
@@ -10,9 +12,14 @@ def sign_json(json_to_sign):
     :return:
     """
     signature = hmac.new(SHARED_SECRET, msg=json_to_sign.encode("utf-8"), digestmod=hashlib.sha512).hexdigest()
-    #encoded_signature = base64.urlsafe_b64encode(signature)
     return signature
 
 
 def verify_json(json_to_verify, signature):
     return hmac.compare_digest(signature, sign_json(json_to_verify))
+
+
+def datetime_handler(x):
+    if isinstance(x, datetime.datetime):
+        return x.isoformat()
+    raise TypeError("Unknown type")
