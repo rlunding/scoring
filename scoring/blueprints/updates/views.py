@@ -45,6 +45,19 @@ def all_log_entries():
         'success': True,
         'logs': log_array})
 
+@updates.route('/log/<string:type>', methods=['GET'])
+def log_entries_by_type(type):
+
+    db_log = Log.get_all_logs_by_type(type)
+    log_array = []
+    for log in db_log:
+        log_array.append(log.to_json())
+
+    return render_json(200, {
+        'success': True,
+        'logs': log_array})
+
+
 
 @updates.route('/ping', methods=['GET'])
 def ping():

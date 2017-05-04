@@ -39,12 +39,22 @@ class Log(ResourceMixin, db.Model):
     @classmethod
     def get_all_logs(cls):
         """
-        Return a list of all alive peers
+        Get all log entries
 
-        :return: list of peers
+        :return: list of log entries
         """
 
         return Log.query.all()
+
+    @classmethod
+    def get_all_logs_by_type(cls, type):
+        """
+        
+        :param type: log type
+        :return: list of log entries of this type
+        """
+
+        return Log.query.filter(Log.type == type).all()
 
     def to_json(self):
         """
