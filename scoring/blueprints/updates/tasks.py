@@ -110,7 +110,7 @@ def push_new_scores(score_id, peer_list):
 
         url = 'http://%s:%s/push_data' % (peer.ip, peer.port)
         try:
-            request = requests.post(url, timeout=1, data=output_json)
+            request = requests.post(url, timeout=1, json=output_json)
         except:
             print("Error response from %s:%s. Likely timeout." % (peer.ip, peer.port))
             peer.alive = False
