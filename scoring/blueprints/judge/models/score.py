@@ -120,12 +120,12 @@ class Score(ResourceMixin, db.Model):
         Insert a score from a json object
 
         :param json:
-        :return:
+        :return: score
         """
         score = cls.find_by_id(json['id'])
         if score is not None:
             if score.version >= json['version']:
-                return
+                return None
         else:
             score = Score()
             score.id = json['id']
@@ -140,3 +140,5 @@ class Score(ResourceMixin, db.Model):
 
         db.session.merge(score)
         db.session.commit()
+
+        return score

@@ -18,7 +18,7 @@ from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.updates.models.peer import Peer
 from scoring.blueprints.updates.models.log import Log
-from scoring.blueprints.updates.communication import sign_json
+from scoring.blueprints.updates.communication import sign_json, verify_json
 
 
 updates = Blueprint('update', __name__, template_folder='templates')
@@ -101,17 +101,29 @@ def pull(timestamp):
 def push():
     if not request.json:
         return render_json(406, {'error': 'Mime-type is not application/json'})
+    if request.json.get('score') is None:
+        return render_json(406, {'error': 'Score are not set'})
+    if request.json.get('peers') is None:
+        return render_json(406, {'error': 'Peers are not set'})
+    if request.json.get('signature') is None:
+        return render_json(406, {'error': 'Signature are not set'})
+    score_json = request.json.get('score')
+    peer_list = request.json.get('peers')
+    if not (verify_json({'score': score_json, 'peers': peer_list}, request.json.get('signature'))):
+        return render_json(406, {'error': 'Signature not correct'})
 
-    if request.json.get('id') is None:
-        return render_json(406, {'error': 'Id not set'})
-    schedule = Schedule.find_by_id(request.json.get('id'))
+    schedule = Schedule.find_by_id(score_json['id'])
     if schedule is None:
         return render_json(406, {'error': 'Unknown schedule'})
     try:
-        Score.insert_from_json(request.json)
-        schedule.completed = True
-        schedule.version += 1
-        schedule.save()
+        score = Score.insert_from_json(score_json)
+        if score:
+            schedule.completed = True
+            schedule.version += 1
+            schedule.save()
+
+            from scoring.blueprints.updates.tasks import push_new_scores
+            push_new_scores.delay(score.id, peer_list)
 
         print("Score pushed from peer", request.json)
     except Exception as e:
