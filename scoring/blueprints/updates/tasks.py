@@ -97,7 +97,7 @@ def push_new_scores(score_id, peer_list):
     peers = [peer.mac for peer in alive_peers]  # Get mac addresses
     output_json = {
         'score': score,
-        'peers': peers + peer_list,  # Combine lists of peers
+        'peers': peers + (peer_list if peer_list is not None else []),  # Combine lists of peers
     }
     output_json['signature'] = sign_json(output_json)
 
