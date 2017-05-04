@@ -9,3 +9,4 @@ instance/settings.py
 instance/settings_updates.py
 
 adhoc.txt
+.DS_Store
