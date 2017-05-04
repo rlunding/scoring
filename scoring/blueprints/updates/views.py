@@ -9,7 +9,8 @@ from flask import (
     request,
     flash,
     url_for,
-    render_template)
+    render_template,
+    current_app)
 
 from lib.util_json import render_json
 
