@@ -24,6 +24,13 @@ from scoring.blueprints.updates.communication import sign_json
 updates = Blueprint('update', __name__, template_folder='templates')
 
 
+@updates.route('/timestamp', methods=['GET'])
+def timestamp():
+    return render_json(200, {
+        'ip': current_app.config['SERVER_NAME'],
+        'timestamp': datetime.datetime.now(pytz.utc).isoformat()
+    })
+
 @updates.route('/log', methods=['GET'])
 def all_log_entries():
 

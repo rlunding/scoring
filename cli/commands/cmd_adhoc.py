@@ -4,6 +4,7 @@ from scoring.blueprints.updates.tasks import write_peers_to_file
 from scoring.blueprints.updates.tasks import update_peers_file
 from scoring.blueprints.updates.communication import verify_json
 from scoring.blueprints.updates.communication import sign_json
+from scoring.blueprints.updates.models.log import Log
 
 import ntplib
 from time import ctime
@@ -82,6 +83,33 @@ def time():
     return None
 
 @click.command()
+@click.argument('ip')
+def timestamp(ip):
+    """
+    Send timestamp to ip for time sync testing
+    
+    :param ip: 
+    :return: 
+    """
+    url = 'http://%s:%s/timestamp' % (ip, '5000')
+
+    try:
+        request = requests.get(url, timeout=6)
+    except:
+        return click.echo("Error response. Likely timeout.")
+
+    try:
+        data = json.loads(request.text)
+
+        if data:
+            Log.log_timestamp(data)
+            click.echo(data)
+            return click.echo("Timestamp logged")
+        return click.echo("No data returned")
+    except:
+        return click.echo("Error parsing json")
+
+@click.command()
 def test_signature():
     """
     Just a command for testing
@@ -121,3 +149,4 @@ cli.add_command(writefile)
 cli.add_command(updatefile)
 cli.add_command(time)
 cli.add_command(test_signature)
+cli.add_command(timestamp)

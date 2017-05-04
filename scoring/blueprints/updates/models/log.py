@@ -97,3 +97,22 @@ class Log(ResourceMixin, db.Model):
         log.description = json['id']
         log.save()
         print('Score logged')
+
+    @classmethod
+    def log_timestamp(cls, json):
+        """
+        Log a received timestamp message
+        
+        :param json: 
+        :return: 
+        """
+
+        print('Logging timestamp from: %s' % json['ip'])
+        log = Log()
+        log.ip_sender = json['ip']
+        log.ip_receiver = current_app.config['SERVER_NAME']
+        log.timestamp_sender = json['timestamp']
+        log.timestamp_receiver = datetime.datetime.now(pytz.utc).isoformat()
+        log.type = 'timestamp_received'
+        log.save()
+        print('Timestamp logged')
