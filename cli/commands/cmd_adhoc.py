@@ -102,8 +102,8 @@ def timestamp(ip):
         data = json.loads(request.text)
 
         if data:
-            Log.log_timestamp(data)
             click.echo(data)
+            Log.log_timestamp(data)
             return click.echo("Timestamp logged")
         return click.echo("No data returned")
     except:
