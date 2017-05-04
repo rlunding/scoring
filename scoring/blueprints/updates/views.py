@@ -1,4 +1,5 @@
 import datetime
+from datetime import timedelta
 import dateutil.parser
 import pytz
 import json
@@ -50,12 +51,18 @@ def log_entries_by_type(type):
 
     db_log = Log.get_all_logs_by_type(type)
     log_array = []
+    total_time_diff = timedelta()
     for log in db_log:
         log_array.append(log.to_json())
+        total_time_diff += log.timestamp_receiver - log.timestamp_sender
 
+    total_time_diff_seconds = total_time_diff.total_seconds()
+    avg_time_diff_seconds = total_time_diff_seconds / len(db_log)
     return render_json(200, {
         'success': True,
-        'logs': log_array})
+        'logs': log_array,
+        'total_time_diff': total_time_diff_seconds,
+        'avg_time_diff': avg_time_diff_seconds})
 
 
 
