@@ -107,8 +107,6 @@ class Log(ResourceMixin, db.Model):
         :return: 
         """
 
-        print('Logging timestamp from: %s' % json['ip'])
-        print('Timestamp: %s' % json['timestamp'])
         log = Log()
         log.ip_sender = json['ip']
         log.ip_receiver = current_app.config['SERVER_NAME']
@@ -116,4 +114,3 @@ class Log(ResourceMixin, db.Model):
         log.timestamp_receiver = datetime.datetime.now(pytz.utc).isoformat()
         log.type = 'timestamp_received'
         log.save()
-        print('Timestamp logged')

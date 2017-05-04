@@ -4,7 +4,7 @@ from scoring.blueprints.updates.tasks import write_peers_to_file
 from scoring.blueprints.updates.tasks import update_peers_file
 from scoring.blueprints.updates.communication import verify_json
 from scoring.blueprints.updates.communication import sign_json
-from scoring.blueprints.updates.models.log import Log
+from scoring.blueprints.updates.tasks import timestamp_test
 
 import ntplib
 from time import ctime
@@ -82,6 +82,7 @@ def time():
     click.echo(ctime(response.tx_time))
     return None
 
+
 @click.command()
 @click.argument('ip')
 def timestamp(ip):
@@ -91,23 +92,9 @@ def timestamp(ip):
     :param ip: 
     :return: 
     """
-    url = 'http://%s:%s/timestamp' % (ip, '5000')
-
-    try:
-        request = requests.get(url, timeout=6)
-    except:
-        return click.echo("Error response. Likely timeout.")
-
-    try:
-        data = json.loads(request.text)
-
-        if data:
-            click.echo(data)
-            Log.log_timestamp(data)
-            return click.echo("Timestamp logged")
-        return click.echo("No data returned")
-    except:
-        return click.echo("Error parsing json")
+    click.echo("Timestamp test on: %s" % ip)
+    result = timestamp_test(ip)
+    return click.echo("Timestamp test done: %s" % result)
 
 @click.command()
 def test_signature():

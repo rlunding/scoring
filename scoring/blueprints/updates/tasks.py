@@ -224,3 +224,23 @@ def write_peers_to_file():
     filename = 'adhoc.txt'
     with open(filename, 'w') as f:
         f.write(string)
+
+@celery.task()
+def timestamp_test(ip):
+    """
+    Do a timestamp test
+     
+    """
+    url = 'http://%s:%s/timestamp' % (ip, '8000')
+
+    try:
+        request = requests.get(url, timeout=6)
+    except:
+        return "Error response. Likely timeout."
+
+    data = json.loads(request.text)
+
+    if data:
+        Log.log_timestamp(data)
+        return "Timestamp logged"
+    return "No data returned"
