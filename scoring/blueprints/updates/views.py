@@ -116,10 +116,10 @@ def pull(timestamp):
 def push():
     if not request.json:
         return render_json(406, {'error': 'Mime-type is not application/json'})
-    if request.json.get('data') is None:
-        return render_json(406, {'error': 'Data are not set'})
-    if request.json.get('signature') is None:
+    if 'signature' not in request.json or request.json.get('signature') is None:
         return render_json(406, {'error': 'Signature are not set'})
+    if 'data' not in request.json or request.json.get('data') is None:
+        return render_json(406, {'error': 'Data are not set'})
     if not (verify_json(request.json.get('data'), request.json.get('signature'))):
         return render_json(406, {'error': 'Signature not correct'})
 
