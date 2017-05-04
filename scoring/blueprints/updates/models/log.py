@@ -56,8 +56,8 @@ class Log(ResourceMixin, db.Model):
         params = {
             'ip_sender': self.ip_sender,
             'ip_receiver': self.ip_receiver,
-            'timestamp_sender': self.timestamp_sender,
-            'timestamp_receiver': self.timestamp_receiver,
+            'timestamp_sender': self.timestamp_sender.isoformat(),
+            'timestamp_receiver': self.timestamp_receiver.isoformat(),
             'type': self.type,
             'description': self.description,
         }
