@@ -99,10 +99,9 @@ def push_new_scores(score_id, peer_list):
         'score': score,
         'peers': peers + (peer_list if peer_list is not None else []),  # Combine lists of peers
     }
-    data = json.dumps(data, default=datetime_handler)
     output_json = {
         'data': data,
-        'signature': sign_json(data)
+        'signature': sign_json(json.dumps(data, default=datetime_handler))
     }
 
     for peer in alive_peers:
@@ -111,7 +110,7 @@ def push_new_scores(score_id, peer_list):
 
         url = 'http://%s:%s/push_data' % (peer.ip, peer.port)
         try:
-            request = requests.post(url, timeout=1, json=output_json)
+            request = requests.post(url, timeout=1, data=output_json)
         except:
             print("Error response from %s:%s. Likely timeout." % (peer.ip, peer.port))
             peer.alive = False

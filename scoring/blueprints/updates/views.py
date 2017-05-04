@@ -114,16 +114,17 @@ def pull(timestamp):
 
 @updates.route('/push_data', methods=['POST'])
 def push():
+    print(request.json)
     if not request.json:
         return render_json(406, {'error': 'Mime-type is not application/json'})
     if 'signature' not in request.json or request.json.get('signature') is None:
         return render_json(406, {'error': 'Signature are not set'})
     if 'data' not in request.json or request.json.get('data') is None:
         return render_json(406, {'error': 'Data are not set'})
-    if not (verify_json(request.json.get('data'), request.json.get('signature'))):
+    if not (verify_json(json.dumps(request.json.get('data')), request.json.get('signature'))):
         return render_json(406, {'error': 'Signature not correct'})
 
-    data = json.loads(request.json.get('data'))
+    data = request.json.get('data')
     score_json = data['score']
     peer_list = data['peers']
 
