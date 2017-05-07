@@ -1,6 +1,6 @@
 from lib.util_sqlalchemy import ResourceMixin
 
-from sqlalchemy import and_, not_
+from sqlalchemy import and_, not_, desc
 from lib.util_sqlalchemy import AwareDateTime
 from scoring.extensions import db
 
@@ -55,7 +55,7 @@ class Peer(ResourceMixin, db.Model):
         :return: list of peers
         """
 
-        return Peer.query.order_by(Peer.alive, Peer.last_request).all()
+        return Peer.query.order_by(desc(Peer.alive), desc(Peer.last_request)).all()
 
     @classmethod
     def get_alive_peers(cls, exclude_mac_list=None):
