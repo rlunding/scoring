@@ -55,7 +55,7 @@ class Peer(ResourceMixin, db.Model):
         :return: list of peers
         """
 
-        return Peer.query.all()
+        return Peer.query.order_by(Peer.alive, Peer.last_request).all()
 
     @classmethod
     def get_alive_peers(cls, exclude_mac_list=None):
@@ -64,10 +64,10 @@ class Peer(ResourceMixin, db.Model):
 
         :return: list of peers
         """
-        if exclude_mac_list is None:
-            exclude_mac_list = []
-
-        return Peer.query.filter(and_(Peer.alive.is_(True), not_(Peer.mac.in_(exclude_mac_list)))).all()
+        if exclude_mac_list is None or exclude_mac_list == []:
+            return Peer.query.filter(Peer.alive.is_(True)).all()
+        else:
+            return Peer.query.filter(and_(Peer.alive.is_(True), not_(Peer.mac.in_(exclude_mac_list)))).all()
 
     @classmethod
     def get_most_dead_peer(cls):
