@@ -226,6 +226,7 @@ def write_peers_to_file():
     with open(filename, 'w') as f:
         f.write(string)
 
+
 @celery.task()
 def timestamp_test(ip):
     """

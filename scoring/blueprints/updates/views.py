@@ -13,6 +13,7 @@ from flask import (
     render_template,
     current_app)
 
+from scoring.extensions import csrf
 from lib.util_json import render_json
 
 from scoring.blueprints.judge.models.team import Team
@@ -46,6 +47,7 @@ def all_log_entries():
         'success': True,
         'logs': log_array})
 
+
 @updates.route('/log/<string:type>', methods=['GET'])
 def log_entries_by_type(type):
 
@@ -63,7 +65,6 @@ def log_entries_by_type(type):
         'logs': log_array,
         'total_time_diff': total_time_diff_seconds,
         'avg_time_diff': avg_time_diff_seconds})
-
 
 
 @updates.route('/ping', methods=['GET'])
@@ -119,6 +120,7 @@ def pull(timestamp):
         return render_json(500, {'error': str(e)})
 
 
+@csrf.exempt
 @updates.route('/push_data', methods=['POST'])
 def push():
     print(request.json)
