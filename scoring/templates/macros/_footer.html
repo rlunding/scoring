@@ -2,9 +2,37 @@
     <div class="container">
         {% block footer %}{% endblock %}
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
                 {% if config['SCORING_APP_TYPE'] == 'JUDGE' %}
-                    <p>TODO: make a list of available peers</p>
+                    {% if g._peers | length == 0 %}
+                        <p>No peers available</p>
+                    {% else %}
+                        <table class="table">
+                            <thead><tr>
+                                <th class="col-header col-xs-3 text-center">{{ _('Ip') }}</th>
+                                <th class="col-header col-xs-2 text-center">{{ _('Port') }}</th>
+                                <th class="col-header col-xs-3 text-center">{{ _('MAC address') }}</th>
+                                <th class="col-header col-xs-2 text-center">{{ _('Alive') }}</th>
+                                <th class="col-header col-xs-2 text-center">{{ _('Last request') }}</th>
+                            </tr></thead>
+                            <tbody>
+                                {% for peer in g._peers %}
+                                    <tr>
+                                        <td>{{ peer.ip }}</td>
+                                        <td>{{ peer.port }}</td>
+                                        <td>{{ peer.mac }}</td>
+                                        <td>{% if peer.alive %}<i class="fa fa-check"></i>{% else %}<i class="fa fa-times"></i>{% endif %}</td>
+                                        <td>{% if peer.last_request %}
+                                                <time class="from-now" data-datetime="{{ peer.last_request }}">{{ peer.last_request }}</time>
+                                            {% else %}
+                                                never
+                                            {% endif %}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
                 {% endif %}
             </div>
         </div>

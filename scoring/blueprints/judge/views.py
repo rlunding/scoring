@@ -6,6 +6,7 @@ from scoring.blueprints.judge.models.team import Team, db
 from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 
+from scoring.blueprints.judge.decorators import get_peers
 from scoring.blueprints.judge.forms import MatchForm1Player, MatchForm2Players
 
 
@@ -20,6 +21,7 @@ judge = Blueprint('judge', __name__, template_folder='templates') #, url_prefix=
 
 
 @judge.before_request
+@get_peers
 def before_request():
     #if request.remote_addr != current_app.config['SERVER_NAME']: #'172.26.0.1':
     #    flash('You are not allowed here!' + request.remote_addr, 'danger')
