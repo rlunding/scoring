@@ -130,15 +130,15 @@ def create_background_app(settings_override=None):
         app.config.update(settings_override)
 
     middleware(app)
-    error_templates(app)
+    # error_templates(app)
     exception_handler(app)
     # app.register_blueprint(page)
     # app.register_blueprint(judge)
     # app.register_blueprint(spectator)
     app.register_blueprint(updates)
-    template_processors(app)
+    # template_processors(app)
     extensions(app)
-    locale(app)
+    # locale(app)
 
     return app
 
