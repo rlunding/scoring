@@ -128,10 +128,10 @@ def push():
         return render_json(406, {'error': 'Signature are not set'})
     if 'data' not in request.json or request.json.get('data') is None:
         return render_json(406, {'error': 'Data are not set'})
-    if not (verify_json(json.dumps(request.json.get('data')), request.json.get('signature'))):
+    if not (verify_json(request.json.get('data'), request.json.get('signature'))):
         return render_json(406, {'error': 'Signature not correct'})
 
-    data = request.json.get('data')
+    data = json.loads(request.json.get('data'))
     score_json = data['score']
     peer_list = data['peers']
 
