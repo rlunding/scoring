@@ -21,8 +21,6 @@ instance/judge.py
 
 DEBUG = True
 SERVER_NAME = 'localhost:7000'
-SESSION_COOKIE_NAME = 'localhost:7000'
-SESSION_COOKIE_DOMAIN = 'localhost:7000'
 SCORING_APP_TYPE = 'JUDGE'
 ```
 
