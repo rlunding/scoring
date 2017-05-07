@@ -15,7 +15,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('spectator.tables') }}">{{ _('Tables') }}</a></li>
+                {% if config['SCORING_APP_TYPE'] == 'JUDGE' %}
+                    <li><a href="{{ url_for('judge.tables') }}">{{ _('Tables') }}</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('spectator.tables') }}">{{ _('Tables') }}</a></li>
+                {% endif %}
             </ul>
         </div>
         <!-- /.navbar-collapse -->

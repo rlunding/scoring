@@ -3,16 +3,12 @@
         {% block footer %}{% endblock %}
         <div class="row">
             <div class="col-sm-12">
-                <h3>Contact</h3>
+                {% if config['SCORING_APP_TYPE'] == 'JUDGE' %}
+                    <p>TODO: make a list of available peers</p>
+                {% endif %}
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <a href="mailto:contact@scoring.com" ><i class="fa fa-envelope fa-4x"></i></a>
-                <a href="https://www.facebook.com/" target="_blank" style="margin: 0 30px;"><i class="fa fa-facebook-square fa-4x"></i></a>
-                <a href="https://www.twitter.com/" target="_blank"><i class="fa fa-twitter-square fa-4x"></i></a>
-            </div>
-        </div>
+
         <div class="row">
             <div class="col-sm-12">
                 <hr>
@@ -22,8 +18,8 @@
             <div class="col-sm-12">
                 <p>
                     Scoring &copy; {{ current_year() }} <span class="hidden-xs">|</span><br class="visible-xs">
-                    <a href="{{ url_for('page.about') }}">{{ _('About') }}</a> <span class="hidden-xs">|</span><br class="visible-xs">
-                    <a href="{{ url_for('page.faq') }}">{{ _('FAQ') }}</a> <span class="hidden-xs">|</span><br class="visible-xs">
+                    <a href="">{{ _('About') }}</a> <span class="hidden-xs">|</span><br class="visible-xs">
+                    <a href="">{{ _('FAQ') }}</a> <span class="hidden-xs">|</span><br class="visible-xs">
                     <a href="mailto:contact@scoring.com">contact@scoring.com</a>
                 </p>
             </div>

@@ -28,9 +28,6 @@ def tables():
 
 @spectator.route('/table/<int:table_id>', methods=['GET'])
 def table(table_id):
-    # Last 5 scores
-    # Next 5 matches
-    # Teams
     current_time = tzware_datetime()
     current_time_offset = timedelta(minutes=-10)
     schedules = Schedule.find_by_table_id(table_id)

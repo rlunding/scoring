@@ -16,7 +16,7 @@ def safe_cast(val, to_type, default=None):
         return default
 
 
-judge = Blueprint('judge', __name__, template_folder='templates', url_prefix='/judge')
+judge = Blueprint('judge', __name__, template_folder='templates') #, url_prefix='/judge')
 
 
 @judge.before_request
@@ -27,7 +27,7 @@ def before_request():
     pass
 
 
-@judge.route('')
+@judge.route('/')
 def home():
     return redirect(url_for('judge.tables'))
     #return render_template('judge/home.html')
@@ -42,15 +42,31 @@ def tables():
 
 @judge.route('/table/<int:table_id>', methods=['GET'])
 def table(table_id):
-    # Last 5 scores
-    # Next 5 matches
-    # Teams
     current_time = tzware_datetime()
     current_time_offset = timedelta(minutes=-10)
     schedules = Schedule.find_by_table_id(table_id)
     scores = Score.find_by_table_id(table_id)
     return render_template('judge/table.html',
                            table_id=table_id,
+                           current_time=current_time,
+                           current_time_offset=current_time_offset,
+                           schedules=schedules,
+                           scores=scores)
+
+
+# Teams ---------------------------------------------------------------------------
+@judge.route('/team/<int:team_id>', methods=['GET'])
+def team(team_id):
+    # Show team information
+    team = Team.find_by_id(team_id)
+    if team is None:
+        return render_template('errors/404.html'), 404
+    current_time = tzware_datetime()
+    current_time_offset = timedelta(minutes=-10)
+    schedules = Schedule.find_by_team_id(team_id)
+    scores = Score.find_by_team_id(team_id)
+    return render_template('judge/team.html',
+                           team=team,
                            current_time=current_time,
                            current_time_offset=current_time_offset,
                            schedules=schedules,

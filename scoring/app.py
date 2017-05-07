@@ -75,9 +75,38 @@ def create_app(settings_override=None):
     error_templates(app)
     exception_handler(app)
     app.register_blueprint(page)
-    app.register_blueprint(judge)
+    # app.register_blueprint(judge)
     app.register_blueprint(spectator)
-    app.register_blueprint(updates)
+    # app.register_blueprint(updates)
+    template_processors(app)
+    extensions(app)
+    locale(app)
+
+    return app
+
+
+def create_judge_app(settings_override=None):
+    """
+    Create a Flask application using the app factory pattern.
+
+    :param settings_override: Override settings
+    :return: Flask app
+    """
+    app = Flask(__name__, instance_relative_config=True)
+
+    app.config.from_object('config.settings')
+    app.config.from_pyfile('settings_judge.py', silent=True)
+
+    if settings_override:
+        app.config.update(settings_override)
+
+    middleware(app)
+    error_templates(app)
+    exception_handler(app)
+    app.register_blueprint(page)
+    app.register_blueprint(judge)
+    # app.register_blueprint(spectator)
+    # app.register_blueprint(updates)
     template_processors(app)
     extensions(app)
     locale(app)
@@ -103,9 +132,9 @@ def create_background_app(settings_override=None):
     middleware(app)
     error_templates(app)
     exception_handler(app)
-    app.register_blueprint(page)
-    app.register_blueprint(judge)
-    app.register_blueprint(spectator)
+    # app.register_blueprint(page)
+    # app.register_blueprint(judge)
+    # app.register_blueprint(spectator)
     app.register_blueprint(updates)
     template_processors(app)
     extensions(app)

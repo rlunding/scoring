@@ -29,6 +29,17 @@ services:
     ports:
       - '8000:8000'
 
+  judge:
+    build: .
+    command: >
+      gunicorn -c "python:config.gunicorn" --reload "scoring.app:create_judge_app()"
+    env_file:
+      - '.env'
+    volumes:
+      - '.:/scoring'
+    ports:
+      - '7000:8000'
+
   updates:
     build: .
     command: >
