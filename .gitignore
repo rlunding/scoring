@@ -6,6 +6,7 @@ celerybeat*
 
 # Dont add real settings-file
 instance/settings.py
+instance/settings_judge.py
 instance/settings_updates.py
 
 adhoc.txt
