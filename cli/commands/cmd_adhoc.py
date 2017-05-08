@@ -11,6 +11,9 @@ from time import ctime
 import requests
 import json
 
+from random import randint
+from time import sleep
+
 import click
 
 
@@ -72,6 +75,7 @@ def updatefile():
 @click.command()
 def time():
     """
+    Get NTP time
 
     :return:
     """
@@ -85,16 +89,25 @@ def time():
 
 @click.command()
 @click.argument('ip')
-def timestamp(ip):
+@click.argument('times', int)
+def timestamp(ip, times):
     """
     Send timestamp to ip for time sync testing
     
     :param ip: 
     :return: 
     """
-    click.echo("Timestamp test on: %s" % ip)
-    result = timestamp_test(ip)
-    return click.echo("Timestamp test done: %s" % result)
+    click.echo("Doing %s timestamp tests on: %s" % (times, ip))
+    for x in range(0, int(times)+1):
+        # Do timestamp test
+        click.echo(timestamp_test(ip))
+
+        # Wait
+        rand = randint(1, 5)
+        click.echo("Waiting %s seconds..." % rand)
+        sleep(rand)
+
+    return click.echo("Timestamp test done")
 
 @click.command()
 def test_signature():

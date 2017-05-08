@@ -230,7 +230,7 @@ def write_peers_to_file():
 @celery.task()
 def timestamp_test(ip):
     """
-    Do a timestamp test
+    Do a timestamp test and log it.
      
     """
     url = 'http://%s:%s/timestamp' % (ip, '8000')
@@ -238,7 +238,7 @@ def timestamp_test(ip):
     try:
         request = requests.get(url, timeout=6)
     except:
-        return "Error response. Likely timeout."
+        return "Error response."
 
     data = json.loads(request.text)
 
