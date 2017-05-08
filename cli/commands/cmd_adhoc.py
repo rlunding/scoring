@@ -99,7 +99,7 @@ def timestamp(ip, times):
 
     """
     click.echo("Doing %s timestamp tests on: %s" % (times, ip))
-    for x in range(0, int(times)+1):
+    for x in range(0, int(times)):
         # Do timestamp test
         click.echo(timestamp_test(ip))
 
