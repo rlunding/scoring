@@ -6,6 +6,8 @@ from scoring.blueprints.updates.communication import verify_json
 from scoring.blueprints.updates.communication import sign_json
 from scoring.blueprints.updates.tasks import timestamp_test
 
+from scoring.blueprints.updates.views import log_entries_by_type
+
 import ntplib
 from time import ctime
 import requests
@@ -72,6 +74,7 @@ def updatefile():
     update_peers_file()
     return click.echo('Peer database and file updated')
 
+
 @click.command()
 def time():
     """
@@ -93,9 +96,7 @@ def time():
 def timestamp(ip, times):
     """
     Send timestamp to ip for time sync testing
-    
-    :param ip: 
-    :return: 
+
     """
     click.echo("Doing %s timestamp tests on: %s" % (times, ip))
     for x in range(0, int(times)+1):
@@ -108,6 +109,7 @@ def timestamp(ip, times):
         sleep(rand)
 
     return click.echo("Timestamp test done")
+
 
 @click.command()
 def test_signature():

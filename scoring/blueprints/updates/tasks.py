@@ -233,7 +233,7 @@ def timestamp_test(ip):
     Do a timestamp test and log it.
      
     """
-    url = 'http://%s:%s/timestamp' % (ip, '8000')
+    url = 'http://%s:%s/timestamp' % (ip, '5000')
 
     try:
         request = requests.get(url, timeout=6)
