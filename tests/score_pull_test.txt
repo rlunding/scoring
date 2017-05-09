@@ -1,1031 +1,807 @@
 {
-  "avg_time_diff": 15.433145171875, 
+  "avg_time_diff": 14.68365479, 
   "logs": [
     {
-      "description": "601247691", 
+      "description": "1296849250", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:14:45.768468+00:00", 
-      "timestamp_sender": "2017-05-09T11:14:02+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:42:26.540396+00:00", 
+      "timestamp_sender": "2017-05-09T12:40:59.068574+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "785845351", 
+      "description": "1682904375", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:05.926382+00:00", 
-      "timestamp_sender": "2017-05-09T11:15:54+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:22.422504+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:16.510270+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "209030186", 
+      "description": "2005353889", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:06.199740+00:00", 
-      "timestamp_sender": "2017-05-09T11:15:51+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:22.501710+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:15.389510+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1992827245", 
+      "description": "1975586690", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:06.354161+00:00", 
-      "timestamp_sender": "2017-05-09T11:15:48+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:32.363584+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:22.951872+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1560585333", 
+      "description": "1424648639", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:15.275779+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:03+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:32.438211+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:19.622452+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "347363629", 
+      "description": "1306616707", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:15.435764+00:00", 
-      "timestamp_sender": "2017-05-09T11:15:59+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:42.544783+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:33.979142+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "2122378628", 
+      "description": "1649512142", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:25.038461+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:15+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:42.615565+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:32.743393+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "774120516", 
+      "description": "1024653356", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:25.116020+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:12+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:42.687719+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:30.466984+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "619501181", 
+      "description": "15010523", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:25.205184+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:10+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:42.761529+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:28.203971+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1481377411", 
+      "description": "1732045673", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:25.280745+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:08+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:52.410889+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:43.453282+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "903778266", 
+      "description": "1220142526", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:35.107876+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:25+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:52.486859+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:41.329417+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "2067643908", 
+      "description": "1328266054", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:35.183210+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:20+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:43:52.561699+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:39.222174+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "857485383", 
+      "description": "1518874109", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:35.267853+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:16+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:02.509926+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:56.127704+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1680991357", 
+      "description": "13919359", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:45.199379+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:35+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:02.585322+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:54.984337+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "231193259", 
+      "description": "293780485", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:45.348556+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:30+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:02.663573+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:52.839996+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1984958723", 
+      "description": "2419174", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:45.490999+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:28+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:02.746652+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:50.685729+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1813516793", 
+      "description": "1259160367", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:56.450736+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:46+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:12.419030+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:05.576651+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1560800877", 
+      "description": "268208873", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:56.901622+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:41+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:12.508633+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:03.430621+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1229083749", 
+      "description": "284660788", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:57.646138+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:39+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:12.630216+00:00", 
+      "timestamp_sender": "2017-05-09T12:43:58.293977+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "452127884", 
+      "description": "1348686149", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:16:58.111686+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:36+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:22.483959+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:16.107579+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "922041213", 
+      "description": "374585497", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:05.408677+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:55+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:22.553457+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:13.953766+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "336954765", 
+      "description": "696280606", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:05.570256+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:50+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:22.629686+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:10.841271+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1624453821", 
+      "description": "763492514", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:15.411452+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:06+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:22.702798+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:09.733569+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1698055390", 
+      "description": "604715930", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:15.537695+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:02+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:32.483997+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:26.091407+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1928779915", 
+      "description": "1089263270", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:15.718311+00:00", 
-      "timestamp_sender": "2017-05-09T11:16:59+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:32.556332+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:23.811049+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1846420875", 
+      "description": "2066429156", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:25.139924+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:15+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:32.634169+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:22.588230+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "873194314", 
+      "description": "1248999238", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:25.216409+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:11+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:32.706462+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:18.362282+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "535969837", 
+      "description": "462731970", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:35.320803+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:23+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:42.446754+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:36.936834+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1505066866", 
+      "description": "440329667", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:35.396758+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:19+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:42.515236+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:33.746929+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1122564446", 
+      "description": "1289321581", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:35.473374+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:18+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:42.586362+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:31.382692+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "560614875", 
+      "description": "1437659185", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:35.546730+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:17+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:52.438101+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:45.239638+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1479104459", 
+      "description": "147456718", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:45.325495+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:36+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:44:52.531773+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:40.089133+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1175164867", 
+      "description": "296862728", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:45.399070+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:33+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:02.491522+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:56.789353+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1841869740", 
+      "description": "880551905", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:45.471364+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:32+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:02.561000+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:55.621471+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "244738683", 
+      "description": "1687239881", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:45.549526+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:27+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:02.631130+00:00", 
+      "timestamp_sender": "2017-05-09T12:44:50.429382+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1035890268", 
+      "description": "255200815", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:55.212108+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:42+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:21.633179+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:07.402453+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1606366887", 
+      "description": "526851377", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:17:55.284164+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:41+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:21.799153+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:05.277826+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1766127372", 
+      "description": "536404266", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:05.408531+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:52+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:22.097605+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:02.122844+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "250199337", 
+      "description": "1831397547", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:05.484320+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:49+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:23.088883+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:00.968066+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "977370689", 
+      "description": "1122403873", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:05.558491+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:47+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:23.561608+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:14.698628+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "748372845", 
+      "description": "1340685560", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:15.294043+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:02+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:23.631533+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:10.546148+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1452130796", 
+      "description": "1490241772", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:15.369234+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:00+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:35.196037+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:25.251085+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "246695651", 
+      "description": "124213662", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:15.449016+00:00", 
-      "timestamp_sender": "2017-05-09T11:17:56+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:35.333876+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:22.035846+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "346272043", 
+      "description": "167300162", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:25.280855+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:14+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:35.478407+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:19.863676+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "2037152600", 
+      "description": "1553365913", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:25.352802+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:11+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:45.315543+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:36.914406+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1607775493", 
+      "description": "161719686", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:25.424351+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:07+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:45.397945+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:35.772256+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "490080095", 
+      "description": "132743685", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:35.706280+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:22+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:45.476689+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:32.613276+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "512567793", 
+      "description": "1753410838", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:35.839868+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:17+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:45.555315+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:30.425290+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "334603486", 
+      "description": "814895692", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:45.530881+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:36+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:52.588854+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:45.224744+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "769928017", 
+      "description": "867180086", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:45.820082+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:34+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:45:52.667437+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:40.054444+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "18864232", 
+      "description": "1609073764", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:45.930019+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:31+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:02.426827+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:54.949387+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1733231399", 
+      "description": "1827717861", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:46.007481+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:26+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:02.500792+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:49.436114+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "741436805", 
+      "description": "123708452", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:55.332731+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:45+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:22.670234+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:13.814947+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1863148511", 
+      "description": "1278556597", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:55.405788+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:41+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:22.745118+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:08.661086+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1777839003", 
+      "description": "903563283", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:18:55.481841+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:39+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:22.822754+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:06.542535+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "673445007", 
+      "description": "1350342860", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:05.257308+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:55+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:22.896410+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:04.431215+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1855831413", 
+      "description": "749603845", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:05.330502+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:52+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:22.973313+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:01.305919+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "710345467", 
+      "description": "1452913761", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:05.406553+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:49+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:23.053330+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:59.190664+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "346540825", 
+      "description": "798698122", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:16.885088+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:05+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:23.132713+00:00", 
+      "timestamp_sender": "2017-05-09T12:45:57.077082+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1920543894", 
+      "description": "1510176334", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:17.058233+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:02+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:42.604142+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:35.621424+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1650300651", 
+      "description": "1418478611", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:17.199438+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:00+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:42.681318+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:31.482425+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "916601214", 
+      "description": "1980543599", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:17.359267+00:00", 
-      "timestamp_sender": "2017-05-09T11:18:57+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:42.767791+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:26.322873+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "287416524", 
+      "description": "338804825", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:25.306486+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:13+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:42.844564+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:21.204119+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1849597227", 
+      "description": "1926533397", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:25.386236+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:10+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:42.921627+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:20.094187+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "830136697", 
+      "description": "2080844174", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:35.381812+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:24+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:46:43.009829+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:18.954112+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1361766083", 
+      "description": "1518625331", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:35.482167+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:21+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:02.749739+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:52.511849+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "616153644", 
+      "description": "1096901400", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:35.602085+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:18+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:02.825790+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:50.332353+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "938481763", 
+      "description": "1592052009", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:45.383825+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:35+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:02.902416+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:45.177032+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "311887050", 
+      "description": "1131377753", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:45.454113+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:32+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:02.989360+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:44.050225+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "2091184810", 
+      "description": "1199297229", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:45.524893+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:29+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:03.067293+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:38.879700+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1434286282", 
+      "description": "1742060858", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:45.596873+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:27+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:03.145295+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:37.764185+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "322021951", 
+      "description": "377483358", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:55.331134+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:45+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:22.638005+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:11.541332+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1039431703", 
+      "description": "809258666", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:55.402011+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:41+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:22.711349+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:09.310125+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "846317154", 
+      "description": "1440286457", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:19:55.478592+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:39+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:22.795326+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:08.022939+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "852443817", 
+      "description": "298289122", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:05.383733+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:50+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:22.868922+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:02.867246+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "175460709", 
+      "description": "1009067617", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:05.462002+00:00", 
-      "timestamp_sender": "2017-05-09T11:19:48+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:22.940640+00:00", 
+      "timestamp_sender": "2017-05-09T12:46:57.678725+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1353832311", 
+      "description": "1237597623", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:15.370245+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:05+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:32.687561+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:15.324810+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "305291321", 
+      "description": "1094040475", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:15.443907+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:03+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:32.807120+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:12.930989+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1286092992", 
+      "description": "2007295583", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:25.455759+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:13+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:42.629456+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:32.387957+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "976315554", 
+      "description": "1170393802", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:25.533461+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:09+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:42.737699+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:30.258784+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1273224854", 
+      "description": "451751805", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:25.706697+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:08+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:42.849595+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:27.134426+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1884718491", 
+      "description": "1955305941", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:35.582811+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:24+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:42.941726+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:26.014148+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "403942343", 
+      "description": "1837510917", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:35.661013+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:23+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:43.047575+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:21.811854+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "2054620069", 
+      "description": "1556670136", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:35.789943+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:19+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:43.118519+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:20.649814+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "242544048", 
+      "description": "913948616", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:35.966205+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:17+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:47:43.203110+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:19.501502+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "313673134", 
+      "description": "474586241", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:45.795354+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:36+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:02.595094+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:56.424244+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1294274561", 
+      "description": "1347056112", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:45.866854+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:34+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:02.670974+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:51.265221+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "891401388", 
+      "description": "982164707", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:45.938130+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:31+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:02.742784+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:50.107715+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "92608333", 
+      "description": "1374523947", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:46.009679+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:29+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:02.812743+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:45.944371+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "246618219", 
+      "description": "460271906", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:46.094910+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:27+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:02.885430+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:40.795577+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "788170561", 
+      "description": "84866990", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:55.618265+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:42+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:02.969003+00:00", 
+      "timestamp_sender": "2017-05-09T12:47:38.669999+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "2057841157", 
+      "description": "154737359", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:56.277098+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:40+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:22.552307+00:00", 
+      "timestamp_sender": "2017-05-09T12:48:14.171032+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1678941079", 
+      "description": "631341724", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:56.864117+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:38+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:22.643671+00:00", 
+      "timestamp_sender": "2017-05-09T12:48:10.003695+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "523115483", 
+      "description": "879350317", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:20:57.026604+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:37+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:22.721996+00:00", 
+      "timestamp_sender": "2017-05-09T12:48:04.855696+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "496223241", 
+      "description": "952506326", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:21:05.367564+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:55+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:22.801265+00:00", 
+      "timestamp_sender": "2017-05-09T12:48:02.717563+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1867152020", 
+      "description": "2055844349", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:21:05.444586+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:52+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:22.879479+00:00", 
+      "timestamp_sender": "2017-05-09T12:48:00.578059+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "592687966", 
+      "description": "1193550685", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:21:05.520100+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:49+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:32.632013+00:00", 
+      "timestamp_sender": "2017-05-09T12:48:18.364330+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "1567168878", 
+      "description": "1271971857", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:21:05.597574+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:47+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:42.462964+00:00", 
+      "timestamp_sender": "2017-05-09T12:48:25.853439+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "955807158", 
+      "description": "226689525", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:22:05.318612+00:00", 
-      "timestamp_sender": "2017-05-09T11:21:03+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:42.534912+00:00", 
+      "timestamp_sender": "2017-05-09T12:48:23.709314+00:00", 
+      "type": "score_pulled"
     }, 
     {
-      "description": "926427379", 
+      "description": "1962202072", 
       "ip_receiver": "192.168.4.4:5000", 
       "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:22:05.400929+00:00", 
-      "timestamp_sender": "2017-05-09T11:20:59+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "284127919", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:23:25.316011+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:15+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "2023077930", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:23:35.527325+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:26+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1170065228", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:23:35.670606+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:23+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "479715131", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:23:35.814616+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:20+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "503224221", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:23:45.492021+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:36+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1066668839", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:23:45.567779+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:32+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1411821827", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:23:45.643834+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:27+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1086233785", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:23:55.286051+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:41+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "395096314", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:05.448554+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:56+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1833602685", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:05.535525+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:51+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1880222030", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:05.615641+00:00", 
-      "timestamp_sender": "2017-05-09T11:23:50+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1450966002", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:15.435428+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:02+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "651471476", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:15.515045+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:01+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "161661515", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:25.483293+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:16+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "380616371", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:25.559929+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:12+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "551393011", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:25.636440+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:11+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1904887114", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:35.440729+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:26+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1801788504", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:35.516191+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:22+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1973189884", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:35.589193+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:18+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1326380908", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:45.363276+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:36+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "2138910439", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:45.437456+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:32+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "507847029", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:55.457379+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:45+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1540032542", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:55.537091+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:41+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1009733678", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:24:55.610512+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:37+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1032555016", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:25:05.545101+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:56+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1731694049", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:25:05.619581+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:54+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "988910046", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:25:05.695265+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:49+00:00", 
-      "type": "score_received"
-    }, 
-    {
-      "description": "1249726166", 
-      "ip_receiver": "192.168.4.4:5000", 
-      "ip_sender": "192.168.4.3", 
-      "timestamp_receiver": "2017-05-09T11:25:05.792453+00:00", 
-      "timestamp_sender": "2017-05-09T11:24:47+00:00", 
-      "type": "score_received"
+      "timestamp_receiver": "2017-05-09T12:48:42.606943+00:00", 
+      "timestamp_sender": "2017-05-09T12:48:21.552991+00:00", 
+      "type": "score_pulled"
     }
   ], 
   "success": true, 
-  "total_time_diff": 1975.442582
+  "total_time_diff": 1468.365479
 }
