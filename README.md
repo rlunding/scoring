@@ -7,7 +7,7 @@ Look in the wiki to see how the raspberries should be setup.
 
 ## Settings files
 ```
-instance/settings.py
+instance/spectator.py
 
 DEBUG = False
 SERVER_NAME = '192.168.42.X:8000'
