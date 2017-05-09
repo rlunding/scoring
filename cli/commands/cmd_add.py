@@ -21,7 +21,7 @@ db.app = app
 fake = Faker()
 
 RANDOM_TEAMS = 30
-RANDOM_SCHEDULES_PR_TEAM = 10
+RANDOM_SCHEDULES_PR_TEAM = 15
 TABLES = 10
 
 
@@ -226,7 +226,7 @@ def peers():
 
 @click.command()
 @click.argument('times', int)
-def scores_slow(times):
+def scores_pull(times):
     """
     Slowly add some scores
     """
@@ -337,7 +337,8 @@ def prepare_test(ctx):
 cli.add_command(teams)
 cli.add_command(schedules)
 cli.add_command(scores)
-cli.add_command(scores_slow)
+cli.add_command(scores_pull)
 cli.add_command(peers)
 cli.add_command(all)
+cli.add_command(scores_push)
 cli.add_command(prepare_test)
