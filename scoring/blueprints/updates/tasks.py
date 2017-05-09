@@ -98,6 +98,7 @@ def push_new_scores(score_id, peer_list):
     data = {
         'score': score,
         'peers': peers + (peer_list if peer_list is not None else []),  # Combine lists of peers
+        'sender_ip': current_app.config['SERVER_NAME']
     }
     data = json.dumps(data, default=datetime_handler)
     output_json = {

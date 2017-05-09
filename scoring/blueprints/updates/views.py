@@ -136,12 +136,14 @@ def push():
     data = json.loads(request.json.get('data'))
     score_json = data['score']
     peer_list = data['peers']
+    sender_ip = data['sender_ip']
 
     schedule = Schedule.find_by_id(score_json['id'])
     if schedule is None:
         return render_json(406, {'error': 'Unknown schedule'})
     try:
         score = Score.insert_from_json(score_json)
+        Log.log_score(score_json, sender_ip)
         if score:
             schedule.completed = True
             schedule.version += 1

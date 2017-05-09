@@ -1,5 +1,6 @@
 import click
 import random
+from time import sleep
 
 from datetime import datetime, timedelta
 
@@ -113,28 +114,28 @@ def schedules():
                 'team_2_id': None,
                 'table': random.randint(1, TABLES),
                 'start_date': start_date,
-                'completed': random.choice([True, False])
+                'completed': False  # random.choice([True, False])
             }
 
             data.append(params)
 
-    if RANDOM_TEAMS > 10:
-        for (t1, t2) in zip(teams[::2], teams[1::2]):
-            start_date = fake.date_time_between(
-                start_date='-3h', end_date='+5h').strftime('%s')
-            start_date = datetime.utcfromtimestamp(
-                float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
-
-            params = {
-                'id': generate_uuid(),
-                'team_1_id': t1.id,
-                'team_2_id': t2.id,
-                'table': TABLES+1,
-                'start_date': start_date,
-                'completed': random.choice([True, False])
-            }
-
-            data.append(params)
+    # if RANDOM_TEAMS > 10:
+    #     for (t1, t2) in zip(teams[::2], teams[1::2]):
+    #         start_date = fake.date_time_between(
+    #             start_date='-3h', end_date='+5h').strftime('%s')
+    #         start_date = datetime.utcfromtimestamp(
+    #             float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
+    #
+    #         params = {
+    #             'id': generate_uuid(),
+    #             'team_1_id': t1.id,
+    #             'team_2_id': t2.id,
+    #             'table': TABLES+1,
+    #             'start_date': start_date,
+    #             'completed': random.choice([True, False])
+    #         }
+    #
+    #         data.append(params)
 
     return _bulk_insert(Schedule, data, 'schedules')
 
@@ -224,6 +225,43 @@ def peers():
 
 
 @click.command()
+@click.argument('times', int)
+def scores_slow(times):
+    """
+    Slowly add some scores
+    """
+    click.echo("Adding some scores slowly")
+    for x in range(0, int(times)):
+        # Add score
+        schedule = Schedule.get_random_row()
+
+        params = {
+            'id': schedule.id,
+            'team_1_id': schedule.team_1_id,
+            'team_2_id': schedule.team_2_id,
+            'table': schedule.table,
+            'start_date': schedule.start_date,
+            'score_1': random.randint(0, 200),
+            'score_2': 0,
+            'version': schedule.version
+        }
+        Score.insert_from_json(params)
+        click.echo("Score added")
+
+        schedule.completed = True
+        schedule.version += 1
+        schedule.save()
+        click.echo("Schedule added. Table: %s" % schedule.table)
+
+        # Wait
+        rand = random.randint(1, 5)
+        click.echo("Waiting %s seconds..." % rand)
+        sleep(rand)
+
+    return click.echo("Adding scores slowly is completed")
+
+
+@click.command()
 @click.pass_context
 def all(ctx):
     """
@@ -240,8 +278,25 @@ def all(ctx):
     return None
 
 
+@click.command()
+@click.pass_context
+def prepare_test(ctx):
+    """
+    Generate all data.
+
+    :param ctx:
+    :return: None
+    """
+    ctx.invoke(teams)
+    ctx.invoke(schedules)
+
+    return None
+
+
 cli.add_command(teams)
 cli.add_command(schedules)
 cli.add_command(scores)
+cli.add_command(scores_slow)
 cli.add_command(peers)
 cli.add_command(all)
+cli.add_command(prepare_test)

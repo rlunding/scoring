@@ -1,7 +1,7 @@
 import datetime
 import pytz
 
-from sqlalchemy import desc, or_
+from sqlalchemy import desc, or_, func
 from lib.util_sqlalchemy import ResourceMixin, AwareDateTime
 
 from scoring.extensions import db
@@ -57,6 +57,15 @@ class Schedule(ResourceMixin, db.Model):
         """
 
         return Schedule.query.filter(Schedule.table == table_id).order_by(desc(Schedule.start_date)).all()
+
+    @classmethod
+    def get_random_row(cls):
+        """
+        Return a random schedule that haven't been completed
+
+        :return: schedule
+        """
+        return Schedule.query.filter(Schedule.completed.is_(False)).order_by(func.random()).first()
 
     @classmethod
     def find_by_team_id(cls, team_id):
