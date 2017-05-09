@@ -66,7 +66,7 @@ def create_app(settings_override=None):
     app = Flask(__name__, instance_relative_config=True)
 
     app.config.from_object('config.settings')
-    app.config.from_pyfile('settings.py', silent=True)
+    app.config.from_pyfile('spectator.py', silent=True)
 
     if settings_override:
         app.config.update(settings_override)
@@ -95,7 +95,7 @@ def create_judge_app(settings_override=None):
     app = Flask(__name__, instance_relative_config=True)
 
     app.config.from_object('config.settings')
-    app.config.from_pyfile('settings_judge.py', silent=True)
+    app.config.from_pyfile('judge.py', silent=True)
 
     if settings_override:
         app.config.update(settings_override)
@@ -124,7 +124,7 @@ def create_background_app(settings_override=None):
     app = Flask(__name__, instance_relative_config=True)
 
     app.config.from_object('config.settings')
-    app.config.from_pyfile('settings_updates.py', silent=True)
+    app.config.from_pyfile('updates.py', silent=True)
 
     if settings_override:
         app.config.update(settings_override)
