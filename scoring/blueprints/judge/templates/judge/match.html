@@ -11,14 +11,15 @@
 {% block body %}
     <section>
         <div class="container header-section">
-            <div class="row">
+            <!--<div class="row">
                 <div class="col-sm-12">
-                    <h1>{{ _('Judge | Match') }}</h1>
+                    <h3>{{ _('Judge | Match') }}</h3>
                 </div>
             </div>
-            <hr>
+            <hr>-->
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
                     {{ render_form(url_for('judge.match', schedule_id=schedule_id), form, legend='Match') }}
                 </div>
             </div>

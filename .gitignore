@@ -6,8 +6,8 @@ celerybeat*
 
 # Dont add real settings-file
 instance/settings.py
-instance/settings_judge.py
-instance/settings_updates.py
+instance/judge.py
+instance/updates.py
 
 adhoc.txt
 .DS_Store
