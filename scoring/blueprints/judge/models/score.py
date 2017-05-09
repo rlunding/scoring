@@ -137,6 +137,7 @@ class Score(ResourceMixin, db.Model):
         score.start_date = json.get('start_date', datetime.datetime.now(pytz.utc))
         score.end_date = json.get('end_date', datetime.datetime.now(pytz.utc))
         score.version = json['version']
+        score.created_on = json.get('created_on', datetime.datetime.now(pytz.utc))
 
         db.session.merge(score)
         db.session.commit()

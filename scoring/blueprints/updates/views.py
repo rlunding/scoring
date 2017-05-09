@@ -99,9 +99,12 @@ def pull(timestamp):
         return render_json(400, {'error': 'Timestamp ill formatted'})
 
     try:
-        teams = [team.to_json() for team in Team.updates_after_timestamp(timestamp_validated)]
-        schedules = [schedule.to_json() for schedule in Schedule.updates_after_timestamp(timestamp_validated)]
-        scores = [score.to_json() for score in Score.updates_after_timestamp(timestamp_validated)]
+        teams = Team.updates_after_timestamp(timestamp_validated)
+        teams = [] if teams is None else [team.to_json() for team in teams]
+        schedules = Schedule.updates_after_timestamp(timestamp_validated)
+        schedules = [] if schedules is None else [schedule.to_json() for schedule in schedules]
+        scores = Score.updates_after_timestamp(timestamp_validated)
+        scores = [] if scores is None else [score.to_json() for score in scores]
 
         return render_json(200, {
             'teams': teams,

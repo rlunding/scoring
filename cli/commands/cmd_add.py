@@ -251,7 +251,7 @@ def scores_slow(times):
         schedule.completed = True
         schedule.version += 1
         schedule.save()
-        click.echo("Schedule added. Table: %s" % schedule.table)
+        click.echo("Schedule updated. Table: %s" % schedule.table)
 
         # Wait
         rand = random.randint(1, 5)
