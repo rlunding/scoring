@@ -112,9 +112,9 @@ def pull(timestamp):
             'scores': scores,
             'time': datetime.datetime.now(pytz.utc).isoformat(),
             'timestamp': timestamp_validated.isoformat(),
-            'teams_last_update': Team.last_update().isoformat(),
-            'schedules_last_update': Schedule.last_update().isoformat(),
-            'scores_last_update': Score.last_update().isoformat(),
+            'teams_last_update': Team.last_update().isoformat() if Team.last_update() else None,
+            'schedules_last_update': Schedule.last_update().isoformat() if Schedule.last_update() else None,
+            'scores_last_update': Score.last_update().isoformat() if Score.last_update() else None,
             'teams_updates': len(teams),
             'schedule_updates': len(schedules),
             'score_updates': len(scores)

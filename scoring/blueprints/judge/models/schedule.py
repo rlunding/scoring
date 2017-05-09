@@ -87,7 +87,11 @@ class Schedule(ResourceMixin, db.Model):
         :return: timestamp
         """
 
-        return Schedule.query.with_entities(Schedule.updated_on).order_by(desc(Schedule.updated_on)).first()[0]
+        schedule = Schedule.query.with_entities(Schedule.updated_on).order_by(desc(Schedule.updated_on)).first()
+        if schedule:
+            return schedule[0]
+        else:
+            return None
 
     @classmethod
     def updates_after_timestamp(cls, timestamp):

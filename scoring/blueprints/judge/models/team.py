@@ -45,8 +45,11 @@ class Team(ResourceMixin, db.Model):
 
         :return: timestamp
         """
-
-        return Team.query.with_entities(Team.updated_on).order_by(desc(Team.updated_on)).first()[0]
+        team = Team.query.with_entities(Team.updated_on).order_by(desc(Team.updated_on)).first()
+        if team:
+            return team[0]
+        else:
+            return None
 
     @classmethod
     def updates_after_timestamp(cls, timestamp):

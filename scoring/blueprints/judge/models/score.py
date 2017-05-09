@@ -80,7 +80,11 @@ class Score(ResourceMixin, db.Model):
         :return: timestamp
         """
 
-        return Score.query.with_entities(Score.updated_on).order_by(desc(Score.updated_on)).first()[0]
+        score = Score.query.with_entities(Score.updated_on).order_by(desc(Score.updated_on)).first()
+        if score:
+            return score[0]
+        else:
+            return None
 
     @classmethod
     def updates_after_timestamp(cls, timestamp):
