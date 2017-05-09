@@ -92,7 +92,7 @@ class Log(ResourceMixin, db.Model):
         log.save()
 
     @classmethod
-    def log_score(cls, json, ip_sender):
+    def log_score(cls, json, ip_sender, type):
         """
         Log a received score entry.
          
@@ -103,7 +103,7 @@ class Log(ResourceMixin, db.Model):
         log.ip_receiver = current_app.config['SERVER_NAME']
         log.timestamp_sender = json['created_on']
         log.timestamp_receiver = datetime.datetime.now(pytz.utc).isoformat()
-        log.type = 'score_received'
+        log.type = type
         log.description = json['id']
         log.save()
         print('Score logged')

@@ -262,6 +262,47 @@ def scores_slow(times):
 
 
 @click.command()
+@click.argument('times', int)
+def scores_push(times):
+    """
+    Slowly push some scores
+    """
+    click.echo("Pushing some scores slowly")
+    for x in range(0, int(times)):
+        # Add score
+        schedule = Schedule.get_random_row()
+
+        params = {
+            'id': schedule.id,
+            'team_1_id': schedule.team_1_id,
+            'team_2_id': schedule.team_2_id,
+            'table': schedule.table,
+            'start_date': schedule.start_date,
+            'score_1': random.randint(0, 200),
+            'score_2': 0,
+            'version': schedule.version
+        }
+        score = Score.insert_from_json(params)
+        click.echo("Score added")
+
+        schedule.completed = True
+        schedule.version += 1
+        schedule.save()
+        click.echo("Schedule updated. Table: %s" % schedule.table)
+
+        from scoring.blueprints.updates.tasks import push_new_scores
+        push_new_scores.delay(score.id, None)
+        click.echo("Score pushed to peers")
+
+        # Wait
+        rand = random.randint(1, 5)
+        click.echo("Waiting %s seconds..." % rand)
+        sleep(rand)
+
+    return click.echo("Adding scores slowly is completed")
+
+
+@click.command()
 @click.pass_context
 def all(ctx):
     """

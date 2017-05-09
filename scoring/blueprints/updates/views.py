@@ -146,7 +146,7 @@ def push():
         return render_json(406, {'error': 'Unknown schedule'})
     try:
         score = Score.insert_from_json(score_json)
-        Log.log_score(score_json, sender_ip)
+        Log.log_score(score_json, sender_ip, 'score_pushed')
         if score:
             schedule.completed = True
             schedule.version += 1
