@@ -71,7 +71,7 @@ def pull_new_updates():
             for json_data in data['scores']:
                 Score.insert_from_json(json_data)
                 # Log
-                Log.log_score(json_data, peer.ip, 'score_received')
+                Log.log_score(json_data, peer.ip, 'score_pulled')
         except:
             print("Ill-formatted JSON response")
 

@@ -106,10 +106,10 @@ class Score(ResourceMixin, db.Model):
             'table': self.table,
             'score_1': self.score_1,
             'score_2': self.score_2,
-            'start_date': self.start_date,
-            'end_date': self.end_date,
+            'start_date': self.start_date.isoformat(),
+            'end_date': self.end_date.isoformat(),
             'version': self.version,
-            'created_on': self.created_on
+            'created_on': self.created_on.isoformat()
         }
 
         return params
