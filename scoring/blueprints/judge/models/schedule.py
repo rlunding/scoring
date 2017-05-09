@@ -111,8 +111,8 @@ class Schedule(ResourceMixin, db.Model):
             'team_1_id': self.team_1_id,
             'team_2_id': self.team_2_id,
             'table': self.table,
-            'start_date': self.start_date.isoformat(),
-            'end_date': self.end_date.isoformat(),
+            'start_date': self.start_date.isoformat() if self.start_date else None,
+            'end_date': self.end_date.isoformat() if self.end_date else None,
             'completed': self.completed,
             'version': self.version
         }
