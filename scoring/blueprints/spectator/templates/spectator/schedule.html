@@ -1,6 +1,13 @@
 {% extends "layouts/_base.html" %}
 
-{% block page_title %}Table X | Schedule {% endblock %}
+{% if config['SCORING_APP_TYPE'] == 'JUDGE' %}
+    {% set judge_page = True %}
+{% else %}
+    {% set judge_page = False %}
+{% endif %}
+
+
+{% block page_title %}Table {{ table_id }} | Schedule {% endblock %}
 
 {% block css %}
     {{ super() }}
@@ -31,14 +38,32 @@
                                 {% else %}
                                     {% set two_teams = False %}
                                 {% endif %}
+                                <th class="col-header">{{ _('Completed') }}</th>
+                                {% if judge_page %}
+                                    <th class="col-header">{{ _('Edit') }}</th>
+                                {% endif %}
                             </tr></thead>
                             <tbody>
                                 {% for schedule in schedules %}
                                     <tr {% if schedule.start_date < current_time %} class="bg-danger"{% else %} class="bg-info"{% endif %}>
                                         <td><time class="from-now" data-datetime="{{ schedule.start_date }}">{{ schedule.start_date }}</time></td>
-                                        <td><a href="{{ url_for('page.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a></td>
+                                        <td><a href="{{ url_for('spectator.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a></td>
                                         {% if two_teams %}
-                                            <td><a href="{{ url_for('page.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a></td>
+                                            <td><a href="{{ url_for('spectator.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a></td>
+                                        {% endif %}
+
+                                        {% if schedule.completed %}
+                                            <td><i class="fa fa-check-square-o"></i></td>
+                                        {% else %}
+                                            {% if judge_page %}
+                                                <td><a href="{{ url_for('judge.match', schedule_id=schedule.id) }}">Start match</a></td>
+                                            {% else %}
+                                                <td><i class="fa fa-square-o"></i></td>
+                                            {% endif %}
+                                        {% endif %}
+
+                                        {% if judge_page %}
+                                            <td><i class="fa fa-pencil"></i></td>
                                         {% endif %}
                                     </tr>
                                 {% endfor %}

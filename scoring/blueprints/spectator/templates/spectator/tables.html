@@ -1,5 +1,12 @@
 {% extends "layouts/_base.html" %}
 
+{% if config['SCORING_APP_TYPE'] == 'JUDGE' %}
+
+{% else %}
+
+{% endif %}
+
+
 {% block page_title %}Tables {% endblock %}
 
 {% block css %}

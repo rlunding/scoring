@@ -31,29 +31,8 @@ def before_request():
 
 @judge.route('/')
 def home():
-    return redirect(url_for('judge.tables'))
+    return redirect(url_for('spectator.tables'))
     #return render_template('judge/home.html')
-
-
-@judge.route('/table', methods=['GET'])
-def tables():
-    # TODO: this assumes that all table with scores also have a schedule-element
-    tables = db.session.query(Schedule.table).distinct().order_by(Schedule.table).all()
-    return render_template('judge/tables.html', tables=tables)
-
-
-@judge.route('/table/<int:table_id>', methods=['GET'])
-def table(table_id):
-    current_time = tzware_datetime()
-    current_time_offset = timedelta(minutes=-10)
-    schedules = Schedule.find_by_table_id(table_id)
-    scores = Score.find_by_table_id(table_id)
-    return render_template('judge/table.html',
-                           table_id=table_id,
-                           current_time=current_time,
-                           current_time_offset=current_time_offset,
-                           schedules=schedules,
-                           scores=scores)
 
 
 # Match ---------------------------------------------------------------------------
@@ -95,7 +74,7 @@ def match(schedule_id):
         push_new_scores.delay(score.id, None)
 
         flash('Scoring has been saved successfully.', 'success')
-        return redirect(url_for('judge.table', table_id=schedule.table))
+        return redirect(url_for('spectator.table', table_id=schedule.table))
 
     return render_template('judge/match.html',
                            schedule_id=schedule_id,
