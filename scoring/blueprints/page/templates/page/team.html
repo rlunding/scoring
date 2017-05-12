@@ -1,6 +1,13 @@
 {% extends "layouts/_base.html" %}
 
-{% block page_title %}Team {% endblock %}
+{% if config['SCORING_APP_TYPE'] == 'JUDGE' %}
+    {% set table_endpoint = 'judge.tables' %}
+{% else %}
+    {% set table_endpoint = 'spectator.tables' %}
+{% endif %}
+
+
+{% block page_title %}{{ _('Team') }} {{ team.name }} {% endblock %}
 
 {% block css %}
     {{ super() }}
@@ -12,7 +19,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h1>{{ _('Team') }} {{ team.name }}</h1>
-                    <p>...</p>
+                    <p>Back to <a href="{{ url_for('page.teams') }}">teams</a></p>
                 </div>
             </div>
             <hr>
@@ -32,7 +39,7 @@
                                 {% for schedule in schedules %}
                                     <tr {% if schedule.start_date < current_time %} class="bg-danger"{% else %} class="bg-info"{% endif %}>
                                         <td><time class="from-now" data-datetime="{{ schedule.start_date }}">{{ schedule.start_date }}</time></td>
-                                        <td><a href="{{ url_for('spectator.table', table_id=schedule.table) }}">{{ schedule.table }}</a></td>
+                                        <td><a href="{{ url_for(table_endpoint, table_id=schedule.table) }}">{{ schedule.table }}</a></td>
                                         <td>{% if schedule.completed %}<i class="fa fa-check"></i>{% endif %} </td>
                                     </tr>
                                 {% endfor %}
@@ -55,7 +62,7 @@
                                 {% for score in scores %}
                                     <tr {% if score.start_date > current_time_offset %} class="bg-success"{% else %} class=""{% endif %}>
                                         <td><time class="from-now" data-datetime="{{ score.start_date }}">{{ score.start_date }}</time></td>
-                                        <td><a href="{{ url_for('spectator.table', table_id=score.table) }}">{{ score.table }}</a></td>
+                                        <td><a href="{{ url_for(table_endpoint, table_id=score.table) }}">{{ score.table }}</a></td>
                                         <td>{{ score.score_1 }}</td>
                                     </tr>
                                 {% endfor %}

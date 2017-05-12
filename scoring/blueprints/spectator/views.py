@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for
 
 from lib.util_datetime import tzware_datetime, timedelta
-from scoring.blueprints.judge.models.team import Team, db
 from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 
@@ -22,7 +21,8 @@ def home():
 @spectator.route('/table', methods=['GET'])
 def tables():
     # TODO: this assumes that all table with scores also have a schedule-element
-    tables = db.session.query(Schedule.table).distinct().order_by(Schedule.table).all()
+    #tables = db.session.query(Schedule.table).distinct().order_by(Schedule.table).all()
+    tables = Schedule.get_all_tables()
     return render_template('spectator/tables.html', tables=tables)
 
 
@@ -60,22 +60,3 @@ def score(table_id):
                            table_id=table_id,
                            scores=scores,
                            current_time_offset=current_time_offset)
-
-
-# Teams ---------------------------------------------------------------------------
-@spectator.route('/team/<int:team_id>', methods=['GET'])
-def team(team_id):
-    # Show team information
-    team = Team.find_by_id(team_id)
-    if team is None:
-        return render_template('errors/404.html'), 404
-    current_time = tzware_datetime()
-    current_time_offset = timedelta(minutes=-10)
-    schedules = Schedule.find_by_team_id(team_id)
-    scores = Score.find_by_team_id(team_id)
-    return render_template('spectator/team.html',
-                           team=team,
-                           current_time=current_time,
-                           current_time_offset=current_time_offset,
-                           schedules=schedules,
-                           scores=scores)

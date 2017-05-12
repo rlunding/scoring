@@ -1,0 +1,66 @@
+{% extends "layouts/_base.html" %}
+
+{% import 'macros/_items.html' as items %}
+{% import 'macros/_form.html' as f with context %}
+
+{% block page_title %}{{ _('Teams ') }}{% endblock %}
+
+{% block css %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>Teams</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    {{ f.search('page.teams') }}
+                    {% if teams.total == 0 %}
+                        <h3>No results found</h3>
+                        {% if request.args.get('q') %}
+                            <p>{{ _('Try limiting or removing your search terms.') }}</p>
+                        {% else %}
+                            <p>{{ _('There are no teams present, you should wait to some is added')}}</p>
+                        {% endif %}
+                    {% else %}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="col-header col-xs-6">
+                                        {{ items.sort('name', _('Name')) }}
+                                    </th>
+                                    <th class="col-header col-xs-6">
+                                        {{ _('Next match') }}
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for team in teams.items %}
+                                    <tr>
+                                        <td><a href="{{ url_for('page.team', team_id=team.id) }}">{{ team.name }}</a></td>
+                                        <td><time class="from-now" data-datetime="some date">some date</time></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    {{ items.paginate(teams) }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+{% block js %}
+    {{ super() }}
+{% endblock %}

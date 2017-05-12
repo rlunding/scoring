@@ -1,6 +1,6 @@
 from lib.util_sqlalchemy import ResourceMixin
 
-from sqlalchemy import desc
+from sqlalchemy import desc, and_, or_
 from scoring.extensions import db
 
 # Do not delete this imports
@@ -37,6 +37,23 @@ class Team(ResourceMixin, db.Model):
         """
 
         return Team.query.filter(Team.id == team_id).first()
+
+    @classmethod
+    def search(cls, query):
+        """
+        Search a resource by 1 or more fields.
+
+        :param query: Search query
+        :type query: str
+        :return: SQLAlchemy filter
+        """
+
+        if not query:
+            return ''
+
+        search_query = '%{0}%'.format(query)
+        search_chain = (Team.name.ilike(search_query), None)
+        return or_(*search_chain)
 
     @classmethod
     def last_update(cls):

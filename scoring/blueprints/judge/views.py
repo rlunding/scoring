@@ -56,25 +56,7 @@ def table(table_id):
                            scores=scores)
 
 
-# Teams ---------------------------------------------------------------------------
-@judge.route('/team/<int:team_id>', methods=['GET'])
-def team(team_id):
-    # Show team information
-    team = Team.find_by_id(team_id)
-    if team is None:
-        return render_template('errors/404.html'), 404
-    current_time = tzware_datetime()
-    current_time_offset = timedelta(minutes=-10)
-    schedules = Schedule.find_by_team_id(team_id)
-    scores = Score.find_by_team_id(team_id)
-    return render_template('judge/team.html',
-                           team=team,
-                           current_time=current_time,
-                           current_time_offset=current_time_offset,
-                           schedules=schedules,
-                           scores=scores)
-
-
+# Match ---------------------------------------------------------------------------
 @judge.route('/match/<int:schedule_id>', methods=['GET', 'POST'])
 def match(schedule_id):
     schedule = Schedule.find_by_id(schedule_id)

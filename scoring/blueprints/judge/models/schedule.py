@@ -94,6 +94,15 @@ class Schedule(ResourceMixin, db.Model):
             return None
 
     @classmethod
+    def get_all_tables(cls):
+        """
+        Return a list of all tables
+
+        :return:
+        """
+        return Schedule.query.with_entities(Schedule.table).distinct().order_by(Schedule.table).all()
+
+    @classmethod
     def updates_after_timestamp(cls, timestamp):
         """
         Return all schedules that have been updated after the timestamp

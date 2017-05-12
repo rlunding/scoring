@@ -38,9 +38,9 @@
                                 {% for schedule in schedules %}
                                 <tr {% if schedule.start_date < current_time %} class="bg-danger"{% else %} class="bg-info"{% endif %}>
                                     <td><time class="from-now" data-datetime="{{ schedule.start_date }}">{{ schedule.start_date }}</time></td>
-                                    <td><a href="{{ url_for('spectator.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a></td>
+                                    <td><a href="{{ url_for('page.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a></td>
                                     {% if two_teams %}
-                                        <td><a href="{{ url_for('spectator.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a></td>
+                                        <td><a href="{{ url_for('page.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a></td>
                                     {% endif %}
                                 </tr>
                             {% endfor %}
@@ -71,10 +71,10 @@
                                 {% for score in scores %}
                                 <tr {% if score.start_date > current_time_offset %} class="bg-success"{% else %} class=""{% endif %}>
                                     <td><time class="from-now" data-datetime="{{ score.start_date }}">{{ score.start_date }}</time></td>
-                                    <td><a href="{{ url_for('spectator.team', team_id=score.team_1_id) }}">{{ score.team_1.name }}</a></td>
+                                    <td><a href="{{ url_for('page.team', team_id=score.team_1_id) }}">{{ score.team_1.name }}</a></td>
                                     <td>{{ score.score_1 }}</td>
                                     {% if two_teams %}
-                                        <td><a href="{{ url_for('spectator.team', team_id=score.team_2_id) }}">{{ score.team_2.name }}</a></td>
+                                        <td><a href="{{ url_for('page.team', team_id=score.team_2_id) }}">{{ score.team_2.name }}</a></td>
                                         <td>{{ score.score_2 }}</td>
                                     {% endif %}
                                 </tr>

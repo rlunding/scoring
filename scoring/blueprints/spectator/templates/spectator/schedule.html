@@ -36,9 +36,9 @@
                                 {% for schedule in schedules %}
                                     <tr {% if schedule.start_date < current_time %} class="bg-danger"{% else %} class="bg-info"{% endif %}>
                                         <td><time class="from-now" data-datetime="{{ schedule.start_date }}">{{ schedule.start_date }}</time></td>
-                                        <td><a href="{{ url_for('spectator.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a></td>
+                                        <td><a href="{{ url_for('page.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a></td>
                                         {% if two_teams %}
-                                            <td><a href="{{ url_for('spectator.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a></td>
+                                            <td><a href="{{ url_for('page.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a></td>
                                         {% endif %}
                                     </tr>
                                 {% endfor %}
