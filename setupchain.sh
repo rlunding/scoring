@@ -41,12 +41,15 @@ docker-compose up -d --build
 
 if [ $AP = "AP" ]; then
 	echo "Setting up firewall for AP"
-	IP=$(docker inspect -f '{{ .NetworkSettings.Networks.scoring_default.IPAddress }}' scoring_updates_1)
+	IP=$(docker inspect -f '{{ .NetworkSettings.Networks.scoring_default.IPAddress }}' scoring_website_1)
 	echo $IP
-	echo "Deleting old rule if any..."
-	sudo iptables -D DOCKER -d $IP -m iprange --src-range 192.168.42.10-192.168.42.200 -j DROP
+#	echo "Deleting old rule if any..."
+#	sudo iptables -D DOCKER ! -d $IP -i wlan1 -j DROP
+#	sudo iptables -D DOCKER -d $IP -m iprange --src-range 192.168.42.10-192.168.42.200 -j DROP
 	echo "Insert new rule..."
-	sudo iptables -I DOCKER -d $IP -m iprange --src-range 192.168.42.10-192.168.42.200 -j DROP
+	sudo iptables -I DOCKER ! -d $IP -i wlan1 -j DROP
+#	sudo iptables -I DOCKER -d $IP -i wlan1 -j DROP
+#	sudo iptables -I DOCKER -d $IP -m iprange --src-range 192.168.42.10-192.168.42.200 -j DROP
 fi
 
 echo "** Setup Chain Done **"
