@@ -6,7 +6,6 @@ from werkzeug.contrib.fixers import ProxyFix
 from celery import Celery
 from itsdangerous import URLSafeTimedSerializer
 
-from scoring.blueprints.page import page
 from scoring.blueprints.judge import judge
 from scoring.blueprints.spectator import spectator
 from scoring.blueprints.updates import updates
