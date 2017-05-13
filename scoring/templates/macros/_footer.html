@@ -46,8 +46,8 @@
             <div class="col-sm-12">
                 <p>
                     Scoring &copy; {{ current_year() }} <span class="hidden-xs">|</span><br class="visible-xs">
-                    <a href="">{{ _('About') }}</a> <span class="hidden-xs">|</span><br class="visible-xs">
-                    <a href="">{{ _('FAQ') }}</a> <span class="hidden-xs">|</span><br class="visible-xs">
+                    <a href="{{ url_for('spectator.about') }}">{{ _('About') }}</a> <span class="hidden-xs">|</span><br class="visible-xs">
+                    <a href="{{ url_for('spectator.faq') }}">{{ _('FAQ') }}</a> <span class="hidden-xs">|</span><br class="visible-xs">
                     <a href="mailto:contact@scoring.com">contact@scoring.com</a>
                 </p>
             </div>

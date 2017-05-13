@@ -23,12 +23,12 @@ def home():
 
 @spectator.route('/faq')
 def faq():
-    return render_template('page/faq.html')
+    return render_template('spectator/faq.html')
 
 
 @spectator.route('/about')
 def about():
-    return render_template('page/about.html')
+    return render_template('spectator/about.html')
 
 
 # Tables --------------------------------------------------------------------------
