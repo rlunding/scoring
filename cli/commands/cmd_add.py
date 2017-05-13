@@ -264,14 +264,7 @@ def scores_pull(times):
 
     return click.echo("Adding scores slowly is completed")
 
-
-@click.command()
-@click.argument('times', int)
-def scores_push(times):
-    """
-    Slowly push some scores
-    """
-    click.echo("Pushing some scores slowly")
+def push_scores_helper(times, delay):
     for x in range(0, int(times)):
         # Add score
         schedule = Schedule.get_random_row()
@@ -299,11 +292,37 @@ def scores_push(times):
         click.echo("Score pushed to peers")
 
         # Wait
-        rand = random.randint(1, 5)
-        click.echo("Waiting %s seconds..." % rand)
-        sleep(rand)
+        if delay is None:
+            rand = random.randint(1, 5)
+            click.echo("Waiting %s seconds..." % rand)
+            sleep(rand)
+        else:
+            click.echo("Waiting %s seconds..." % delay)
+            sleep(delay)
+
+@click.command()
+@click.argument('times', int)
+def scores_push(times):
+    """
+    Slowly push some scores
+    """
+    click.echo("Pushing some scores slowly")
+    push_scores_helper(times)
 
     return click.echo("Adding scores slowly is completed")
+
+
+@click.command()
+@click.pass_context
+def stress_test(ctx):
+    """
+    Stress test the system by adding a lot of scores
+    with small time delay
+
+    """
+    while True:
+        ctx.invoke(all)
+        push_scores_helper(200, 0.1)
 
 
 @click.command()
@@ -346,3 +365,4 @@ cli.add_command(peers)
 cli.add_command(all)
 cli.add_command(scores_push)
 cli.add_command(prepare_test)
+cli.add_command(stress_test)
