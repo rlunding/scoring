@@ -21,6 +21,8 @@ class Team(ResourceMixin, db.Model):
 
     # Team details
     name = db.Column(db.String(128), index=True)
+    country = db.Column(db.String(128), index=True)
+    country_code = db.Column(db.String(32))
     version = db.Column(db.Integer, nullable=False, default=0)
 
     def __init__(self, **kwargs):
@@ -52,7 +54,8 @@ class Team(ResourceMixin, db.Model):
             return ''
 
         search_query = '%{0}%'.format(query)
-        search_chain = (Team.name.ilike(search_query), None)
+        search_chain = (Team.name.ilike(search_query),
+                        Team.country.ilike(search_query))
         return or_(*search_chain)
 
     @classmethod
@@ -89,7 +92,9 @@ class Team(ResourceMixin, db.Model):
         params = {
             'id': self.id,
             'name': self.name,
-            'version': self.version
+            'version': self.version,
+            'country': self.country,
+            'country_code': self.country_code
         }
 
         return params
@@ -111,6 +116,8 @@ class Team(ResourceMixin, db.Model):
             team.id = json['id']
         team.name = json['name']
         team.version = json['version']
+        team.country = json['country']
+        team.country_code = json['country_code']
 
         db.session.merge(team)
         db.session.commit()

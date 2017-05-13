@@ -13,12 +13,14 @@
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
                     <h1>Teams</h1>
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
                     {{ f.search('spectator.teams') }}
                     {% if teams.total == 0 %}
                         <h3>No results found</h3>
@@ -31,10 +33,13 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th class="col-header col-xs-6">
+                                    <th class="col-header col-xs-4">
                                         {{ items.sort('name', _('Name')) }}
                                     </th>
-                                    <th class="col-header col-xs-6">
+                                    <th class="col-header col-xs-4">
+                                        {{ items.sort('country', _('Country')) }}
+                                    </th>
+                                    <th class="col-header col-xs-4">
                                         {{ _('Next match') }}
                                     </th>
                                 </tr>
@@ -43,6 +48,7 @@
                                 {% for team in teams.items %}
                                     <tr>
                                         <td><a href="{{ url_for('spectator.team', team_id=team.id) }}">{{ team.name }}</a></td>
+                                        <td><span class="flag-icon flag-icon-{{ team.country_code.lower() }}"></span> {{ team.country }}</td>
                                         <td><time class="from-now" data-datetime="some date">some date</time></td>
                                     </tr>
                                 {% endfor %}

@@ -6,6 +6,7 @@ from datetime import datetime, timedelta
 
 from faker import Faker
 
+from lib.contry_code_converter import get_country
 from lib.uuid import generate_uuid
 from scoring.app import create_app
 from scoring.extensions import db
@@ -81,9 +82,12 @@ def teams():
     data = []
 
     for i in range(0, RANDOM_TEAMS):
+        country_code = fake.country_code()
         params = {
             'id': generate_uuid(),
-            'name': fake.first_name()
+            'name': fake.first_name(),
+            'country': get_country(country_code),
+            'country_code': country_code
         }
 
         data.append(params)
@@ -119,23 +123,23 @@ def schedules():
 
             data.append(params)
 
-    # if RANDOM_TEAMS > 10:
-    #     for (t1, t2) in zip(teams[::2], teams[1::2]):
-    #         start_date = fake.date_time_between(
-    #             start_date='-3h', end_date='+5h').strftime('%s')
-    #         start_date = datetime.utcfromtimestamp(
-    #             float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
-    #
-    #         params = {
-    #             'id': generate_uuid(),
-    #             'team_1_id': t1.id,
-    #             'team_2_id': t2.id,
-    #             'table': TABLES+1,
-    #             'start_date': start_date,
-    #             'completed': random.choice([True, False])
-    #         }
-    #
-    #         data.append(params)
+    if RANDOM_TEAMS > 10:
+        for (t1, t2) in zip(teams[::2], teams[1::2]):
+            start_date = fake.date_time_between(
+                start_date='-3h', end_date='+5h').strftime('%s')
+            start_date = datetime.utcfromtimestamp(
+                float(start_date)).strftime('%Y-%m-%dT%H:%M:%S Z')
+
+            params = {
+                'id': generate_uuid(),
+                'team_1_id': t1.id,
+                'team_2_id': t2.id,
+                'table': TABLES+1,
+                'start_date': start_date,
+                'completed': random.choice([True, False])
+            }
+
+            data.append(params)
 
     return _bulk_insert(Schedule, data, 'schedules')
 

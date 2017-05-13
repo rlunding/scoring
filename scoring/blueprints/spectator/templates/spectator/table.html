@@ -31,15 +31,21 @@
                     <p>This table have no scheduled matches</p>
                     {% else %}
                         <table class="table">
+                            {% if schedules[0].team_2 %}
+                                {% set two_teams = True %}
+                            {% else %}
+                                {% set two_teams = False %}
+                            {% endif %}
+
                             <thead><tr>
                                 <th class="col-header col-xs-3">{{ _('Start') }}</th>
-                                <th class="col-header">{{ _('Team 1') }}</th>
-                                {% if schedules[0].team_2 %}
+                                {% if two_teams %}
+                                    <th class="col-header">{{ _('Team 1') }}</th>
                                     <th class="col-header">{{ _('Team 2') }}</th>
-                                    {% set two_teams = True %}
                                 {% else %}
-                                    {% set two_teams = False %}
+                                    <th class="col-header">{{ _('Team') }}</th>
                                 {% endif %}
+
                                 <th class="col-header">{{ _('Completed') }}</th>
                                 {% if judge_page %}
                                     <th class="col-header">{{ _('Edit') }}</th>
@@ -49,9 +55,15 @@
                                 {% for schedule in schedules %}
                                 <tr {% if schedule.start_date < current_time %} class="bg-danger"{% else %} class="bg-info"{% endif %}>
                                     <td><time class="from-now" data-datetime="{{ schedule.start_date }}">{{ schedule.start_date }}</time></td>
-                                    <td><a href="{{ url_for('spectator.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a></td>
+                                    <td>
+                                        <span class="flag-icon flag-icon-{{ schedule.team_1.country_code.lower() }}"></span>
+                                        <a href="{{ url_for('spectator.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a>
+                                    </td>
                                     {% if two_teams %}
-                                        <td><a href="{{ url_for('spectator.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a></td>
+                                        <td>
+                                            <span class="flag-icon flag-icon-{{ schedule.team_2.country_code.lower() }}"></span>
+                                            <a href="{{ url_for('spectator.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a>
+                                        </td>
                                     {% endif %}
 
                                     {% if schedule.completed %}
@@ -79,18 +91,24 @@
                     {% if scores | length == 0 %}
                     <p>This table have no recorded scores</p>
                     {% else %}
+                        {% if scores[0].team_2 %}
+                            {% set one_team = False %}
+                        {% else %}
+                            {% set one_team = True %}
+                        {% endif %}
                         <table class="table">
                             <thead><tr>
                                 <th class="col-header">{{ _('Start') }}</th>
-                                <th class="col-header">{{ _('Team 1') }}</th>
-                                <th class="col-header">{{ _('Score') }}</th>
-                                {% if scores[0].team_2 %}
+                                {% if one_team %}
+                                    <th class="col-header">{{ _('Team') }}</th>
+                                    <th class="col-header">{{ _('Score') }}</th>
+                                {% else %}
+                                    <th class="col-header">{{ _('Team 1') }}</th>
+                                    <th class="col-header">{{ _('Score') }}</th>
                                     <th class="col-header">{{ _('Team 2') }}</th>
                                     <th class="col-header">{{ _('Score') }}</th>
-                                    {% set two_teams = True %}
-                                {% else %}
-                                    {% set two_teams = False %}
                                 {% endif %}
+
                                 {% if judge_page %}
                                     <th class="col-header">{{ _('Edit') }}</th>
                                 {% endif %}
@@ -99,10 +117,16 @@
                                 {% for score in scores %}
                                 <tr {% if score.start_date > current_time_offset %} class="bg-success"{% else %} class=""{% endif %}>
                                     <td><time class="from-now" data-datetime="{{ score.start_date }}">{{ score.start_date }}</time></td>
-                                    <td><a href="{{ url_for('spectator.team', team_id=score.team_1_id) }}">{{ score.team_1.name }}</a></td>
+                                    <td>
+                                        <span class="flag-icon flag-icon-{{ score.team_1.country_code.lower() }}"></span>
+                                        <a href="{{ url_for('spectator.team', team_id=score.team_1_id) }}">{{ score.team_1.name }}</a>
+                                    </td>
                                     <td>{{ score.score_1 }}</td>
-                                    {% if two_teams %}
-                                        <td><a href="{{ url_for('spectator.team', team_id=score.team_2_id) }}">{{ score.team_2.name }}</a></td>
+                                    {% if not one_team %}
+                                        <td>
+                                            <span class="flag-icon flag-icon-{{ score.team_2.country_code.lower() }}"></span>
+                                            <a href="{{ url_for('spectator.team', team_id=score.team_2_id) }}">{{ score.team_2.name }}</a>
+                                        </td>
                                         <td>{{ score.score_2 }}</td>
                                     {% endif %}
                                     {% if judge_page %}

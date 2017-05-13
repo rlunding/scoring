@@ -47,9 +47,15 @@
                                 {% for schedule in schedules %}
                                     <tr {% if schedule.start_date < current_time %} class="bg-danger"{% else %} class="bg-info"{% endif %}>
                                         <td><time class="from-now" data-datetime="{{ schedule.start_date }}">{{ schedule.start_date }}</time></td>
-                                        <td><a href="{{ url_for('spectator.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a></td>
+                                        <td>
+                                            <span class="flag-icon flag-icon-{{ schedule.team_1.country_code.lower() }}"></span>
+                                            <a href="{{ url_for('spectator.team', team_id=schedule.team_1_id) }}">{{ schedule.team_1.name }}</a>
+                                        </td>
                                         {% if two_teams %}
-                                            <td><a href="{{ url_for('spectator.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a></td>
+                                            <td>
+                                                <span class="flag-icon flag-icon-{{ schedule.team_2.country_code.lower() }}"></span>
+                                                <a href="{{ url_for('spectator.team', team_id=schedule.team_2_id) }}">{{ schedule.team_2.name }}</a>
+                                            </td>
                                         {% endif %}
 
                                         {% if schedule.completed %}

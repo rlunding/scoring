@@ -19,6 +19,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <h1>{{ _('Team') }} {{ team.name }}</h1>
+                    <h3><span class="flag-icon flag-icon-{{ team.country_code.lower() }}"></span> {{ team.country }}</h3>
                     <p>Back to <a href="{{ url_for('spectator.teams') }}">teams</a></p>
                 </div>
             </div>
@@ -39,7 +40,7 @@
                                 {% for schedule in schedules %}
                                     <tr {% if schedule.start_date < current_time %} class="bg-danger"{% else %} class="bg-info"{% endif %}>
                                         <td><time class="from-now" data-datetime="{{ schedule.start_date }}">{{ schedule.start_date }}</time></td>
-                                        <td><a href="{{ url_for('spectator.tables', table_id=schedule.table) }}">{{ schedule.table }}</a></td>
+                                        <td><a href="{{ url_for('spectator.table', table_id=schedule.table) }}">{{ schedule.table }}</a></td>
                                         <td>{% if schedule.completed %}<i class="fa fa-check-square-o"></i>{% else %}<i class="fa fa-square-o"></i>{% endif %} </td>
                                     </tr>
                                 {% endfor %}
@@ -62,7 +63,7 @@
                                 {% for score in scores %}
                                     <tr {% if score.start_date > current_time_offset %} class="bg-success"{% else %} class=""{% endif %}>
                                         <td><time class="from-now" data-datetime="{{ score.start_date }}">{{ score.start_date }}</time></td>
-                                        <td><a href="{{ url_for('spectator.tables', table_id=score.table) }}">{{ score.table }}</a></td>
+                                        <td><a href="{{ url_for('spectator.table', table_id=score.table) }}">{{ score.table }}</a></td>
                                         <td>{{ score.score_1 }}</td>
                                     </tr>
                                 {% endfor %}
