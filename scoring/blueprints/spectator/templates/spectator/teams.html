@@ -39,9 +39,6 @@
                                     <th class="col-header col-xs-4">
                                         {{ items.sort('country', _('Country')) }}
                                     </th>
-                                    <th class="col-header col-xs-4">
-                                        {{ _('Next match') }}
-                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -49,7 +46,6 @@
                                     <tr>
                                         <td><a href="{{ url_for('spectator.team', team_id=team.id) }}">{{ team.name }}</a></td>
                                         <td><span class="flag-icon flag-icon-{{ team.country_code.lower() }}"></span> {{ team.country }}</td>
-                                        <td><time class="from-now" data-datetime="some date">some date</time></td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

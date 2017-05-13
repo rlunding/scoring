@@ -104,9 +104,11 @@ def team(team_id):
     current_time_offset = timedelta(minutes=-10)
     schedules = Schedule.find_by_team_id(team_id)
     scores = Score.find_by_team_id(team_id)
+    next_schedule = Schedule.find_next_by_team_id(team_id)
     return render_template('spectator/team.html',
                            team=team,
                            current_time=current_time,
                            current_time_offset=current_time_offset,
+                           next_schedule=next_schedule,
                            schedules=schedules,
                            scores=scores)

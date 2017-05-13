@@ -1,7 +1,7 @@
 import datetime
 import pytz
 
-from sqlalchemy import desc, or_, func
+from sqlalchemy import desc, and_, or_, func
 from lib.util_sqlalchemy import ResourceMixin, AwareDateTime
 
 from scoring.extensions import db
@@ -78,6 +78,26 @@ class Schedule(ResourceMixin, db.Model):
 
         return Schedule.query.filter(or_(Schedule.team_1_id == team_id, Schedule.team_2_id == team_id))\
             .order_by(desc(Schedule.start_date)).all()
+
+    @classmethod
+    def find_next_by_team_id(cls, team_id):
+        """
+        Return next schedule for a team, given a team_id
+
+        :param team_id: team id
+        :return: schedule
+        """
+
+        now = datetime.datetime.now(pytz.utc)
+
+        next_schedule = Schedule.query\
+            .with_entities(Schedule.start_date)\
+            .filter(and_(or_(Schedule.team_1_id == team_id, Schedule.team_2_id == team_id), Schedule.start_date >= now, Schedule.completed.is_(False)))\
+            .order_by(desc(Schedule.start_date)).first()
+        if next_schedule:
+            return next_schedule[0]
+        else:
+            return None
 
     @classmethod
     def last_update(cls):

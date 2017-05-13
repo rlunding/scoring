@@ -20,6 +20,7 @@
                 <div class="col-sm-12">
                     <h1>{{ _('Team') }} {{ team.name }}</h1>
                     <h3><span class="flag-icon flag-icon-{{ team.country_code.lower() }}"></span> {{ team.country }}</h3>
+                    <p>{{ _('Next match:') }} {% if next_schedule %}<time class="from-now" data-datetime="{{ next_schedule }}">{{ next_schedule }}</time>{% else %}None{% endif %}</p>
                     <p>Back to <a href="{{ url_for('spectator.teams') }}">teams</a></p>
                 </div>
             </div>
