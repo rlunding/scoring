@@ -267,7 +267,6 @@ def compare_dbs(ip):
     except:
         return "error"
 
-
     if request.status_code != 200:
         return "error2"
     try:
@@ -276,17 +275,17 @@ def compare_dbs(ip):
 
         for json_data in data['teams']:
             if Team.find_by_id(json_data['id']) is None:
-                return "Team missing: %s" % json_data['id']
+                print("Team missing: %s" % json_data['id'])
             comparison_array[0] = comparison_array[0] + 1
 
         for json_data in data['schedules']:
             if Schedule.find_by_id(json_data['id']) is None:
-                return "Schedule missing: %s" % json_data['id']
+                print("Schedule missing: %s" % json_data['id'])
             comparison_array[1] = comparison_array[1] + 1
 
         for json_data in data['scores']:
             if Score.find_by_id(json_data['id']) is None:
-                return "Score missing: %s" % json_data['id']
+                print("Score missing: %s" % json_data['id'])
             comparison_array[2] = comparison_array[2] + 1
     except:
         print("Ill-formatted JSON response")
