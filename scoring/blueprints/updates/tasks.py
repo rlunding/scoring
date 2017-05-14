@@ -247,3 +247,39 @@ def timestamp_test(ip):
         Log.log_timestamp(data)
         return "Timestamp logged"
     return "No data returned"
+
+
+@celery.task()
+def compare_dbs(ip):
+    """
+    Compare databases with another peer to check for inconsistencies
+
+    """
+    last_request = timedelta(weeks=-10)
+
+    url = 'http://%s:%s/pull_data/%s' % (ip, 5000, last_request.isoformat())
+    print("Contacting: %s" % url)
+
+    try:
+        request = requests.get(url, timeout=10)
+    except:
+        return "error"
+
+    if request.status_code != 200:
+        return "error2"
+    try:
+        data = json.loads(request.text)
+
+        for json_data in data['teams']:
+            if Team.find_by_id(json_data['id']) is None:
+                return "Team missing: %s" % json_data['id']
+
+        for json_data in data['schedules']:
+            if Schedule.find_by_id(json_data['id']) is None:
+                return "Schedule missing: %s" % json_data['id']
+
+        for json_data in data['scores']:
+            if Score.find_by_id(json_data['id']) is None:
+                return "Score missing: %s" % json_data['id']
+    except:
+        print("Ill-formatted JSON response")

@@ -5,6 +5,7 @@ from scoring.blueprints.updates.tasks import update_peers_file
 from scoring.blueprints.updates.communication import verify_json
 from scoring.blueprints.updates.communication import sign_json
 from scoring.blueprints.updates.tasks import timestamp_test
+from scoring.blueprints.updates.tasks import compare_dbs
 
 from scoring.blueprints.updates.views import log_entries_by_type
 
@@ -145,6 +146,16 @@ def test_signature():
     except:
         return click.echo("eeor")
 
+@click.command()
+@click.argument('ip')
+def compare_peers(ip):
+    """
+    Compare own database with the peer
+    :param ip:
+    :return:
+    """
+    return click.echo(compare_dbs(ip))
+
 cli.add_command(ping)
 cli.add_command(readfile)
 cli.add_command(writefile)
@@ -152,3 +163,4 @@ cli.add_command(updatefile)
 cli.add_command(time)
 cli.add_command(test_signature)
 cli.add_command(timestamp)
+cli.add_command(compare_peers)
