@@ -322,7 +322,7 @@ def stress_test(ctx):
     """
     while True:
         ctx.invoke(all)
-        push_scores_helper(100, 0.1)
+        push_scores_helper(100, 0.5)
 
 
 @click.command()
