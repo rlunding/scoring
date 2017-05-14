@@ -7,12 +7,19 @@ from flask import (
 from sqlalchemy import text
 
 from lib.util_datetime import tzware_datetime, timedelta
+from scoring.blueprints.judge.decorators import get_peers
 from scoring.blueprints.judge.models.schedule import Schedule
 from scoring.blueprints.judge.models.score import Score
 from scoring.blueprints.judge.models.team import Team
 from scoring.blueprints.spectator.forms import SearchForm
 
 spectator = Blueprint('spectator', __name__, template_folder='templates')
+
+
+@spectator.before_request
+@get_peers
+def before_request():
+    pass
 
 
 # Home page -----------------------------------------------------------------------
