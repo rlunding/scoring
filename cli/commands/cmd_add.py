@@ -264,7 +264,16 @@ def scores_pull(times):
 
     return click.echo("Adding scores slowly is completed")
 
-def push_scores_helper(times, delay):
+
+def push_scores_helper(times, delay=None):
+    """
+    Push scores with a delay. Will use a random delay if none
+    specified.
+
+    :param times: the number of scores to push
+    :param delay: the delay in seconds between adding scores.
+
+    """
     for x in range(0, int(times)):
         # Add score
         schedule = Schedule.get_random_row()
@@ -299,6 +308,7 @@ def push_scores_helper(times, delay):
         else:
             click.echo("Waiting %s seconds..." % delay)
             sleep(delay)
+
 
 @click.command()
 @click.argument('times', int)

@@ -151,9 +151,10 @@ def test_signature():
 def compare_peers(ip):
     """
     Compare own database with the peer
-    :param ip:
-    :return:
+
+    :param ip: the ip of peer to compare with
     """
+    click.echo("[Teams, Schedules, Scores]")
     return click.echo(compare_dbs(ip))
 
 cli.add_command(ping)

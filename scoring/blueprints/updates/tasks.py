@@ -265,13 +265,12 @@ def compare_dbs(ip):
     try:
         request = requests.get(url, timeout=10)
     except:
-        return "error"
+        return "Something went wrong with the request"
 
     if request.status_code != 200:
-        return "error2"
+        return "Error status code: %s" % request.status_code
     try:
         data = json.loads(request.text)
-
 
         for json_data in data['teams']:
             if Team.find_by_id(json_data['id']) is None:
