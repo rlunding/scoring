@@ -37,7 +37,7 @@ fi
 
 echo "Starting Docker"
 
-docker-compose -f /home/pi/scoring/docker-compose.yml up -d --build
+docker-compose  up -d --build
 
 if [ $AP = "AP" ]; then
 	echo "Setting up firewall for AP"
