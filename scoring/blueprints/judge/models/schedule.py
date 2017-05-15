@@ -1,7 +1,7 @@
 import datetime
 import pytz
 
-from sqlalchemy import desc, and_, or_, func
+from sqlalchemy import desc, asc, and_, or_, func
 from lib.util_sqlalchemy import ResourceMixin, AwareDateTime
 
 from scoring.extensions import db
@@ -93,7 +93,7 @@ class Schedule(ResourceMixin, db.Model):
         next_schedule = Schedule.query\
             .with_entities(Schedule.start_date)\
             .filter(and_(or_(Schedule.team_1_id == team_id, Schedule.team_2_id == team_id), Schedule.start_date >= now, Schedule.completed.is_(False)))\
-            .order_by(desc(Schedule.start_date)).first()
+            .order_by(asc(Schedule.start_date)).first()
         if next_schedule:
             return next_schedule[0]
         else:
