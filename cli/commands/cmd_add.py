@@ -330,7 +330,7 @@ def stress_test(ctx):
     with small time delay
 
     """
-    push_scores_helper(300, 1)
+    push_scores_helper(100, 1)
 
 
 @click.command()
