@@ -22,7 +22,7 @@ db.app = app
 fake = Faker()
 
 RANDOM_TEAMS = 30
-RANDOM_SCHEDULES_PR_TEAM = 15
+RANDOM_SCHEDULES_PR_TEAM = 30
 TABLES = 10
 
 
@@ -330,9 +330,7 @@ def stress_test(ctx):
     with small time delay
 
     """
-    while True:
-        ctx.invoke(all)
-        push_scores_helper(100, 1)
+    push_scores_helper(300, 1)
 
 
 @click.command()
