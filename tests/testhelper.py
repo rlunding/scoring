@@ -3,8 +3,8 @@ import dateutil.parser
 import json
 from pprint import pprint
 
-file_to_open = 'stress_test/1_sec_push_at_44.txt'
-file_to_write = 'gnuplot/1sec/1_sec_push_at_44_diff_distribution_gnuplot.dat'
+file_to_open = 'stress_test/01_sec_push_at_44.txt'
+file_to_write = 'gnuplot/01sec/01_sec_push_at_44_diff_distribution_gnuplot.dat'
 
 with open(file_to_open) as data_file:
     data = json.load(data_file)
