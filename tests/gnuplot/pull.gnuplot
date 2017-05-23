@@ -1,7 +1,7 @@
 set term png
 set output 'plots/pull.png'
-set ylabel 'Occurrence' rotate by 90
-set xlabel 'Seconds [S]'
+set ylabel 'Occurrence [#]' rotate by 90
+set xlabel 'Seconds [s]'
 set title 'Pull'
 set key right top
 set xrange [0:30]
