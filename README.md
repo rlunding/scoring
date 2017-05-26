@@ -5,6 +5,8 @@ Look in the wiki to see how the raspberries should be setup.
 
 
 ## Images
-![](https://github.com/rlunding/scoring/blob/master/wiki-img/tables.jpg)
-![](https://github.com/rlunding/scoring/blob/master/wiki-img/table.jpg)
-![](https://github.com/rlunding/scoring/blob/master/wiki-img/match.jpg)
+![](https://github.com/rlunding/scoring/blob/master/wiki-img/tables.png)
+![](https://github.com/rlunding/scoring/blob/master/wiki-img/table.png)
+![](https://github.com/rlunding/scoring/blob/master/wiki-img/match.png)
+![](https://github.com/rlunding/scoring/blob/master/wiki-img/teams.png)
+![](https://github.com/rlunding/scoring/blob/master/wiki-img/team_aaron.png)
